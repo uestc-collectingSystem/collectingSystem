@@ -24,7 +24,7 @@ public class DaoTest {
 	
 	@Test
 	public void DBTest(){
-		logProducer.info(JSON.toJSON(userService.UserInfoCheck()));
+		logProducer.info(JSON.toJSON(userService.UserInfoCheck(null, null)));
 	}
 	
 }

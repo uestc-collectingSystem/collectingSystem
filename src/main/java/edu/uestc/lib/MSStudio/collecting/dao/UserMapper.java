@@ -1,5 +1,7 @@
 package edu.uestc.lib.MSStudio.collecting.dao;
 
+import org.apache.ibatis.annotations.Param;
+
 import edu.uestc.lib.MSStudio.collecting.model.User;
 
 public interface UserMapper {
@@ -15,4 +17,5 @@ public interface UserMapper {
 
     int updateByPrimaryKey(User record);
     
+    int countMembers(@Param("name")String name,@Param("pass")String pass);
 }

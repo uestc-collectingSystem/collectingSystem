@@ -1,5 +1,5 @@
 package edu.uestc.lib.MSStudio.collecting.service;
 
 public interface UserService {
-	public boolean UserInfoCheck();
+	boolean UserInfoCheck(String name, String password);
 }

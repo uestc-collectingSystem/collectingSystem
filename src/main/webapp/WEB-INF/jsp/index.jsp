@@ -7,6 +7,6 @@
 <title>数据采集系统</title>
 </head>
 <body>
-${welcomeMsg}
+	这是首页，不管你信不信
 </body>
 </html>
