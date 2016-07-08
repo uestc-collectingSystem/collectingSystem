@@ -1,0 +1,391 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="edu.uestc.lib.MSStudio.collecting.dao.EducationTrainMapper" >
+  <resultMap id="BaseResultMap" type="edu.uestc.lib.MSStudio.collecting.model.EducationTrain" >
+    <id column="ID" property="id" jdbcType="INTEGER" />
+    <result column="Admcode" property="admcode" jdbcType="VARCHAR" />
+    <result column="Year" property="year" jdbcType="VARCHAR" />
+    <result column="DistTrainFullTea" property="disttrainfulltea" jdbcType="INTEGER" />
+    <result column="DistTrainHour" property="disttrainhour" jdbcType="DECIMAL" />
+    <result column="CityTrainFullTea" property="citytrainfulltea" jdbcType="INTEGER" />
+    <result column="CityTrainHour" property="citytrainhour" jdbcType="DECIMAL" />
+    <result column="ProvinTrainFullTea" property="provintrainfulltea" jdbcType="INTEGER" />
+    <result column="ProvinTrainHour" property="provintrainhour" jdbcType="DECIMAL" />
+    <result column="StateTrainFullTea" property="statetrainfulltea" jdbcType="INTEGER" />
+    <result column="StateTrainHour" property="statetrainhour" jdbcType="DECIMAL" />
+    <result column="StateOuterTrain" property="stateoutertrain" jdbcType="INTEGER" />
+    <result column="StateOuterHour" property="stateouterhour" jdbcType="DECIMAL" />
+    <result column="AbroadTrain" property="abroadtrain" jdbcType="INTEGER" />
+    <result column="AbroadHour" property="abroadhour" jdbcType="DECIMAL" />
+    <result column="Diploma" property="diploma" jdbcType="INTEGER" />
+    <result column="TainFundPer" property="tainfundper" jdbcType="DECIMAL" />
+    <result column="StateSkillWinTime" property="stateskillwintime" jdbcType="INTEGER" />
+    <result column="ProvinSkillWinTime" property="provinskillwintime" jdbcType="INTEGER" />
+    <result column="CitySkillWinTime" property="cityskillwintime" jdbcType="INTEGER" />
+    <result column="StateFirstAward" property="statefirstaward" jdbcType="INTEGER" />
+    <result column="StateSecondAward" property="statesecondaward" jdbcType="INTEGER" />
+    <result column="StateThridAward" property="statethridaward" jdbcType="INTEGER" />
+    <result column="ProvinFirstAward" property="provinfirstaward" jdbcType="INTEGER" />
+    <result column="ProvinSecondAward" property="provinsecondaward" jdbcType="INTEGER" />
+    <result column="ProvinThirdAward" property="provinthirdaward" jdbcType="INTEGER" />
+    <result column="CityFirstAward" property="cityfirstaward" jdbcType="INTEGER" />
+    <result column="CitySecondAward" property="citysecondaward" jdbcType="INTEGER" />
+    <result column="CityThirdAward" property="citythirdaward" jdbcType="INTEGER" />
+    <result column="Audit" property="audit" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, Admcode, Year, DistTrainFullTea, DistTrainHour, CityTrainFullTea, CityTrainHour, 
+    ProvinTrainFullTea, ProvinTrainHour, StateTrainFullTea, StateTrainHour, StateOuterTrain, 
+    StateOuterHour, AbroadTrain, AbroadHour, Diploma, TainFundPer, StateSkillWinTime, 
+    ProvinSkillWinTime, CitySkillWinTime, StateFirstAward, StateSecondAward, StateThridAward, 
+    ProvinFirstAward, ProvinSecondAward, ProvinThirdAward, CityFirstAward, CitySecondAward, 
+    CityThirdAward, Audit
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from educationtrain
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from educationtrain
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="edu.uestc.lib.MSStudio.collecting.model.EducationTrain" >
+    insert into educationtrain (ID, Admcode, Year, 
+      DistTrainFullTea, DistTrainHour, CityTrainFullTea, 
+      CityTrainHour, ProvinTrainFullTea, ProvinTrainHour, 
+      StateTrainFullTea, StateTrainHour, StateOuterTrain, 
+      StateOuterHour, AbroadTrain, AbroadHour, 
+      Diploma, TainFundPer, StateSkillWinTime, 
+      ProvinSkillWinTime, CitySkillWinTime, StateFirstAward, 
+      StateSecondAward, StateThridAward, ProvinFirstAward, 
+      ProvinSecondAward, ProvinThirdAward, CityFirstAward, 
+      CitySecondAward, CityThirdAward, Audit
+      )
+    values (#{id,jdbcType=INTEGER}, #{admcode,jdbcType=VARCHAR}, #{year,jdbcType=VARCHAR}, 
+      #{disttrainfulltea,jdbcType=INTEGER}, #{disttrainhour,jdbcType=DECIMAL}, #{citytrainfulltea,jdbcType=INTEGER}, 
+      #{citytrainhour,jdbcType=DECIMAL}, #{provintrainfulltea,jdbcType=INTEGER}, #{provintrainhour,jdbcType=DECIMAL}, 
+      #{statetrainfulltea,jdbcType=INTEGER}, #{statetrainhour,jdbcType=DECIMAL}, #{stateoutertrain,jdbcType=INTEGER}, 
+      #{stateouterhour,jdbcType=DECIMAL}, #{abroadtrain,jdbcType=INTEGER}, #{abroadhour,jdbcType=DECIMAL}, 
+      #{diploma,jdbcType=INTEGER}, #{tainfundper,jdbcType=DECIMAL}, #{stateskillwintime,jdbcType=INTEGER}, 
+      #{provinskillwintime,jdbcType=INTEGER}, #{cityskillwintime,jdbcType=INTEGER}, #{statefirstaward,jdbcType=INTEGER}, 
+      #{statesecondaward,jdbcType=INTEGER}, #{statethridaward,jdbcType=INTEGER}, #{provinfirstaward,jdbcType=INTEGER}, 
+      #{provinsecondaward,jdbcType=INTEGER}, #{provinthirdaward,jdbcType=INTEGER}, #{cityfirstaward,jdbcType=INTEGER}, 
+      #{citysecondaward,jdbcType=INTEGER}, #{citythirdaward,jdbcType=INTEGER}, #{audit,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="edu.uestc.lib.MSStudio.collecting.model.EducationTrain" >
+    insert into educationtrain
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="admcode != null" >
+        Admcode,
+      </if>
+      <if test="year != null" >
+        Year,
+      </if>
+      <if test="disttrainfulltea != null" >
+        DistTrainFullTea,
+      </if>
+      <if test="disttrainhour != null" >
+        DistTrainHour,
+      </if>
+      <if test="citytrainfulltea != null" >
+        CityTrainFullTea,
+      </if>
+      <if test="citytrainhour != null" >
+        CityTrainHour,
+      </if>
+      <if test="provintrainfulltea != null" >
+        ProvinTrainFullTea,
+      </if>
+      <if test="provintrainhour != null" >
+        ProvinTrainHour,
+      </if>
+      <if test="statetrainfulltea != null" >
+        StateTrainFullTea,
+      </if>
+      <if test="statetrainhour != null" >
+        StateTrainHour,
+      </if>
+      <if test="stateoutertrain != null" >
+        StateOuterTrain,
+      </if>
+      <if test="stateouterhour != null" >
+        StateOuterHour,
+      </if>
+      <if test="abroadtrain != null" >
+        AbroadTrain,
+      </if>
+      <if test="abroadhour != null" >
+        AbroadHour,
+      </if>
+      <if test="diploma != null" >
+        Diploma,
+      </if>
+      <if test="tainfundper != null" >
+        TainFundPer,
+      </if>
+      <if test="stateskillwintime != null" >
+        StateSkillWinTime,
+      </if>
+      <if test="provinskillwintime != null" >
+        ProvinSkillWinTime,
+      </if>
+      <if test="cityskillwintime != null" >
+        CitySkillWinTime,
+      </if>
+      <if test="statefirstaward != null" >
+        StateFirstAward,
+      </if>
+      <if test="statesecondaward != null" >
+        StateSecondAward,
+      </if>
+      <if test="statethridaward != null" >
+        StateThridAward,
+      </if>
+      <if test="provinfirstaward != null" >
+        ProvinFirstAward,
+      </if>
+      <if test="provinsecondaward != null" >
+        ProvinSecondAward,
+      </if>
+      <if test="provinthirdaward != null" >
+        ProvinThirdAward,
+      </if>
+      <if test="cityfirstaward != null" >
+        CityFirstAward,
+      </if>
+      <if test="citysecondaward != null" >
+        CitySecondAward,
+      </if>
+      <if test="citythirdaward != null" >
+        CityThirdAward,
+      </if>
+      <if test="audit != null" >
+        Audit,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="admcode != null" >
+        #{admcode,jdbcType=VARCHAR},
+      </if>
+      <if test="year != null" >
+        #{year,jdbcType=VARCHAR},
+      </if>
+      <if test="disttrainfulltea != null" >
+        #{disttrainfulltea,jdbcType=INTEGER},
+      </if>
+      <if test="disttrainhour != null" >
+        #{disttrainhour,jdbcType=DECIMAL},
+      </if>
+      <if test="citytrainfulltea != null" >
+        #{citytrainfulltea,jdbcType=INTEGER},
+      </if>
+      <if test="citytrainhour != null" >
+        #{citytrainhour,jdbcType=DECIMAL},
+      </if>
+      <if test="provintrainfulltea != null" >
+        #{provintrainfulltea,jdbcType=INTEGER},
+      </if>
+      <if test="provintrainhour != null" >
+        #{provintrainhour,jdbcType=DECIMAL},
+      </if>
+      <if test="statetrainfulltea != null" >
+        #{statetrainfulltea,jdbcType=INTEGER},
+      </if>
+      <if test="statetrainhour != null" >
+        #{statetrainhour,jdbcType=DECIMAL},
+      </if>
+      <if test="stateoutertrain != null" >
+        #{stateoutertrain,jdbcType=INTEGER},
+      </if>
+      <if test="stateouterhour != null" >
+        #{stateouterhour,jdbcType=DECIMAL},
+      </if>
+      <if test="abroadtrain != null" >
+        #{abroadtrain,jdbcType=INTEGER},
+      </if>
+      <if test="abroadhour != null" >
+        #{abroadhour,jdbcType=DECIMAL},
+      </if>
+      <if test="diploma != null" >
+        #{diploma,jdbcType=INTEGER},
+      </if>
+      <if test="tainfundper != null" >
+        #{tainfundper,jdbcType=DECIMAL},
+      </if>
+      <if test="stateskillwintime != null" >
+        #{stateskillwintime,jdbcType=INTEGER},
+      </if>
+      <if test="provinskillwintime != null" >
+        #{provinskillwintime,jdbcType=INTEGER},
+      </if>
+      <if test="cityskillwintime != null" >
+        #{cityskillwintime,jdbcType=INTEGER},
+      </if>
+      <if test="statefirstaward != null" >
+        #{statefirstaward,jdbcType=INTEGER},
+      </if>
+      <if test="statesecondaward != null" >
+        #{statesecondaward,jdbcType=INTEGER},
+      </if>
+      <if test="statethridaward != null" >
+        #{statethridaward,jdbcType=INTEGER},
+      </if>
+      <if test="provinfirstaward != null" >
+        #{provinfirstaward,jdbcType=INTEGER},
+      </if>
+      <if test="provinsecondaward != null" >
+        #{provinsecondaward,jdbcType=INTEGER},
+      </if>
+      <if test="provinthirdaward != null" >
+        #{provinthirdaward,jdbcType=INTEGER},
+      </if>
+      <if test="cityfirstaward != null" >
+        #{cityfirstaward,jdbcType=INTEGER},
+      </if>
+      <if test="citysecondaward != null" >
+        #{citysecondaward,jdbcType=INTEGER},
+      </if>
+      <if test="citythirdaward != null" >
+        #{citythirdaward,jdbcType=INTEGER},
+      </if>
+      <if test="audit != null" >
+        #{audit,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="edu.uestc.lib.MSStudio.collecting.model.EducationTrain" >
+    update educationtrain
+    <set >
+      <if test="admcode != null" >
+        Admcode = #{admcode,jdbcType=VARCHAR},
+      </if>
+      <if test="year != null" >
+        Year = #{year,jdbcType=VARCHAR},
+      </if>
+      <if test="disttrainfulltea != null" >
+        DistTrainFullTea = #{disttrainfulltea,jdbcType=INTEGER},
+      </if>
+      <if test="disttrainhour != null" >
+        DistTrainHour = #{disttrainhour,jdbcType=DECIMAL},
+      </if>
+      <if test="citytrainfulltea != null" >
+        CityTrainFullTea = #{citytrainfulltea,jdbcType=INTEGER},
+      </if>
+      <if test="citytrainhour != null" >
+        CityTrainHour = #{citytrainhour,jdbcType=DECIMAL},
+      </if>
+      <if test="provintrainfulltea != null" >
+        ProvinTrainFullTea = #{provintrainfulltea,jdbcType=INTEGER},
+      </if>
+      <if test="provintrainhour != null" >
+        ProvinTrainHour = #{provintrainhour,jdbcType=DECIMAL},
+      </if>
+      <if test="statetrainfulltea != null" >
+        StateTrainFullTea = #{statetrainfulltea,jdbcType=INTEGER},
+      </if>
+      <if test="statetrainhour != null" >
+        StateTrainHour = #{statetrainhour,jdbcType=DECIMAL},
+      </if>
+      <if test="stateoutertrain != null" >
+        StateOuterTrain = #{stateoutertrain,jdbcType=INTEGER},
+      </if>
+      <if test="stateouterhour != null" >
+        StateOuterHour = #{stateouterhour,jdbcType=DECIMAL},
+      </if>
+      <if test="abroadtrain != null" >
+        AbroadTrain = #{abroadtrain,jdbcType=INTEGER},
+      </if>
+      <if test="abroadhour != null" >
+        AbroadHour = #{abroadhour,jdbcType=DECIMAL},
+      </if>
+      <if test="diploma != null" >
+        Diploma = #{diploma,jdbcType=INTEGER},
+      </if>
+      <if test="tainfundper != null" >
+        TainFundPer = #{tainfundper,jdbcType=DECIMAL},
+      </if>
+      <if test="stateskillwintime != null" >
+        StateSkillWinTime = #{stateskillwintime,jdbcType=INTEGER},
+      </if>
+      <if test="provinskillwintime != null" >
+        ProvinSkillWinTime = #{provinskillwintime,jdbcType=INTEGER},
+      </if>
+      <if test="cityskillwintime != null" >
+        CitySkillWinTime = #{cityskillwintime,jdbcType=INTEGER},
+      </if>
+      <if test="statefirstaward != null" >
+        StateFirstAward = #{statefirstaward,jdbcType=INTEGER},
+      </if>
+      <if test="statesecondaward != null" >
+        StateSecondAward = #{statesecondaward,jdbcType=INTEGER},
+      </if>
+      <if test="statethridaward != null" >
+        StateThridAward = #{statethridaward,jdbcType=INTEGER},
+      </if>
+      <if test="provinfirstaward != null" >
+        ProvinFirstAward = #{provinfirstaward,jdbcType=INTEGER},
+      </if>
+      <if test="provinsecondaward != null" >
+        ProvinSecondAward = #{provinsecondaward,jdbcType=INTEGER},
+      </if>
+      <if test="provinthirdaward != null" >
+        ProvinThirdAward = #{provinthirdaward,jdbcType=INTEGER},
+      </if>
+      <if test="cityfirstaward != null" >
+        CityFirstAward = #{cityfirstaward,jdbcType=INTEGER},
+      </if>
+      <if test="citysecondaward != null" >
+        CitySecondAward = #{citysecondaward,jdbcType=INTEGER},
+      </if>
+      <if test="citythirdaward != null" >
+        CityThirdAward = #{citythirdaward,jdbcType=INTEGER},
+      </if>
+      <if test="audit != null" >
+        Audit = #{audit,jdbcType=INTEGER},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="edu.uestc.lib.MSStudio.collecting.model.EducationTrain" >
+    update educationtrain
+    set Admcode = #{admcode,jdbcType=VARCHAR},
+      Year = #{year,jdbcType=VARCHAR},
+      DistTrainFullTea = #{disttrainfulltea,jdbcType=INTEGER},
+      DistTrainHour = #{disttrainhour,jdbcType=DECIMAL},
+      CityTrainFullTea = #{citytrainfulltea,jdbcType=INTEGER},
+      CityTrainHour = #{citytrainhour,jdbcType=DECIMAL},
+      ProvinTrainFullTea = #{provintrainfulltea,jdbcType=INTEGER},
+      ProvinTrainHour = #{provintrainhour,jdbcType=DECIMAL},
+      StateTrainFullTea = #{statetrainfulltea,jdbcType=INTEGER},
+      StateTrainHour = #{statetrainhour,jdbcType=DECIMAL},
+      StateOuterTrain = #{stateoutertrain,jdbcType=INTEGER},
+      StateOuterHour = #{stateouterhour,jdbcType=DECIMAL},
+      AbroadTrain = #{abroadtrain,jdbcType=INTEGER},
+      AbroadHour = #{abroadhour,jdbcType=DECIMAL},
+      Diploma = #{diploma,jdbcType=INTEGER},
+      TainFundPer = #{tainfundper,jdbcType=DECIMAL},
+      StateSkillWinTime = #{stateskillwintime,jdbcType=INTEGER},
+      ProvinSkillWinTime = #{provinskillwintime,jdbcType=INTEGER},
+      CitySkillWinTime = #{cityskillwintime,jdbcType=INTEGER},
+      StateFirstAward = #{statefirstaward,jdbcType=INTEGER},
+      StateSecondAward = #{statesecondaward,jdbcType=INTEGER},
+      StateThridAward = #{statethridaward,jdbcType=INTEGER},
+      ProvinFirstAward = #{provinfirstaward,jdbcType=INTEGER},
+      ProvinSecondAward = #{provinsecondaward,jdbcType=INTEGER},
+      ProvinThirdAward = #{provinthirdaward,jdbcType=INTEGER},
+      CityFirstAward = #{cityfirstaward,jdbcType=INTEGER},
+      CitySecondAward = #{citysecondaward,jdbcType=INTEGER},
+      CityThirdAward = #{citythirdaward,jdbcType=INTEGER},
+      Audit = #{audit,jdbcType=INTEGER}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

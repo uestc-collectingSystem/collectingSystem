@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="edu.uestc.lib.MSStudio.collecting.dao.EmployQualityMapper" >
+  <resultMap id="BaseResultMap" type="edu.uestc.lib.MSStudio.collecting.model.EmployQuality" >
+    <id column="ID" property="id" jdbcType="INTEGER" />
+    <result column="Admcode" property="admcode" jdbcType="VARCHAR" />
+    <result column="Year" property="year" jdbcType="VARCHAR" />
+    <result column="EmployRateFirst" property="employratefirst" jdbcType="DECIMAL" />
+    <result column="CouPartEmployRate" property="coupartemployrate" jdbcType="DECIMAL" />
+    <result column="SixMonthSteadRate" property="sixmonthsteadrate" jdbcType="DECIMAL" />
+    <result column="FirstEmployMonIncome" property="firstemploymonincome" jdbcType="DECIMAL" />
+    <result column="VentureRate" property="venturerate" jdbcType="DECIMAL" />
+    <result column="StateOwn" property="stateown" jdbcType="DECIMAL" />
+    <result column="PrivateOwn" property="privateown" jdbcType="DECIMAL" />
+    <result column="ForeignOwn" property="foreignown" jdbcType="DECIMAL" />
+    <result column="One" property="one" jdbcType="DECIMAL" />
+    <result column="Two" property="two" jdbcType="DECIMAL" />
+    <result column="Three" property="three" jdbcType="DECIMAL" />
+    <result column="Soldier" property="soldier" jdbcType="INTEGER" />
+    <result column="CollegeEntance" property="collegeentance" jdbcType="DECIMAL" />
+    <result column="CouterPart" property="couterpart" jdbcType="DECIMAL" />
+    <result column="OneYearInner" property="oneyearinner" jdbcType="DECIMAL" />
+    <result column="OneYearOuter" property="oneyearouter" jdbcType="DECIMAL" />
+    <result column="Audit" property="audit" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, Admcode, Year, EmployRateFirst, CouPartEmployRate, SixMonthSteadRate, FirstEmployMonIncome, 
+    VentureRate, StateOwn, PrivateOwn, ForeignOwn, One, Two, Three, Soldier, CollegeEntance, 
+    CouterPart, OneYearInner, OneYearOuter, Audit
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from employquality
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from employquality
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="edu.uestc.lib.MSStudio.collecting.model.EmployQuality" >
+    insert into employquality (ID, Admcode, Year, 
+      EmployRateFirst, CouPartEmployRate, SixMonthSteadRate, 
+      FirstEmployMonIncome, VentureRate, StateOwn, 
+      PrivateOwn, ForeignOwn, One, 
+      Two, Three, Soldier, 
+      CollegeEntance, CouterPart, OneYearInner, 
+      OneYearOuter, Audit)
+    values (#{id,jdbcType=INTEGER}, #{admcode,jdbcType=VARCHAR}, #{year,jdbcType=VARCHAR}, 
+      #{employratefirst,jdbcType=DECIMAL}, #{coupartemployrate,jdbcType=DECIMAL}, #{sixmonthsteadrate,jdbcType=DECIMAL}, 
+      #{firstemploymonincome,jdbcType=DECIMAL}, #{venturerate,jdbcType=DECIMAL}, #{stateown,jdbcType=DECIMAL}, 
+      #{privateown,jdbcType=DECIMAL}, #{foreignown,jdbcType=DECIMAL}, #{one,jdbcType=DECIMAL}, 
+      #{two,jdbcType=DECIMAL}, #{three,jdbcType=DECIMAL}, #{soldier,jdbcType=INTEGER}, 
+      #{collegeentance,jdbcType=DECIMAL}, #{couterpart,jdbcType=DECIMAL}, #{oneyearinner,jdbcType=DECIMAL}, 
+      #{oneyearouter,jdbcType=DECIMAL}, #{audit,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="edu.uestc.lib.MSStudio.collecting.model.EmployQuality" >
+    insert into employquality
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="admcode != null" >
+        Admcode,
+      </if>
+      <if test="year != null" >
+        Year,
+      </if>
+      <if test="employratefirst != null" >
+        EmployRateFirst,
+      </if>
+      <if test="coupartemployrate != null" >
+        CouPartEmployRate,
+      </if>
+      <if test="sixmonthsteadrate != null" >
+        SixMonthSteadRate,
+      </if>
+      <if test="firstemploymonincome != null" >
+        FirstEmployMonIncome,
+      </if>
+      <if test="venturerate != null" >
+        VentureRate,
+      </if>
+      <if test="stateown != null" >
+        StateOwn,
+      </if>
+      <if test="privateown != null" >
+        PrivateOwn,
+      </if>
+      <if test="foreignown != null" >
+        ForeignOwn,
+      </if>
+      <if test="one != null" >
+        One,
+      </if>
+      <if test="two != null" >
+        Two,
+      </if>
+      <if test="three != null" >
+        Three,
+      </if>
+      <if test="soldier != null" >
+        Soldier,
+      </if>
+      <if test="collegeentance != null" >
+        CollegeEntance,
+      </if>
+      <if test="couterpart != null" >
+        CouterPart,
+      </if>
+      <if test="oneyearinner != null" >
+        OneYearInner,
+      </if>
+      <if test="oneyearouter != null" >
+        OneYearOuter,
+      </if>
+      <if test="audit != null" >
+        Audit,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="admcode != null" >
+        #{admcode,jdbcType=VARCHAR},
+      </if>
+      <if test="year != null" >
+        #{year,jdbcType=VARCHAR},
+      </if>
+      <if test="employratefirst != null" >
+        #{employratefirst,jdbcType=DECIMAL},
+      </if>
+      <if test="coupartemployrate != null" >
+        #{coupartemployrate,jdbcType=DECIMAL},
+      </if>
+      <if test="sixmonthsteadrate != null" >
+        #{sixmonthsteadrate,jdbcType=DECIMAL},
+      </if>
+      <if test="firstemploymonincome != null" >
+        #{firstemploymonincome,jdbcType=DECIMAL},
+      </if>
+      <if test="venturerate != null" >
+        #{venturerate,jdbcType=DECIMAL},
+      </if>
+      <if test="stateown != null" >
+        #{stateown,jdbcType=DECIMAL},
+      </if>
+      <if test="privateown != null" >
+        #{privateown,jdbcType=DECIMAL},
+      </if>
+      <if test="foreignown != null" >
+        #{foreignown,jdbcType=DECIMAL},
+      </if>
+      <if test="one != null" >
+        #{one,jdbcType=DECIMAL},
+      </if>
+      <if test="two != null" >
+        #{two,jdbcType=DECIMAL},
+      </if>
+      <if test="three != null" >
+        #{three,jdbcType=DECIMAL},
+      </if>
+      <if test="soldier != null" >
+        #{soldier,jdbcType=INTEGER},
+      </if>
+      <if test="collegeentance != null" >
+        #{collegeentance,jdbcType=DECIMAL},
+      </if>
+      <if test="couterpart != null" >
+        #{couterpart,jdbcType=DECIMAL},
+      </if>
+      <if test="oneyearinner != null" >
+        #{oneyearinner,jdbcType=DECIMAL},
+      </if>
+      <if test="oneyearouter != null" >
+        #{oneyearouter,jdbcType=DECIMAL},
+      </if>
+      <if test="audit != null" >
+        #{audit,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="edu.uestc.lib.MSStudio.collecting.model.EmployQuality" >
+    update employquality
+    <set >
+      <if test="admcode != null" >
+        Admcode = #{admcode,jdbcType=VARCHAR},
+      </if>
+      <if test="year != null" >
+        Year = #{year,jdbcType=VARCHAR},
+      </if>
+      <if test="employratefirst != null" >
+        EmployRateFirst = #{employratefirst,jdbcType=DECIMAL},
+      </if>
+      <if test="coupartemployrate != null" >
+        CouPartEmployRate = #{coupartemployrate,jdbcType=DECIMAL},
+      </if>
+      <if test="sixmonthsteadrate != null" >
+        SixMonthSteadRate = #{sixmonthsteadrate,jdbcType=DECIMAL},
+      </if>
+      <if test="firstemploymonincome != null" >
+        FirstEmployMonIncome = #{firstemploymonincome,jdbcType=DECIMAL},
+      </if>
+      <if test="venturerate != null" >
+        VentureRate = #{venturerate,jdbcType=DECIMAL},
+      </if>
+      <if test="stateown != null" >
+        StateOwn = #{stateown,jdbcType=DECIMAL},
+      </if>
+      <if test="privateown != null" >
+        PrivateOwn = #{privateown,jdbcType=DECIMAL},
+      </if>
+      <if test="foreignown != null" >
+        ForeignOwn = #{foreignown,jdbcType=DECIMAL},
+      </if>
+      <if test="one != null" >
+        One = #{one,jdbcType=DECIMAL},
+      </if>
+      <if test="two != null" >
+        Two = #{two,jdbcType=DECIMAL},
+      </if>
+      <if test="three != null" >
+        Three = #{three,jdbcType=DECIMAL},
+      </if>
+      <if test="soldier != null" >
+        Soldier = #{soldier,jdbcType=INTEGER},
+      </if>
+      <if test="collegeentance != null" >
+        CollegeEntance = #{collegeentance,jdbcType=DECIMAL},
+      </if>
+      <if test="couterpart != null" >
+        CouterPart = #{couterpart,jdbcType=DECIMAL},
+      </if>
+      <if test="oneyearinner != null" >
+        OneYearInner = #{oneyearinner,jdbcType=DECIMAL},
+      </if>
+      <if test="oneyearouter != null" >
+        OneYearOuter = #{oneyearouter,jdbcType=DECIMAL},
+      </if>
+      <if test="audit != null" >
+        Audit = #{audit,jdbcType=INTEGER},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="edu.uestc.lib.MSStudio.collecting.model.EmployQuality" >
+    update employquality
+    set Admcode = #{admcode,jdbcType=VARCHAR},
+      Year = #{year,jdbcType=VARCHAR},
+      EmployRateFirst = #{employratefirst,jdbcType=DECIMAL},
+      CouPartEmployRate = #{coupartemployrate,jdbcType=DECIMAL},
+      SixMonthSteadRate = #{sixmonthsteadrate,jdbcType=DECIMAL},
+      FirstEmployMonIncome = #{firstemploymonincome,jdbcType=DECIMAL},
+      VentureRate = #{venturerate,jdbcType=DECIMAL},
+      StateOwn = #{stateown,jdbcType=DECIMAL},
+      PrivateOwn = #{privateown,jdbcType=DECIMAL},
+      ForeignOwn = #{foreignown,jdbcType=DECIMAL},
+      One = #{one,jdbcType=DECIMAL},
+      Two = #{two,jdbcType=DECIMAL},
+      Three = #{three,jdbcType=DECIMAL},
+      Soldier = #{soldier,jdbcType=INTEGER},
+      CollegeEntance = #{collegeentance,jdbcType=DECIMAL},
+      CouterPart = #{couterpart,jdbcType=DECIMAL},
+      OneYearInner = #{oneyearinner,jdbcType=DECIMAL},
+      OneYearOuter = #{oneyearouter,jdbcType=DECIMAL},
+      Audit = #{audit,jdbcType=INTEGER}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

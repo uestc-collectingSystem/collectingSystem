@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="edu.uestc.lib.MSStudio.collecting.dao.SchoolLevelMapper" >
+  <resultMap id="BaseResultMap" type="edu.uestc.lib.MSStudio.collecting.model.SchoolLevel" >
+    <id column="Code" property="code" jdbcType="VARCHAR" />
+    <result column="Name" property="name" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    Code, Name
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from schoollevel
+    where Code = #{code,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from schoollevel
+    where Code = #{code,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="edu.uestc.lib.MSStudio.collecting.model.SchoolLevel" >
+    insert into schoollevel (Code, Name)
+    values (#{code,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="edu.uestc.lib.MSStudio.collecting.model.SchoolLevel" >
+    insert into schoollevel
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="code != null" >
+        Code,
+      </if>
+      <if test="name != null" >
+        Name,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="code != null" >
+        #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="edu.uestc.lib.MSStudio.collecting.model.SchoolLevel" >
+    update schoollevel
+    <set >
+      <if test="name != null" >
+        Name = #{name,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where Code = #{code,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="edu.uestc.lib.MSStudio.collecting.model.SchoolLevel" >
+    update schoollevel
+    set Name = #{name,jdbcType=VARCHAR}
+    where Code = #{code,jdbcType=VARCHAR}
+  </update>
+</mapper>

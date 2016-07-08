@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="edu.uestc.lib.MSStudio.collecting.dao.MajorStuCountMapper" >
+  <resultMap id="BaseResultMap" type="edu.uestc.lib.MSStudio.collecting.model.MajorStuCount" >
+    <id column="ID" property="id" jdbcType="INTEGER" />
+    <result column="Admcode" property="admcode" jdbcType="VARCHAR" />
+    <result column="Year" property="year" jdbcType="VARCHAR" />
+    <result column="InduName" property="induname" jdbcType="VARCHAR" />
+    <result column="Name" property="name" jdbcType="VARCHAR" />
+    <result column="FirstGradeSum" property="firstgradesum" jdbcType="INTEGER" />
+    <result column="SecGradeSum" property="secgradesum" jdbcType="INTEGER" />
+    <result column="ThirdGradeSum" property="thirdgradesum" jdbcType="INTEGER" />
+    <result column="Audit" property="audit" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, Admcode, Year, InduName, Name, FirstGradeSum, SecGradeSum, ThirdGradeSum, Audit
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from majorstu
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from majorstu
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="edu.uestc.lib.MSStudio.collecting.model.MajorStuCount" >
+    insert into majorstu (ID, Admcode, Year, 
+      InduName, Name, FirstGradeSum, 
+      SecGradeSum, ThirdGradeSum, Audit
+      )
+    values (#{id,jdbcType=INTEGER}, #{admcode,jdbcType=VARCHAR}, #{year,jdbcType=VARCHAR}, 
+      #{induname,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{firstgradesum,jdbcType=INTEGER}, 
+      #{secgradesum,jdbcType=INTEGER}, #{thirdgradesum,jdbcType=INTEGER}, #{audit,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="edu.uestc.lib.MSStudio.collecting.model.MajorStuCount" >
+    insert into majorstu
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="admcode != null" >
+        Admcode,
+      </if>
+      <if test="year != null" >
+        Year,
+      </if>
+      <if test="induname != null" >
+        InduName,
+      </if>
+      <if test="name != null" >
+        Name,
+      </if>
+      <if test="firstgradesum != null" >
+        FirstGradeSum,
+      </if>
+      <if test="secgradesum != null" >
+        SecGradeSum,
+      </if>
+      <if test="thirdgradesum != null" >
+        ThirdGradeSum,
+      </if>
+      <if test="audit != null" >
+        Audit,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="admcode != null" >
+        #{admcode,jdbcType=VARCHAR},
+      </if>
+      <if test="year != null" >
+        #{year,jdbcType=VARCHAR},
+      </if>
+      <if test="induname != null" >
+        #{induname,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="firstgradesum != null" >
+        #{firstgradesum,jdbcType=INTEGER},
+      </if>
+      <if test="secgradesum != null" >
+        #{secgradesum,jdbcType=INTEGER},
+      </if>
+      <if test="thirdgradesum != null" >
+        #{thirdgradesum,jdbcType=INTEGER},
+      </if>
+      <if test="audit != null" >
+        #{audit,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="edu.uestc.lib.MSStudio.collecting.model.MajorStuCount" >
+    update majorstu
+    <set >
+      <if test="admcode != null" >
+        Admcode = #{admcode,jdbcType=VARCHAR},
+      </if>
+      <if test="year != null" >
+        Year = #{year,jdbcType=VARCHAR},
+      </if>
+      <if test="induname != null" >
+        InduName = #{induname,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        Name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="firstgradesum != null" >
+        FirstGradeSum = #{firstgradesum,jdbcType=INTEGER},
+      </if>
+      <if test="secgradesum != null" >
+        SecGradeSum = #{secgradesum,jdbcType=INTEGER},
+      </if>
+      <if test="thirdgradesum != null" >
+        ThirdGradeSum = #{thirdgradesum,jdbcType=INTEGER},
+      </if>
+      <if test="audit != null" >
+        Audit = #{audit,jdbcType=INTEGER},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="edu.uestc.lib.MSStudio.collecting.model.MajorStuCount" >
+    update majorstu
+    set Admcode = #{admcode,jdbcType=VARCHAR},
+      Year = #{year,jdbcType=VARCHAR},
+      InduName = #{induname,jdbcType=VARCHAR},
+      Name = #{name,jdbcType=VARCHAR},
+      FirstGradeSum = #{firstgradesum,jdbcType=INTEGER},
+      SecGradeSum = #{secgradesum,jdbcType=INTEGER},
+      ThirdGradeSum = #{thirdgradesum,jdbcType=INTEGER},
+      Audit = #{audit,jdbcType=INTEGER}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

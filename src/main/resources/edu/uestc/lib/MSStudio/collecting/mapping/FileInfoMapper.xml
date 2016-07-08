@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="edu.uestc.lib.MSStudio.collecting.dao.FileInfoMapper" >
+  <resultMap id="BaseResultMap" type="edu.uestc.lib.MSStudio.collecting.model.FileInfo" >
+    <id column="ID" property="id" jdbcType="INTEGER" />
+    <result column="Name" property="name" jdbcType="VARCHAR" />
+    <result column="Url" property="url" jdbcType="VARCHAR" />
+    <result column="WriteTime" property="writetime" jdbcType="VARCHAR" />
+    <result column="Writer" property="writer" jdbcType="VARCHAR" />
+    <result column="Source" property="source" jdbcType="VARCHAR" />
+    <result column="Audit" property="audit" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, Name, Url, WriteTime, Writer, Source, Audit
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from fileinfo
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from fileinfo
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="edu.uestc.lib.MSStudio.collecting.model.FileInfo" >
+    insert into fileinfo (ID, Name, Url, 
+      WriteTime, Writer, Source, 
+      Audit)
+    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{url,jdbcType=VARCHAR}, 
+      #{writetime,jdbcType=VARCHAR}, #{writer,jdbcType=VARCHAR}, #{source,jdbcType=VARCHAR}, 
+      #{audit,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="edu.uestc.lib.MSStudio.collecting.model.FileInfo" >
+    insert into fileinfo
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="name != null" >
+        Name,
+      </if>
+      <if test="url != null" >
+        Url,
+      </if>
+      <if test="writetime != null" >
+        WriteTime,
+      </if>
+      <if test="writer != null" >
+        Writer,
+      </if>
+      <if test="source != null" >
+        Source,
+      </if>
+      <if test="audit != null" >
+        Audit,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="url != null" >
+        #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="writetime != null" >
+        #{writetime,jdbcType=VARCHAR},
+      </if>
+      <if test="writer != null" >
+        #{writer,jdbcType=VARCHAR},
+      </if>
+      <if test="source != null" >
+        #{source,jdbcType=VARCHAR},
+      </if>
+      <if test="audit != null" >
+        #{audit,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="edu.uestc.lib.MSStudio.collecting.model.FileInfo" >
+    update fileinfo
+    <set >
+      <if test="name != null" >
+        Name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="url != null" >
+        Url = #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="writetime != null" >
+        WriteTime = #{writetime,jdbcType=VARCHAR},
+      </if>
+      <if test="writer != null" >
+        Writer = #{writer,jdbcType=VARCHAR},
+      </if>
+      <if test="source != null" >
+        Source = #{source,jdbcType=VARCHAR},
+      </if>
+      <if test="audit != null" >
+        Audit = #{audit,jdbcType=INTEGER},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="edu.uestc.lib.MSStudio.collecting.model.FileInfo" >
+    update fileinfo
+    set Name = #{name,jdbcType=VARCHAR},
+      Url = #{url,jdbcType=VARCHAR},
+      WriteTime = #{writetime,jdbcType=VARCHAR},
+      Writer = #{writer,jdbcType=VARCHAR},
+      Source = #{source,jdbcType=VARCHAR},
+      Audit = #{audit,jdbcType=INTEGER}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

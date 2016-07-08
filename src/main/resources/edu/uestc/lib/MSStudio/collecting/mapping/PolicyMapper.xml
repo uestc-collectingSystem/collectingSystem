@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="edu.uestc.lib.MSStudio.collecting.dao.PolicyMapper" >
+  <resultMap id="BaseResultMap" type="edu.uestc.lib.MSStudio.collecting.model.Policy" >
+    <id column="ID" property="id" jdbcType="INTEGER" />
+    <result column="Admcode" property="admcode" jdbcType="VARCHAR" />
+    <result column="Year" property="year" jdbcType="VARCHAR" />
+    <result column="GeneralHigh" property="generalhigh" jdbcType="DECIMAL" />
+    <result column="FundInput" property="fundinput" jdbcType="DECIMAL" />
+    <result column="TeacherStudent" property="teacherstudent" jdbcType="DECIMAL" />
+    <result column="MajorTeaStu" property="majorteastu" jdbcType="DECIMAL" />
+    <result column="External" property="external" jdbcType="DECIMAL" />
+    <result column="File" property="file" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, Admcode, Year, GeneralHigh, FundInput, TeacherStudent, MajorTeaStu, External, 
+    File
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from policy
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from policy
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="edu.uestc.lib.MSStudio.collecting.model.Policy" >
+    insert into policy (ID, Admcode, Year, 
+      GeneralHigh, FundInput, TeacherStudent, 
+      MajorTeaStu, External, File
+      )
+    values (#{id,jdbcType=INTEGER}, #{admcode,jdbcType=VARCHAR}, #{year,jdbcType=VARCHAR}, 
+      #{generalhigh,jdbcType=DECIMAL}, #{fundinput,jdbcType=DECIMAL}, #{teacherstudent,jdbcType=DECIMAL}, 
+      #{majorteastu,jdbcType=DECIMAL}, #{external,jdbcType=DECIMAL}, #{file,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="edu.uestc.lib.MSStudio.collecting.model.Policy" >
+    insert into policy
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="admcode != null" >
+        Admcode,
+      </if>
+      <if test="year != null" >
+        Year,
+      </if>
+      <if test="generalhigh != null" >
+        GeneralHigh,
+      </if>
+      <if test="fundinput != null" >
+        FundInput,
+      </if>
+      <if test="teacherstudent != null" >
+        TeacherStudent,
+      </if>
+      <if test="majorteastu != null" >
+        MajorTeaStu,
+      </if>
+      <if test="external != null" >
+        External,
+      </if>
+      <if test="file != null" >
+        File,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="admcode != null" >
+        #{admcode,jdbcType=VARCHAR},
+      </if>
+      <if test="year != null" >
+        #{year,jdbcType=VARCHAR},
+      </if>
+      <if test="generalhigh != null" >
+        #{generalhigh,jdbcType=DECIMAL},
+      </if>
+      <if test="fundinput != null" >
+        #{fundinput,jdbcType=DECIMAL},
+      </if>
+      <if test="teacherstudent != null" >
+        #{teacherstudent,jdbcType=DECIMAL},
+      </if>
+      <if test="majorteastu != null" >
+        #{majorteastu,jdbcType=DECIMAL},
+      </if>
+      <if test="external != null" >
+        #{external,jdbcType=DECIMAL},
+      </if>
+      <if test="file != null" >
+        #{file,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="edu.uestc.lib.MSStudio.collecting.model.Policy" >
+    update policy
+    <set >
+      <if test="admcode != null" >
+        Admcode = #{admcode,jdbcType=VARCHAR},
+      </if>
+      <if test="year != null" >
+        Year = #{year,jdbcType=VARCHAR},
+      </if>
+      <if test="generalhigh != null" >
+        GeneralHigh = #{generalhigh,jdbcType=DECIMAL},
+      </if>
+      <if test="fundinput != null" >
+        FundInput = #{fundinput,jdbcType=DECIMAL},
+      </if>
+      <if test="teacherstudent != null" >
+        TeacherStudent = #{teacherstudent,jdbcType=DECIMAL},
+      </if>
+      <if test="majorteastu != null" >
+        MajorTeaStu = #{majorteastu,jdbcType=DECIMAL},
+      </if>
+      <if test="external != null" >
+        External = #{external,jdbcType=DECIMAL},
+      </if>
+      <if test="file != null" >
+        File = #{file,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="edu.uestc.lib.MSStudio.collecting.model.Policy" >
+    update policy
+    set Admcode = #{admcode,jdbcType=VARCHAR},
+      Year = #{year,jdbcType=VARCHAR},
+      GeneralHigh = #{generalhigh,jdbcType=DECIMAL},
+      FundInput = #{fundinput,jdbcType=DECIMAL},
+      TeacherStudent = #{teacherstudent,jdbcType=DECIMAL},
+      MajorTeaStu = #{majorteastu,jdbcType=DECIMAL},
+      External = #{external,jdbcType=DECIMAL},
+      File = #{file,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

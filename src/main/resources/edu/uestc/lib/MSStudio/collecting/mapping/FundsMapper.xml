@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="edu.uestc.lib.MSStudio.collecting.dao.FundsMapper" >
+  <resultMap id="BaseResultMap" type="edu.uestc.lib.MSStudio.collecting.model.Funds" >
+    <id column="ID" property="id" jdbcType="INTEGER" />
+    <result column="Admcode" property="admcode" jdbcType="VARCHAR" />
+    <result column="Year" property="year" jdbcType="VARCHAR" />
+    <result column="CenterFund" property="centerfund" jdbcType="DECIMAL" />
+    <result column="LocalFund" property="localfund" jdbcType="DECIMAL" />
+    <result column="Debt" property="debt" jdbcType="DECIMAL" />
+    <result column="Loan" property="loan" jdbcType="DECIMAL" />
+    <result column="Appropriation" property="appropriation" jdbcType="DECIMAL" />
+    <result column="TeacInputRadio" property="teacinputradio" jdbcType="DECIMAL" />
+    <result column="TeacherTrain" property="teachertrain" jdbcType="DECIMAL" />
+    <result column="TeachChange" property="teachchange" jdbcType="DECIMAL" />
+    <result column="FundBudget" property="fundbudget" jdbcType="DECIMAL" />
+    <result column="Audit" property="audit" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, Admcode, Year, CenterFund, LocalFund, Debt, Loan, Appropriation, TeacInputRadio, 
+    TeacherTrain, TeachChange, FundBudget, Audit
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from funds
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from funds
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="edu.uestc.lib.MSStudio.collecting.model.Funds" >
+    insert into funds (ID, Admcode, Year, 
+      CenterFund, LocalFund, Debt, 
+      Loan, Appropriation, TeacInputRadio, 
+      TeacherTrain, TeachChange, FundBudget, 
+      Audit)
+    values (#{id,jdbcType=INTEGER}, #{admcode,jdbcType=VARCHAR}, #{year,jdbcType=VARCHAR}, 
+      #{centerfund,jdbcType=DECIMAL}, #{localfund,jdbcType=DECIMAL}, #{debt,jdbcType=DECIMAL}, 
+      #{loan,jdbcType=DECIMAL}, #{appropriation,jdbcType=DECIMAL}, #{teacinputradio,jdbcType=DECIMAL}, 
+      #{teachertrain,jdbcType=DECIMAL}, #{teachchange,jdbcType=DECIMAL}, #{fundbudget,jdbcType=DECIMAL}, 
+      #{audit,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="edu.uestc.lib.MSStudio.collecting.model.Funds" >
+    insert into funds
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="admcode != null" >
+        Admcode,
+      </if>
+      <if test="year != null" >
+        Year,
+      </if>
+      <if test="centerfund != null" >
+        CenterFund,
+      </if>
+      <if test="localfund != null" >
+        LocalFund,
+      </if>
+      <if test="debt != null" >
+        Debt,
+      </if>
+      <if test="loan != null" >
+        Loan,
+      </if>
+      <if test="appropriation != null" >
+        Appropriation,
+      </if>
+      <if test="teacinputradio != null" >
+        TeacInputRadio,
+      </if>
+      <if test="teachertrain != null" >
+        TeacherTrain,
+      </if>
+      <if test="teachchange != null" >
+        TeachChange,
+      </if>
+      <if test="fundbudget != null" >
+        FundBudget,
+      </if>
+      <if test="audit != null" >
+        Audit,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="admcode != null" >
+        #{admcode,jdbcType=VARCHAR},
+      </if>
+      <if test="year != null" >
+        #{year,jdbcType=VARCHAR},
+      </if>
+      <if test="centerfund != null" >
+        #{centerfund,jdbcType=DECIMAL},
+      </if>
+      <if test="localfund != null" >
+        #{localfund,jdbcType=DECIMAL},
+      </if>
+      <if test="debt != null" >
+        #{debt,jdbcType=DECIMAL},
+      </if>
+      <if test="loan != null" >
+        #{loan,jdbcType=DECIMAL},
+      </if>
+      <if test="appropriation != null" >
+        #{appropriation,jdbcType=DECIMAL},
+      </if>
+      <if test="teacinputradio != null" >
+        #{teacinputradio,jdbcType=DECIMAL},
+      </if>
+      <if test="teachertrain != null" >
+        #{teachertrain,jdbcType=DECIMAL},
+      </if>
+      <if test="teachchange != null" >
+        #{teachchange,jdbcType=DECIMAL},
+      </if>
+      <if test="fundbudget != null" >
+        #{fundbudget,jdbcType=DECIMAL},
+      </if>
+      <if test="audit != null" >
+        #{audit,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="edu.uestc.lib.MSStudio.collecting.model.Funds" >
+    update funds
+    <set >
+      <if test="admcode != null" >
+        Admcode = #{admcode,jdbcType=VARCHAR},
+      </if>
+      <if test="year != null" >
+        Year = #{year,jdbcType=VARCHAR},
+      </if>
+      <if test="centerfund != null" >
+        CenterFund = #{centerfund,jdbcType=DECIMAL},
+      </if>
+      <if test="localfund != null" >
+        LocalFund = #{localfund,jdbcType=DECIMAL},
+      </if>
+      <if test="debt != null" >
+        Debt = #{debt,jdbcType=DECIMAL},
+      </if>
+      <if test="loan != null" >
+        Loan = #{loan,jdbcType=DECIMAL},
+      </if>
+      <if test="appropriation != null" >
+        Appropriation = #{appropriation,jdbcType=DECIMAL},
+      </if>
+      <if test="teacinputradio != null" >
+        TeacInputRadio = #{teacinputradio,jdbcType=DECIMAL},
+      </if>
+      <if test="teachertrain != null" >
+        TeacherTrain = #{teachertrain,jdbcType=DECIMAL},
+      </if>
+      <if test="teachchange != null" >
+        TeachChange = #{teachchange,jdbcType=DECIMAL},
+      </if>
+      <if test="fundbudget != null" >
+        FundBudget = #{fundbudget,jdbcType=DECIMAL},
+      </if>
+      <if test="audit != null" >
+        Audit = #{audit,jdbcType=INTEGER},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="edu.uestc.lib.MSStudio.collecting.model.Funds" >
+    update funds
+    set Admcode = #{admcode,jdbcType=VARCHAR},
+      Year = #{year,jdbcType=VARCHAR},
+      CenterFund = #{centerfund,jdbcType=DECIMAL},
+      LocalFund = #{localfund,jdbcType=DECIMAL},
+      Debt = #{debt,jdbcType=DECIMAL},
+      Loan = #{loan,jdbcType=DECIMAL},
+      Appropriation = #{appropriation,jdbcType=DECIMAL},
+      TeacInputRadio = #{teacinputradio,jdbcType=DECIMAL},
+      TeacherTrain = #{teachertrain,jdbcType=DECIMAL},
+      TeachChange = #{teachchange,jdbcType=DECIMAL},
+      FundBudget = #{fundbudget,jdbcType=DECIMAL},
+      Audit = #{audit,jdbcType=INTEGER}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

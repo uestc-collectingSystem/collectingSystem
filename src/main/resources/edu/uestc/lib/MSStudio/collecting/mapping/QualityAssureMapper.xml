@@ -1,0 +1,355 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="edu.uestc.lib.MSStudio.collecting.dao.QualityAssureMapper" >
+  <resultMap id="BaseResultMap" type="edu.uestc.lib.MSStudio.collecting.model.QualityAssure" >
+    <id column="ID" property="id" jdbcType="INTEGER" />
+    <result column="Admcode" property="admcode" jdbcType="VARCHAR" />
+    <result column="Year" property="year" jdbcType="VARCHAR" />
+    <result column="LeaderListen" property="leaderlisten" jdbcType="INTEGER" />
+    <result column="LeaderTalk" property="leadertalk" jdbcType="INTEGER" />
+    <result column="SchoolWell" property="schoolwell" jdbcType="DECIMAL" />
+    <result column="SchoolGood" property="schoolgood" jdbcType="DECIMAL" />
+    <result column="SchoolBad" property="schoolbad" jdbcType="DECIMAL" />
+    <result column="StateClass" property="stateclass" jdbcType="INTEGER" />
+    <result column="ProvinClass" property="provinclass" jdbcType="INTEGER" />
+    <result column="CityClass" property="cityclass" jdbcType="INTEGER" />
+    <result column="Chinese" property="chinese" jdbcType="DECIMAL" />
+    <result column="Math" property="math" jdbcType="DECIMAL" />
+    <result column="English" property="english" jdbcType="DECIMAL" />
+    <result column="StateSkillWinTime" property="stateskillwintime" jdbcType="INTEGER" />
+    <result column="ProvinSkillWinTime" property="provinskillwintime" jdbcType="INTEGER" />
+    <result column="CitySkillWinTime" property="cityskillwintime" jdbcType="INTEGER" />
+    <result column="StateFirstAward" property="statefirstaward" jdbcType="INTEGER" />
+    <result column="StateSecondAward" property="statesecondaward" jdbcType="INTEGER" />
+    <result column="StateThridAward" property="statethridaward" jdbcType="INTEGER" />
+    <result column="ProvinFirstAward" property="provinfirstaward" jdbcType="INTEGER" />
+    <result column="ProvinSecondAward" property="provinsecondaward" jdbcType="INTEGER" />
+    <result column="ProvinThirdAward" property="provinthirdaward" jdbcType="INTEGER" />
+    <result column="CityFirstAward" property="cityfirstaward" jdbcType="INTEGER" />
+    <result column="CitySecondAward" property="citysecondaward" jdbcType="INTEGER" />
+    <result column="CityThirdAward" property="citythirdaward" jdbcType="INTEGER" />
+    <result column="Audit" property="audit" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, Admcode, Year, LeaderListen, LeaderTalk, SchoolWell, SchoolGood, SchoolBad, StateClass, 
+    ProvinClass, CityClass, Chinese, Math, English, StateSkillWinTime, ProvinSkillWinTime, 
+    CitySkillWinTime, StateFirstAward, StateSecondAward, StateThridAward, ProvinFirstAward, 
+    ProvinSecondAward, ProvinThirdAward, CityFirstAward, CitySecondAward, CityThirdAward, 
+    Audit
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from qualityassure
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from qualityassure
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="edu.uestc.lib.MSStudio.collecting.model.QualityAssure" >
+    insert into qualityassure (ID, Admcode, Year, 
+      LeaderListen, LeaderTalk, SchoolWell, 
+      SchoolGood, SchoolBad, StateClass, 
+      ProvinClass, CityClass, Chinese, 
+      Math, English, StateSkillWinTime, 
+      ProvinSkillWinTime, CitySkillWinTime, StateFirstAward, 
+      StateSecondAward, StateThridAward, ProvinFirstAward, 
+      ProvinSecondAward, ProvinThirdAward, CityFirstAward, 
+      CitySecondAward, CityThirdAward, Audit
+      )
+    values (#{id,jdbcType=INTEGER}, #{admcode,jdbcType=VARCHAR}, #{year,jdbcType=VARCHAR}, 
+      #{leaderlisten,jdbcType=INTEGER}, #{leadertalk,jdbcType=INTEGER}, #{schoolwell,jdbcType=DECIMAL}, 
+      #{schoolgood,jdbcType=DECIMAL}, #{schoolbad,jdbcType=DECIMAL}, #{stateclass,jdbcType=INTEGER}, 
+      #{provinclass,jdbcType=INTEGER}, #{cityclass,jdbcType=INTEGER}, #{chinese,jdbcType=DECIMAL}, 
+      #{math,jdbcType=DECIMAL}, #{english,jdbcType=DECIMAL}, #{stateskillwintime,jdbcType=INTEGER}, 
+      #{provinskillwintime,jdbcType=INTEGER}, #{cityskillwintime,jdbcType=INTEGER}, #{statefirstaward,jdbcType=INTEGER}, 
+      #{statesecondaward,jdbcType=INTEGER}, #{statethridaward,jdbcType=INTEGER}, #{provinfirstaward,jdbcType=INTEGER}, 
+      #{provinsecondaward,jdbcType=INTEGER}, #{provinthirdaward,jdbcType=INTEGER}, #{cityfirstaward,jdbcType=INTEGER}, 
+      #{citysecondaward,jdbcType=INTEGER}, #{citythirdaward,jdbcType=INTEGER}, #{audit,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="edu.uestc.lib.MSStudio.collecting.model.QualityAssure" >
+    insert into qualityassure
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="admcode != null" >
+        Admcode,
+      </if>
+      <if test="year != null" >
+        Year,
+      </if>
+      <if test="leaderlisten != null" >
+        LeaderListen,
+      </if>
+      <if test="leadertalk != null" >
+        LeaderTalk,
+      </if>
+      <if test="schoolwell != null" >
+        SchoolWell,
+      </if>
+      <if test="schoolgood != null" >
+        SchoolGood,
+      </if>
+      <if test="schoolbad != null" >
+        SchoolBad,
+      </if>
+      <if test="stateclass != null" >
+        StateClass,
+      </if>
+      <if test="provinclass != null" >
+        ProvinClass,
+      </if>
+      <if test="cityclass != null" >
+        CityClass,
+      </if>
+      <if test="chinese != null" >
+        Chinese,
+      </if>
+      <if test="math != null" >
+        Math,
+      </if>
+      <if test="english != null" >
+        English,
+      </if>
+      <if test="stateskillwintime != null" >
+        StateSkillWinTime,
+      </if>
+      <if test="provinskillwintime != null" >
+        ProvinSkillWinTime,
+      </if>
+      <if test="cityskillwintime != null" >
+        CitySkillWinTime,
+      </if>
+      <if test="statefirstaward != null" >
+        StateFirstAward,
+      </if>
+      <if test="statesecondaward != null" >
+        StateSecondAward,
+      </if>
+      <if test="statethridaward != null" >
+        StateThridAward,
+      </if>
+      <if test="provinfirstaward != null" >
+        ProvinFirstAward,
+      </if>
+      <if test="provinsecondaward != null" >
+        ProvinSecondAward,
+      </if>
+      <if test="provinthirdaward != null" >
+        ProvinThirdAward,
+      </if>
+      <if test="cityfirstaward != null" >
+        CityFirstAward,
+      </if>
+      <if test="citysecondaward != null" >
+        CitySecondAward,
+      </if>
+      <if test="citythirdaward != null" >
+        CityThirdAward,
+      </if>
+      <if test="audit != null" >
+        Audit,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="admcode != null" >
+        #{admcode,jdbcType=VARCHAR},
+      </if>
+      <if test="year != null" >
+        #{year,jdbcType=VARCHAR},
+      </if>
+      <if test="leaderlisten != null" >
+        #{leaderlisten,jdbcType=INTEGER},
+      </if>
+      <if test="leadertalk != null" >
+        #{leadertalk,jdbcType=INTEGER},
+      </if>
+      <if test="schoolwell != null" >
+        #{schoolwell,jdbcType=DECIMAL},
+      </if>
+      <if test="schoolgood != null" >
+        #{schoolgood,jdbcType=DECIMAL},
+      </if>
+      <if test="schoolbad != null" >
+        #{schoolbad,jdbcType=DECIMAL},
+      </if>
+      <if test="stateclass != null" >
+        #{stateclass,jdbcType=INTEGER},
+      </if>
+      <if test="provinclass != null" >
+        #{provinclass,jdbcType=INTEGER},
+      </if>
+      <if test="cityclass != null" >
+        #{cityclass,jdbcType=INTEGER},
+      </if>
+      <if test="chinese != null" >
+        #{chinese,jdbcType=DECIMAL},
+      </if>
+      <if test="math != null" >
+        #{math,jdbcType=DECIMAL},
+      </if>
+      <if test="english != null" >
+        #{english,jdbcType=DECIMAL},
+      </if>
+      <if test="stateskillwintime != null" >
+        #{stateskillwintime,jdbcType=INTEGER},
+      </if>
+      <if test="provinskillwintime != null" >
+        #{provinskillwintime,jdbcType=INTEGER},
+      </if>
+      <if test="cityskillwintime != null" >
+        #{cityskillwintime,jdbcType=INTEGER},
+      </if>
+      <if test="statefirstaward != null" >
+        #{statefirstaward,jdbcType=INTEGER},
+      </if>
+      <if test="statesecondaward != null" >
+        #{statesecondaward,jdbcType=INTEGER},
+      </if>
+      <if test="statethridaward != null" >
+        #{statethridaward,jdbcType=INTEGER},
+      </if>
+      <if test="provinfirstaward != null" >
+        #{provinfirstaward,jdbcType=INTEGER},
+      </if>
+      <if test="provinsecondaward != null" >
+        #{provinsecondaward,jdbcType=INTEGER},
+      </if>
+      <if test="provinthirdaward != null" >
+        #{provinthirdaward,jdbcType=INTEGER},
+      </if>
+      <if test="cityfirstaward != null" >
+        #{cityfirstaward,jdbcType=INTEGER},
+      </if>
+      <if test="citysecondaward != null" >
+        #{citysecondaward,jdbcType=INTEGER},
+      </if>
+      <if test="citythirdaward != null" >
+        #{citythirdaward,jdbcType=INTEGER},
+      </if>
+      <if test="audit != null" >
+        #{audit,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="edu.uestc.lib.MSStudio.collecting.model.QualityAssure" >
+    update qualityassure
+    <set >
+      <if test="admcode != null" >
+        Admcode = #{admcode,jdbcType=VARCHAR},
+      </if>
+      <if test="year != null" >
+        Year = #{year,jdbcType=VARCHAR},
+      </if>
+      <if test="leaderlisten != null" >
+        LeaderListen = #{leaderlisten,jdbcType=INTEGER},
+      </if>
+      <if test="leadertalk != null" >
+        LeaderTalk = #{leadertalk,jdbcType=INTEGER},
+      </if>
+      <if test="schoolwell != null" >
+        SchoolWell = #{schoolwell,jdbcType=DECIMAL},
+      </if>
+      <if test="schoolgood != null" >
+        SchoolGood = #{schoolgood,jdbcType=DECIMAL},
+      </if>
+      <if test="schoolbad != null" >
+        SchoolBad = #{schoolbad,jdbcType=DECIMAL},
+      </if>
+      <if test="stateclass != null" >
+        StateClass = #{stateclass,jdbcType=INTEGER},
+      </if>
+      <if test="provinclass != null" >
+        ProvinClass = #{provinclass,jdbcType=INTEGER},
+      </if>
+      <if test="cityclass != null" >
+        CityClass = #{cityclass,jdbcType=INTEGER},
+      </if>
+      <if test="chinese != null" >
+        Chinese = #{chinese,jdbcType=DECIMAL},
+      </if>
+      <if test="math != null" >
+        Math = #{math,jdbcType=DECIMAL},
+      </if>
+      <if test="english != null" >
+        English = #{english,jdbcType=DECIMAL},
+      </if>
+      <if test="stateskillwintime != null" >
+        StateSkillWinTime = #{stateskillwintime,jdbcType=INTEGER},
+      </if>
+      <if test="provinskillwintime != null" >
+        ProvinSkillWinTime = #{provinskillwintime,jdbcType=INTEGER},
+      </if>
+      <if test="cityskillwintime != null" >
+        CitySkillWinTime = #{cityskillwintime,jdbcType=INTEGER},
+      </if>
+      <if test="statefirstaward != null" >
+        StateFirstAward = #{statefirstaward,jdbcType=INTEGER},
+      </if>
+      <if test="statesecondaward != null" >
+        StateSecondAward = #{statesecondaward,jdbcType=INTEGER},
+      </if>
+      <if test="statethridaward != null" >
+        StateThridAward = #{statethridaward,jdbcType=INTEGER},
+      </if>
+      <if test="provinfirstaward != null" >
+        ProvinFirstAward = #{provinfirstaward,jdbcType=INTEGER},
+      </if>
+      <if test="provinsecondaward != null" >
+        ProvinSecondAward = #{provinsecondaward,jdbcType=INTEGER},
+      </if>
+      <if test="provinthirdaward != null" >
+        ProvinThirdAward = #{provinthirdaward,jdbcType=INTEGER},
+      </if>
+      <if test="cityfirstaward != null" >
+        CityFirstAward = #{cityfirstaward,jdbcType=INTEGER},
+      </if>
+      <if test="citysecondaward != null" >
+        CitySecondAward = #{citysecondaward,jdbcType=INTEGER},
+      </if>
+      <if test="citythirdaward != null" >
+        CityThirdAward = #{citythirdaward,jdbcType=INTEGER},
+      </if>
+      <if test="audit != null" >
+        Audit = #{audit,jdbcType=INTEGER},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="edu.uestc.lib.MSStudio.collecting.model.QualityAssure" >
+    update qualityassure
+    set Admcode = #{admcode,jdbcType=VARCHAR},
+      Year = #{year,jdbcType=VARCHAR},
+      LeaderListen = #{leaderlisten,jdbcType=INTEGER},
+      LeaderTalk = #{leadertalk,jdbcType=INTEGER},
+      SchoolWell = #{schoolwell,jdbcType=DECIMAL},
+      SchoolGood = #{schoolgood,jdbcType=DECIMAL},
+      SchoolBad = #{schoolbad,jdbcType=DECIMAL},
+      StateClass = #{stateclass,jdbcType=INTEGER},
+      ProvinClass = #{provinclass,jdbcType=INTEGER},
+      CityClass = #{cityclass,jdbcType=INTEGER},
+      Chinese = #{chinese,jdbcType=DECIMAL},
+      Math = #{math,jdbcType=DECIMAL},
+      English = #{english,jdbcType=DECIMAL},
+      StateSkillWinTime = #{stateskillwintime,jdbcType=INTEGER},
+      ProvinSkillWinTime = #{provinskillwintime,jdbcType=INTEGER},
+      CitySkillWinTime = #{cityskillwintime,jdbcType=INTEGER},
+      StateFirstAward = #{statefirstaward,jdbcType=INTEGER},
+      StateSecondAward = #{statesecondaward,jdbcType=INTEGER},
+      StateThridAward = #{statethridaward,jdbcType=INTEGER},
+      ProvinFirstAward = #{provinfirstaward,jdbcType=INTEGER},
+      ProvinSecondAward = #{provinsecondaward,jdbcType=INTEGER},
+      ProvinThirdAward = #{provinthirdaward,jdbcType=INTEGER},
+      CityFirstAward = #{cityfirstaward,jdbcType=INTEGER},
+      CitySecondAward = #{citysecondaward,jdbcType=INTEGER},
+      CityThirdAward = #{citythirdaward,jdbcType=INTEGER},
+      Audit = #{audit,jdbcType=INTEGER}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,0 +1,297 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="edu.uestc.lib.MSStudio.collecting.dao.EquitmentMapper" >
+  <resultMap id="BaseResultMap" type="edu.uestc.lib.MSStudio.collecting.model.Equitment" >
+    <id column="ID" property="id" jdbcType="INTEGER" />
+    <result column="AdmCode" property="admcode" jdbcType="VARCHAR" />
+    <result column="Year" property="year" jdbcType="VARCHAR" />
+    <result column="TotalAssertWorth" property="totalassertworth" jdbcType="DECIMAL" />
+    <result column="TeacEquitWorth" property="teacequitworth" jdbcType="DECIMAL" />
+    <result column="TrainEquitWorth" property="trainequitworth" jdbcType="DECIMAL" />
+    <result column="YearTeacEquitWorth" property="yearteacequitworth" jdbcType="DECIMAL" />
+    <result column="YearTrainEquitWorth" property="yeartrainequitworth" jdbcType="DECIMAL" />
+    <result column="StuTracEquitWorth" property="stutracequitworth" jdbcType="DECIMAL" />
+    <result column="StuTrainEquitWorth" property="stutrainequitworth" jdbcType="DECIMAL" />
+    <result column="TraPracWorkPe" property="trapracworkpe" jdbcType="DECIMAL" />
+    <result column="InTrainBase" property="intrainbase" jdbcType="INTEGER" />
+    <result column="OutTrainBase" property="outtrainbase" jdbcType="INTEGER" />
+    <result column="LibBooks" property="libbooks" jdbcType="INTEGER" />
+    <result column="LibBooksElec" property="libbookselec" jdbcType="INTEGER" />
+    <result column="YearBooks" property="yearbooks" jdbcType="INTEGER" />
+    <result column="ReadSeats" property="readseats" jdbcType="INTEGER" />
+    <result column="StuBook" property="stubook" jdbcType="DECIMAL" />
+    <result column="SubScribs" property="subscribs" jdbcType="INTEGER" />
+    <result column="ElecBooks" property="elecbooks" jdbcType="INTEGER" />
+    <result column="ElecSeats" property="elecseats" jdbcType="INTEGER" />
+    <result column="Audit" property="audit" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, AdmCode, Year, TotalAssertWorth, TeacEquitWorth, TrainEquitWorth, YearTeacEquitWorth, 
+    YearTrainEquitWorth, StuTracEquitWorth, StuTrainEquitWorth, TraPracWorkPe, InTrainBase, 
+    OutTrainBase, LibBooks, LibBooksElec, YearBooks, ReadSeats, StuBook, SubScribs, ElecBooks, 
+    ElecSeats, Audit
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from equitment
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from equitment
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="edu.uestc.lib.MSStudio.collecting.model.Equitment" >
+    insert into equitment (ID, AdmCode, Year, 
+      TotalAssertWorth, TeacEquitWorth, TrainEquitWorth, 
+      YearTeacEquitWorth, YearTrainEquitWorth, 
+      StuTracEquitWorth, StuTrainEquitWorth, 
+      TraPracWorkPe, InTrainBase, OutTrainBase, 
+      LibBooks, LibBooksElec, YearBooks, 
+      ReadSeats, StuBook, SubScribs, 
+      ElecBooks, ElecSeats, Audit
+      )
+    values (#{id,jdbcType=INTEGER}, #{admcode,jdbcType=VARCHAR}, #{year,jdbcType=VARCHAR}, 
+      #{totalassertworth,jdbcType=DECIMAL}, #{teacequitworth,jdbcType=DECIMAL}, #{trainequitworth,jdbcType=DECIMAL}, 
+      #{yearteacequitworth,jdbcType=DECIMAL}, #{yeartrainequitworth,jdbcType=DECIMAL}, 
+      #{stutracequitworth,jdbcType=DECIMAL}, #{stutrainequitworth,jdbcType=DECIMAL}, 
+      #{trapracworkpe,jdbcType=DECIMAL}, #{intrainbase,jdbcType=INTEGER}, #{outtrainbase,jdbcType=INTEGER}, 
+      #{libbooks,jdbcType=INTEGER}, #{libbookselec,jdbcType=INTEGER}, #{yearbooks,jdbcType=INTEGER}, 
+      #{readseats,jdbcType=INTEGER}, #{stubook,jdbcType=DECIMAL}, #{subscribs,jdbcType=INTEGER}, 
+      #{elecbooks,jdbcType=INTEGER}, #{elecseats,jdbcType=INTEGER}, #{audit,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="edu.uestc.lib.MSStudio.collecting.model.Equitment" >
+    insert into equitment
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="admcode != null" >
+        AdmCode,
+      </if>
+      <if test="year != null" >
+        Year,
+      </if>
+      <if test="totalassertworth != null" >
+        TotalAssertWorth,
+      </if>
+      <if test="teacequitworth != null" >
+        TeacEquitWorth,
+      </if>
+      <if test="trainequitworth != null" >
+        TrainEquitWorth,
+      </if>
+      <if test="yearteacequitworth != null" >
+        YearTeacEquitWorth,
+      </if>
+      <if test="yeartrainequitworth != null" >
+        YearTrainEquitWorth,
+      </if>
+      <if test="stutracequitworth != null" >
+        StuTracEquitWorth,
+      </if>
+      <if test="stutrainequitworth != null" >
+        StuTrainEquitWorth,
+      </if>
+      <if test="trapracworkpe != null" >
+        TraPracWorkPe,
+      </if>
+      <if test="intrainbase != null" >
+        InTrainBase,
+      </if>
+      <if test="outtrainbase != null" >
+        OutTrainBase,
+      </if>
+      <if test="libbooks != null" >
+        LibBooks,
+      </if>
+      <if test="libbookselec != null" >
+        LibBooksElec,
+      </if>
+      <if test="yearbooks != null" >
+        YearBooks,
+      </if>
+      <if test="readseats != null" >
+        ReadSeats,
+      </if>
+      <if test="stubook != null" >
+        StuBook,
+      </if>
+      <if test="subscribs != null" >
+        SubScribs,
+      </if>
+      <if test="elecbooks != null" >
+        ElecBooks,
+      </if>
+      <if test="elecseats != null" >
+        ElecSeats,
+      </if>
+      <if test="audit != null" >
+        Audit,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="admcode != null" >
+        #{admcode,jdbcType=VARCHAR},
+      </if>
+      <if test="year != null" >
+        #{year,jdbcType=VARCHAR},
+      </if>
+      <if test="totalassertworth != null" >
+        #{totalassertworth,jdbcType=DECIMAL},
+      </if>
+      <if test="teacequitworth != null" >
+        #{teacequitworth,jdbcType=DECIMAL},
+      </if>
+      <if test="trainequitworth != null" >
+        #{trainequitworth,jdbcType=DECIMAL},
+      </if>
+      <if test="yearteacequitworth != null" >
+        #{yearteacequitworth,jdbcType=DECIMAL},
+      </if>
+      <if test="yeartrainequitworth != null" >
+        #{yeartrainequitworth,jdbcType=DECIMAL},
+      </if>
+      <if test="stutracequitworth != null" >
+        #{stutracequitworth,jdbcType=DECIMAL},
+      </if>
+      <if test="stutrainequitworth != null" >
+        #{stutrainequitworth,jdbcType=DECIMAL},
+      </if>
+      <if test="trapracworkpe != null" >
+        #{trapracworkpe,jdbcType=DECIMAL},
+      </if>
+      <if test="intrainbase != null" >
+        #{intrainbase,jdbcType=INTEGER},
+      </if>
+      <if test="outtrainbase != null" >
+        #{outtrainbase,jdbcType=INTEGER},
+      </if>
+      <if test="libbooks != null" >
+        #{libbooks,jdbcType=INTEGER},
+      </if>
+      <if test="libbookselec != null" >
+        #{libbookselec,jdbcType=INTEGER},
+      </if>
+      <if test="yearbooks != null" >
+        #{yearbooks,jdbcType=INTEGER},
+      </if>
+      <if test="readseats != null" >
+        #{readseats,jdbcType=INTEGER},
+      </if>
+      <if test="stubook != null" >
+        #{stubook,jdbcType=DECIMAL},
+      </if>
+      <if test="subscribs != null" >
+        #{subscribs,jdbcType=INTEGER},
+      </if>
+      <if test="elecbooks != null" >
+        #{elecbooks,jdbcType=INTEGER},
+      </if>
+      <if test="elecseats != null" >
+        #{elecseats,jdbcType=INTEGER},
+      </if>
+      <if test="audit != null" >
+        #{audit,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="edu.uestc.lib.MSStudio.collecting.model.Equitment" >
+    update equitment
+    <set >
+      <if test="admcode != null" >
+        AdmCode = #{admcode,jdbcType=VARCHAR},
+      </if>
+      <if test="year != null" >
+        Year = #{year,jdbcType=VARCHAR},
+      </if>
+      <if test="totalassertworth != null" >
+        TotalAssertWorth = #{totalassertworth,jdbcType=DECIMAL},
+      </if>
+      <if test="teacequitworth != null" >
+        TeacEquitWorth = #{teacequitworth,jdbcType=DECIMAL},
+      </if>
+      <if test="trainequitworth != null" >
+        TrainEquitWorth = #{trainequitworth,jdbcType=DECIMAL},
+      </if>
+      <if test="yearteacequitworth != null" >
+        YearTeacEquitWorth = #{yearteacequitworth,jdbcType=DECIMAL},
+      </if>
+      <if test="yeartrainequitworth != null" >
+        YearTrainEquitWorth = #{yeartrainequitworth,jdbcType=DECIMAL},
+      </if>
+      <if test="stutracequitworth != null" >
+        StuTracEquitWorth = #{stutracequitworth,jdbcType=DECIMAL},
+      </if>
+      <if test="stutrainequitworth != null" >
+        StuTrainEquitWorth = #{stutrainequitworth,jdbcType=DECIMAL},
+      </if>
+      <if test="trapracworkpe != null" >
+        TraPracWorkPe = #{trapracworkpe,jdbcType=DECIMAL},
+      </if>
+      <if test="intrainbase != null" >
+        InTrainBase = #{intrainbase,jdbcType=INTEGER},
+      </if>
+      <if test="outtrainbase != null" >
+        OutTrainBase = #{outtrainbase,jdbcType=INTEGER},
+      </if>
+      <if test="libbooks != null" >
+        LibBooks = #{libbooks,jdbcType=INTEGER},
+      </if>
+      <if test="libbookselec != null" >
+        LibBooksElec = #{libbookselec,jdbcType=INTEGER},
+      </if>
+      <if test="yearbooks != null" >
+        YearBooks = #{yearbooks,jdbcType=INTEGER},
+      </if>
+      <if test="readseats != null" >
+        ReadSeats = #{readseats,jdbcType=INTEGER},
+      </if>
+      <if test="stubook != null" >
+        StuBook = #{stubook,jdbcType=DECIMAL},
+      </if>
+      <if test="subscribs != null" >
+        SubScribs = #{subscribs,jdbcType=INTEGER},
+      </if>
+      <if test="elecbooks != null" >
+        ElecBooks = #{elecbooks,jdbcType=INTEGER},
+      </if>
+      <if test="elecseats != null" >
+        ElecSeats = #{elecseats,jdbcType=INTEGER},
+      </if>
+      <if test="audit != null" >
+        Audit = #{audit,jdbcType=INTEGER},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="edu.uestc.lib.MSStudio.collecting.model.Equitment" >
+    update equitment
+    set AdmCode = #{admcode,jdbcType=VARCHAR},
+      Year = #{year,jdbcType=VARCHAR},
+      TotalAssertWorth = #{totalassertworth,jdbcType=DECIMAL},
+      TeacEquitWorth = #{teacequitworth,jdbcType=DECIMAL},
+      TrainEquitWorth = #{trainequitworth,jdbcType=DECIMAL},
+      YearTeacEquitWorth = #{yearteacequitworth,jdbcType=DECIMAL},
+      YearTrainEquitWorth = #{yeartrainequitworth,jdbcType=DECIMAL},
+      StuTracEquitWorth = #{stutracequitworth,jdbcType=DECIMAL},
+      StuTrainEquitWorth = #{stutrainequitworth,jdbcType=DECIMAL},
+      TraPracWorkPe = #{trapracworkpe,jdbcType=DECIMAL},
+      InTrainBase = #{intrainbase,jdbcType=INTEGER},
+      OutTrainBase = #{outtrainbase,jdbcType=INTEGER},
+      LibBooks = #{libbooks,jdbcType=INTEGER},
+      LibBooksElec = #{libbookselec,jdbcType=INTEGER},
+      YearBooks = #{yearbooks,jdbcType=INTEGER},
+      ReadSeats = #{readseats,jdbcType=INTEGER},
+      StuBook = #{stubook,jdbcType=DECIMAL},
+      SubScribs = #{subscribs,jdbcType=INTEGER},
+      ElecBooks = #{elecbooks,jdbcType=INTEGER},
+      ElecSeats = #{elecseats,jdbcType=INTEGER},
+      Audit = #{audit,jdbcType=INTEGER}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

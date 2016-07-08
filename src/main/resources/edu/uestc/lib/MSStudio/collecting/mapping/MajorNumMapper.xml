@@ -1,0 +1,318 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="edu.uestc.lib.MSStudio.collecting.dao.MajorNumMapper" >
+  <resultMap id="BaseResultMap" type="edu.uestc.lib.MSStudio.collecting.model.MajorNum" >
+    <id column="ID" property="id" jdbcType="INTEGER" />
+    <result column="Admcode" property="admcode" jdbcType="VARCHAR" />
+    <result column="Year" property="year" jdbcType="VARCHAR" />
+    <result column="ClassCriter" property="classcriter" jdbcType="INTEGER" />
+    <result column="LeadNatShareMajor" property="leadnatsharemajor" jdbcType="INTEGER" />
+    <result column="SchoolEnterMajor" property="schoolentermajor" jdbcType="INTEGER" />
+    <result column="TextTeacEditMajor" property="textteaceditmajor" jdbcType="INTEGER" />
+    <result column="StatePlanText" property="stateplantext" jdbcType="DECIMAL" />
+    <result column="SchMajorMater" property="schmajormater" jdbcType="INTEGER" />
+    <result column="ClassHour" property="classhour" jdbcType="INTEGER" />
+    <result column="MajorHour" property="majorhour" jdbcType="INTEGER" />
+    <result column="MajorBHour" property="majorbhour" jdbcType="INTEGER" />
+    <result column="MajorCHour" property="majorchour" jdbcType="INTEGER" />
+    <result column="DispClass" property="dispclass" jdbcType="INTEGER" />
+    <result column="BCClassHour" property="bcclasshour" jdbcType="INTEGER" />
+    <result column="Chinese" property="chinese" jdbcType="INTEGER" />
+    <result column="Moral" property="moral" jdbcType="INTEGER" />
+    <result column="Math" property="math" jdbcType="INTEGER" />
+    <result column="English" property="english" jdbcType="INTEGER" />
+    <result column="Sports" property="sports" jdbcType="INTEGER" />
+    <result column="Art" property="art" jdbcType="INTEGER" />
+    <result column="Computer" property="computer" jdbcType="INTEGER" />
+    <result column="History" property="history" jdbcType="INTEGER" />
+    <result column="Audit" property="audit" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, Admcode, Year, ClassCriter, LeadNatShareMajor, SchoolEnterMajor, TextTeacEditMajor, 
+    StatePlanText, SchMajorMater, ClassHour, MajorHour, MajorBHour, MajorCHour, DispClass, 
+    BCClassHour, Chinese, Moral, Math, English, Sports, Art, Computer, History, Audit
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from majornum
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from majornum
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="edu.uestc.lib.MSStudio.collecting.model.MajorNum" >
+    insert into majornum (ID, Admcode, Year, 
+      ClassCriter, LeadNatShareMajor, SchoolEnterMajor, 
+      TextTeacEditMajor, StatePlanText, SchMajorMater, 
+      ClassHour, MajorHour, MajorBHour, 
+      MajorCHour, DispClass, BCClassHour, 
+      Chinese, Moral, Math, 
+      English, Sports, Art, 
+      Computer, History, Audit
+      )
+    values (#{id,jdbcType=INTEGER}, #{admcode,jdbcType=VARCHAR}, #{year,jdbcType=VARCHAR}, 
+      #{classcriter,jdbcType=INTEGER}, #{leadnatsharemajor,jdbcType=INTEGER}, #{schoolentermajor,jdbcType=INTEGER}, 
+      #{textteaceditmajor,jdbcType=INTEGER}, #{stateplantext,jdbcType=DECIMAL}, #{schmajormater,jdbcType=INTEGER}, 
+      #{classhour,jdbcType=INTEGER}, #{majorhour,jdbcType=INTEGER}, #{majorbhour,jdbcType=INTEGER}, 
+      #{majorchour,jdbcType=INTEGER}, #{dispclass,jdbcType=INTEGER}, #{bcclasshour,jdbcType=INTEGER}, 
+      #{chinese,jdbcType=INTEGER}, #{moral,jdbcType=INTEGER}, #{math,jdbcType=INTEGER}, 
+      #{english,jdbcType=INTEGER}, #{sports,jdbcType=INTEGER}, #{art,jdbcType=INTEGER}, 
+      #{computer,jdbcType=INTEGER}, #{history,jdbcType=INTEGER}, #{audit,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="edu.uestc.lib.MSStudio.collecting.model.MajorNum" >
+    insert into majornum
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="admcode != null" >
+        Admcode,
+      </if>
+      <if test="year != null" >
+        Year,
+      </if>
+      <if test="classcriter != null" >
+        ClassCriter,
+      </if>
+      <if test="leadnatsharemajor != null" >
+        LeadNatShareMajor,
+      </if>
+      <if test="schoolentermajor != null" >
+        SchoolEnterMajor,
+      </if>
+      <if test="textteaceditmajor != null" >
+        TextTeacEditMajor,
+      </if>
+      <if test="stateplantext != null" >
+        StatePlanText,
+      </if>
+      <if test="schmajormater != null" >
+        SchMajorMater,
+      </if>
+      <if test="classhour != null" >
+        ClassHour,
+      </if>
+      <if test="majorhour != null" >
+        MajorHour,
+      </if>
+      <if test="majorbhour != null" >
+        MajorBHour,
+      </if>
+      <if test="majorchour != null" >
+        MajorCHour,
+      </if>
+      <if test="dispclass != null" >
+        DispClass,
+      </if>
+      <if test="bcclasshour != null" >
+        BCClassHour,
+      </if>
+      <if test="chinese != null" >
+        Chinese,
+      </if>
+      <if test="moral != null" >
+        Moral,
+      </if>
+      <if test="math != null" >
+        Math,
+      </if>
+      <if test="english != null" >
+        English,
+      </if>
+      <if test="sports != null" >
+        Sports,
+      </if>
+      <if test="art != null" >
+        Art,
+      </if>
+      <if test="computer != null" >
+        Computer,
+      </if>
+      <if test="history != null" >
+        History,
+      </if>
+      <if test="audit != null" >
+        Audit,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="admcode != null" >
+        #{admcode,jdbcType=VARCHAR},
+      </if>
+      <if test="year != null" >
+        #{year,jdbcType=VARCHAR},
+      </if>
+      <if test="classcriter != null" >
+        #{classcriter,jdbcType=INTEGER},
+      </if>
+      <if test="leadnatsharemajor != null" >
+        #{leadnatsharemajor,jdbcType=INTEGER},
+      </if>
+      <if test="schoolentermajor != null" >
+        #{schoolentermajor,jdbcType=INTEGER},
+      </if>
+      <if test="textteaceditmajor != null" >
+        #{textteaceditmajor,jdbcType=INTEGER},
+      </if>
+      <if test="stateplantext != null" >
+        #{stateplantext,jdbcType=DECIMAL},
+      </if>
+      <if test="schmajormater != null" >
+        #{schmajormater,jdbcType=INTEGER},
+      </if>
+      <if test="classhour != null" >
+        #{classhour,jdbcType=INTEGER},
+      </if>
+      <if test="majorhour != null" >
+        #{majorhour,jdbcType=INTEGER},
+      </if>
+      <if test="majorbhour != null" >
+        #{majorbhour,jdbcType=INTEGER},
+      </if>
+      <if test="majorchour != null" >
+        #{majorchour,jdbcType=INTEGER},
+      </if>
+      <if test="dispclass != null" >
+        #{dispclass,jdbcType=INTEGER},
+      </if>
+      <if test="bcclasshour != null" >
+        #{bcclasshour,jdbcType=INTEGER},
+      </if>
+      <if test="chinese != null" >
+        #{chinese,jdbcType=INTEGER},
+      </if>
+      <if test="moral != null" >
+        #{moral,jdbcType=INTEGER},
+      </if>
+      <if test="math != null" >
+        #{math,jdbcType=INTEGER},
+      </if>
+      <if test="english != null" >
+        #{english,jdbcType=INTEGER},
+      </if>
+      <if test="sports != null" >
+        #{sports,jdbcType=INTEGER},
+      </if>
+      <if test="art != null" >
+        #{art,jdbcType=INTEGER},
+      </if>
+      <if test="computer != null" >
+        #{computer,jdbcType=INTEGER},
+      </if>
+      <if test="history != null" >
+        #{history,jdbcType=INTEGER},
+      </if>
+      <if test="audit != null" >
+        #{audit,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="edu.uestc.lib.MSStudio.collecting.model.MajorNum" >
+    update majornum
+    <set >
+      <if test="admcode != null" >
+        Admcode = #{admcode,jdbcType=VARCHAR},
+      </if>
+      <if test="year != null" >
+        Year = #{year,jdbcType=VARCHAR},
+      </if>
+      <if test="classcriter != null" >
+        ClassCriter = #{classcriter,jdbcType=INTEGER},
+      </if>
+      <if test="leadnatsharemajor != null" >
+        LeadNatShareMajor = #{leadnatsharemajor,jdbcType=INTEGER},
+      </if>
+      <if test="schoolentermajor != null" >
+        SchoolEnterMajor = #{schoolentermajor,jdbcType=INTEGER},
+      </if>
+      <if test="textteaceditmajor != null" >
+        TextTeacEditMajor = #{textteaceditmajor,jdbcType=INTEGER},
+      </if>
+      <if test="stateplantext != null" >
+        StatePlanText = #{stateplantext,jdbcType=DECIMAL},
+      </if>
+      <if test="schmajormater != null" >
+        SchMajorMater = #{schmajormater,jdbcType=INTEGER},
+      </if>
+      <if test="classhour != null" >
+        ClassHour = #{classhour,jdbcType=INTEGER},
+      </if>
+      <if test="majorhour != null" >
+        MajorHour = #{majorhour,jdbcType=INTEGER},
+      </if>
+      <if test="majorbhour != null" >
+        MajorBHour = #{majorbhour,jdbcType=INTEGER},
+      </if>
+      <if test="majorchour != null" >
+        MajorCHour = #{majorchour,jdbcType=INTEGER},
+      </if>
+      <if test="dispclass != null" >
+        DispClass = #{dispclass,jdbcType=INTEGER},
+      </if>
+      <if test="bcclasshour != null" >
+        BCClassHour = #{bcclasshour,jdbcType=INTEGER},
+      </if>
+      <if test="chinese != null" >
+        Chinese = #{chinese,jdbcType=INTEGER},
+      </if>
+      <if test="moral != null" >
+        Moral = #{moral,jdbcType=INTEGER},
+      </if>
+      <if test="math != null" >
+        Math = #{math,jdbcType=INTEGER},
+      </if>
+      <if test="english != null" >
+        English = #{english,jdbcType=INTEGER},
+      </if>
+      <if test="sports != null" >
+        Sports = #{sports,jdbcType=INTEGER},
+      </if>
+      <if test="art != null" >
+        Art = #{art,jdbcType=INTEGER},
+      </if>
+      <if test="computer != null" >
+        Computer = #{computer,jdbcType=INTEGER},
+      </if>
+      <if test="history != null" >
+        History = #{history,jdbcType=INTEGER},
+      </if>
+      <if test="audit != null" >
+        Audit = #{audit,jdbcType=INTEGER},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="edu.uestc.lib.MSStudio.collecting.model.MajorNum" >
+    update majornum
+    set Admcode = #{admcode,jdbcType=VARCHAR},
+      Year = #{year,jdbcType=VARCHAR},
+      ClassCriter = #{classcriter,jdbcType=INTEGER},
+      LeadNatShareMajor = #{leadnatsharemajor,jdbcType=INTEGER},
+      SchoolEnterMajor = #{schoolentermajor,jdbcType=INTEGER},
+      TextTeacEditMajor = #{textteaceditmajor,jdbcType=INTEGER},
+      StatePlanText = #{stateplantext,jdbcType=DECIMAL},
+      SchMajorMater = #{schmajormater,jdbcType=INTEGER},
+      ClassHour = #{classhour,jdbcType=INTEGER},
+      MajorHour = #{majorhour,jdbcType=INTEGER},
+      MajorBHour = #{majorbhour,jdbcType=INTEGER},
+      MajorCHour = #{majorchour,jdbcType=INTEGER},
+      DispClass = #{dispclass,jdbcType=INTEGER},
+      BCClassHour = #{bcclasshour,jdbcType=INTEGER},
+      Chinese = #{chinese,jdbcType=INTEGER},
+      Moral = #{moral,jdbcType=INTEGER},
+      Math = #{math,jdbcType=INTEGER},
+      English = #{english,jdbcType=INTEGER},
+      Sports = #{sports,jdbcType=INTEGER},
+      Art = #{art,jdbcType=INTEGER},
+      Computer = #{computer,jdbcType=INTEGER},
+      History = #{history,jdbcType=INTEGER},
+      Audit = #{audit,jdbcType=INTEGER}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

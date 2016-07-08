@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="edu.uestc.lib.MSStudio.collecting.dao.SkillTrainMapper" >
+  <resultMap id="BaseResultMap" type="edu.uestc.lib.MSStudio.collecting.model.SkillTrain" >
+    <id column="ID" property="id" jdbcType="INTEGER" />
+    <result column="Admcode" property="admcode" jdbcType="VARCHAR" />
+    <result column="Year" property="year" jdbcType="VARCHAR" />
+    <result column="LocalFoster" property="localfoster" jdbcType="INTEGER" />
+    <result column="LocalTrain" property="localtrain" jdbcType="INTEGER" />
+    <result column="TrackProblemNum" property="trackproblemnum" jdbcType="INTEGER" />
+    <result column="DevelopName" property="developname" jdbcType="VARCHAR" />
+    <result column="EcnomicSocial" property="ecnomicsocial" jdbcType="DECIMAL" />
+    <result column="Audit" property="audit" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, Admcode, Year, LocalFoster, LocalTrain, TrackProblemNum, DevelopName, EcnomicSocial, 
+    Audit
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from skilltrain
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from skilltrain
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="edu.uestc.lib.MSStudio.collecting.model.SkillTrain" >
+    insert into skilltrain (ID, Admcode, Year, 
+      LocalFoster, LocalTrain, TrackProblemNum, 
+      DevelopName, EcnomicSocial, Audit
+      )
+    values (#{id,jdbcType=INTEGER}, #{admcode,jdbcType=VARCHAR}, #{year,jdbcType=VARCHAR}, 
+      #{localfoster,jdbcType=INTEGER}, #{localtrain,jdbcType=INTEGER}, #{trackproblemnum,jdbcType=INTEGER}, 
+      #{developname,jdbcType=VARCHAR}, #{ecnomicsocial,jdbcType=DECIMAL}, #{audit,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="edu.uestc.lib.MSStudio.collecting.model.SkillTrain" >
+    insert into skilltrain
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="admcode != null" >
+        Admcode,
+      </if>
+      <if test="year != null" >
+        Year,
+      </if>
+      <if test="localfoster != null" >
+        LocalFoster,
+      </if>
+      <if test="localtrain != null" >
+        LocalTrain,
+      </if>
+      <if test="trackproblemnum != null" >
+        TrackProblemNum,
+      </if>
+      <if test="developname != null" >
+        DevelopName,
+      </if>
+      <if test="ecnomicsocial != null" >
+        EcnomicSocial,
+      </if>
+      <if test="audit != null" >
+        Audit,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="admcode != null" >
+        #{admcode,jdbcType=VARCHAR},
+      </if>
+      <if test="year != null" >
+        #{year,jdbcType=VARCHAR},
+      </if>
+      <if test="localfoster != null" >
+        #{localfoster,jdbcType=INTEGER},
+      </if>
+      <if test="localtrain != null" >
+        #{localtrain,jdbcType=INTEGER},
+      </if>
+      <if test="trackproblemnum != null" >
+        #{trackproblemnum,jdbcType=INTEGER},
+      </if>
+      <if test="developname != null" >
+        #{developname,jdbcType=VARCHAR},
+      </if>
+      <if test="ecnomicsocial != null" >
+        #{ecnomicsocial,jdbcType=DECIMAL},
+      </if>
+      <if test="audit != null" >
+        #{audit,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="edu.uestc.lib.MSStudio.collecting.model.SkillTrain" >
+    update skilltrain
+    <set >
+      <if test="admcode != null" >
+        Admcode = #{admcode,jdbcType=VARCHAR},
+      </if>
+      <if test="year != null" >
+        Year = #{year,jdbcType=VARCHAR},
+      </if>
+      <if test="localfoster != null" >
+        LocalFoster = #{localfoster,jdbcType=INTEGER},
+      </if>
+      <if test="localtrain != null" >
+        LocalTrain = #{localtrain,jdbcType=INTEGER},
+      </if>
+      <if test="trackproblemnum != null" >
+        TrackProblemNum = #{trackproblemnum,jdbcType=INTEGER},
+      </if>
+      <if test="developname != null" >
+        DevelopName = #{developname,jdbcType=VARCHAR},
+      </if>
+      <if test="ecnomicsocial != null" >
+        EcnomicSocial = #{ecnomicsocial,jdbcType=DECIMAL},
+      </if>
+      <if test="audit != null" >
+        Audit = #{audit,jdbcType=INTEGER},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="edu.uestc.lib.MSStudio.collecting.model.SkillTrain" >
+    update skilltrain
+    set Admcode = #{admcode,jdbcType=VARCHAR},
+      Year = #{year,jdbcType=VARCHAR},
+      LocalFoster = #{localfoster,jdbcType=INTEGER},
+      LocalTrain = #{localtrain,jdbcType=INTEGER},
+      TrackProblemNum = #{trackproblemnum,jdbcType=INTEGER},
+      DevelopName = #{developname,jdbcType=VARCHAR},
+      EcnomicSocial = #{ecnomicsocial,jdbcType=DECIMAL},
+      Audit = #{audit,jdbcType=INTEGER}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

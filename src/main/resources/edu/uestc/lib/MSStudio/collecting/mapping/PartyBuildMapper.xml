@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="edu.uestc.lib.MSStudio.collecting.dao.PartyBuildMapper" >
+  <resultMap id="BaseResultMap" type="edu.uestc.lib.MSStudio.collecting.model.PartyBuild" >
+    <id column="ID" property="id" jdbcType="INTEGER" />
+    <result column="Admcode" property="admcode" jdbcType="VARCHAR" />
+    <result column="Year" property="year" jdbcType="VARCHAR" />
+    <result column="PartyMember" property="partymember" jdbcType="INTEGER" />
+    <result column="BranchNum" property="branchnum" jdbcType="INTEGER" />
+    <result column="StuPartyNum" property="stupartynum" jdbcType="INTEGER" />
+    <result column="PartyWorkTrain" property="partyworktrain" jdbcType="INTEGER" />
+    <result column="PartyTain" property="partytain" jdbcType="INTEGER" />
+    <result column="PartyActivistTrainNum" property="partyactivisttrainnum" jdbcType="INTEGER" />
+    <result column="PartyActivistTrainTime" property="partyactivisttraintime" jdbcType="INTEGER" />
+    <result column="DevelopPartyNum" property="developpartynum" jdbcType="INTEGER" />
+    <result column="SubscribNum" property="subscribnum" jdbcType="INTEGER" />
+    <result column="Punish" property="punish" jdbcType="INTEGER" />
+    <result column="StatePer" property="stateper" jdbcType="INTEGER" />
+    <result column="ProvinPer" property="provinper" jdbcType="INTEGER" />
+    <result column="CityPer" property="cityper" jdbcType="INTEGER" />
+    <result column="StateOrgan" property="stateorgan" jdbcType="INTEGER" />
+    <result column="ProvinOrgan" property="provinorgan" jdbcType="INTEGER" />
+    <result column="CityOrgan" property="cityorgan" jdbcType="INTEGER" />
+    <result column="Audit" property="audit" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, Admcode, Year, PartyMember, BranchNum, StuPartyNum, PartyWorkTrain, PartyTain, 
+    PartyActivistTrainNum, PartyActivistTrainTime, DevelopPartyNum, SubscribNum, Punish, 
+    StatePer, ProvinPer, CityPer, StateOrgan, ProvinOrgan, CityOrgan, Audit
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from partybulid
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from partybulid
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="edu.uestc.lib.MSStudio.collecting.model.PartyBuild" >
+    insert into partybulid (ID, Admcode, Year, 
+      PartyMember, BranchNum, StuPartyNum, 
+      PartyWorkTrain, PartyTain, PartyActivistTrainNum, 
+      PartyActivistTrainTime, DevelopPartyNum, 
+      SubscribNum, Punish, StatePer, 
+      ProvinPer, CityPer, StateOrgan, 
+      ProvinOrgan, CityOrgan, Audit
+      )
+    values (#{id,jdbcType=INTEGER}, #{admcode,jdbcType=VARCHAR}, #{year,jdbcType=VARCHAR}, 
+      #{partymember,jdbcType=INTEGER}, #{branchnum,jdbcType=INTEGER}, #{stupartynum,jdbcType=INTEGER}, 
+      #{partyworktrain,jdbcType=INTEGER}, #{partytain,jdbcType=INTEGER}, #{partyactivisttrainnum,jdbcType=INTEGER}, 
+      #{partyactivisttraintime,jdbcType=INTEGER}, #{developpartynum,jdbcType=INTEGER}, 
+      #{subscribnum,jdbcType=INTEGER}, #{punish,jdbcType=INTEGER}, #{stateper,jdbcType=INTEGER}, 
+      #{provinper,jdbcType=INTEGER}, #{cityper,jdbcType=INTEGER}, #{stateorgan,jdbcType=INTEGER}, 
+      #{provinorgan,jdbcType=INTEGER}, #{cityorgan,jdbcType=INTEGER}, #{audit,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="edu.uestc.lib.MSStudio.collecting.model.PartyBuild" >
+    insert into partybulid
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="admcode != null" >
+        Admcode,
+      </if>
+      <if test="year != null" >
+        Year,
+      </if>
+      <if test="partymember != null" >
+        PartyMember,
+      </if>
+      <if test="branchnum != null" >
+        BranchNum,
+      </if>
+      <if test="stupartynum != null" >
+        StuPartyNum,
+      </if>
+      <if test="partyworktrain != null" >
+        PartyWorkTrain,
+      </if>
+      <if test="partytain != null" >
+        PartyTain,
+      </if>
+      <if test="partyactivisttrainnum != null" >
+        PartyActivistTrainNum,
+      </if>
+      <if test="partyactivisttraintime != null" >
+        PartyActivistTrainTime,
+      </if>
+      <if test="developpartynum != null" >
+        DevelopPartyNum,
+      </if>
+      <if test="subscribnum != null" >
+        SubscribNum,
+      </if>
+      <if test="punish != null" >
+        Punish,
+      </if>
+      <if test="stateper != null" >
+        StatePer,
+      </if>
+      <if test="provinper != null" >
+        ProvinPer,
+      </if>
+      <if test="cityper != null" >
+        CityPer,
+      </if>
+      <if test="stateorgan != null" >
+        StateOrgan,
+      </if>
+      <if test="provinorgan != null" >
+        ProvinOrgan,
+      </if>
+      <if test="cityorgan != null" >
+        CityOrgan,
+      </if>
+      <if test="audit != null" >
+        Audit,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="admcode != null" >
+        #{admcode,jdbcType=VARCHAR},
+      </if>
+      <if test="year != null" >
+        #{year,jdbcType=VARCHAR},
+      </if>
+      <if test="partymember != null" >
+        #{partymember,jdbcType=INTEGER},
+      </if>
+      <if test="branchnum != null" >
+        #{branchnum,jdbcType=INTEGER},
+      </if>
+      <if test="stupartynum != null" >
+        #{stupartynum,jdbcType=INTEGER},
+      </if>
+      <if test="partyworktrain != null" >
+        #{partyworktrain,jdbcType=INTEGER},
+      </if>
+      <if test="partytain != null" >
+        #{partytain,jdbcType=INTEGER},
+      </if>
+      <if test="partyactivisttrainnum != null" >
+        #{partyactivisttrainnum,jdbcType=INTEGER},
+      </if>
+      <if test="partyactivisttraintime != null" >
+        #{partyactivisttraintime,jdbcType=INTEGER},
+      </if>
+      <if test="developpartynum != null" >
+        #{developpartynum,jdbcType=INTEGER},
+      </if>
+      <if test="subscribnum != null" >
+        #{subscribnum,jdbcType=INTEGER},
+      </if>
+      <if test="punish != null" >
+        #{punish,jdbcType=INTEGER},
+      </if>
+      <if test="stateper != null" >
+        #{stateper,jdbcType=INTEGER},
+      </if>
+      <if test="provinper != null" >
+        #{provinper,jdbcType=INTEGER},
+      </if>
+      <if test="cityper != null" >
+        #{cityper,jdbcType=INTEGER},
+      </if>
+      <if test="stateorgan != null" >
+        #{stateorgan,jdbcType=INTEGER},
+      </if>
+      <if test="provinorgan != null" >
+        #{provinorgan,jdbcType=INTEGER},
+      </if>
+      <if test="cityorgan != null" >
+        #{cityorgan,jdbcType=INTEGER},
+      </if>
+      <if test="audit != null" >
+        #{audit,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="edu.uestc.lib.MSStudio.collecting.model.PartyBuild" >
+    update partybulid
+    <set >
+      <if test="admcode != null" >
+        Admcode = #{admcode,jdbcType=VARCHAR},
+      </if>
+      <if test="year != null" >
+        Year = #{year,jdbcType=VARCHAR},
+      </if>
+      <if test="partymember != null" >
+        PartyMember = #{partymember,jdbcType=INTEGER},
+      </if>
+      <if test="branchnum != null" >
+        BranchNum = #{branchnum,jdbcType=INTEGER},
+      </if>
+      <if test="stupartynum != null" >
+        StuPartyNum = #{stupartynum,jdbcType=INTEGER},
+      </if>
+      <if test="partyworktrain != null" >
+        PartyWorkTrain = #{partyworktrain,jdbcType=INTEGER},
+      </if>
+      <if test="partytain != null" >
+        PartyTain = #{partytain,jdbcType=INTEGER},
+      </if>
+      <if test="partyactivisttrainnum != null" >
+        PartyActivistTrainNum = #{partyactivisttrainnum,jdbcType=INTEGER},
+      </if>
+      <if test="partyactivisttraintime != null" >
+        PartyActivistTrainTime = #{partyactivisttraintime,jdbcType=INTEGER},
+      </if>
+      <if test="developpartynum != null" >
+        DevelopPartyNum = #{developpartynum,jdbcType=INTEGER},
+      </if>
+      <if test="subscribnum != null" >
+        SubscribNum = #{subscribnum,jdbcType=INTEGER},
+      </if>
+      <if test="punish != null" >
+        Punish = #{punish,jdbcType=INTEGER},
+      </if>
+      <if test="stateper != null" >
+        StatePer = #{stateper,jdbcType=INTEGER},
+      </if>
+      <if test="provinper != null" >
+        ProvinPer = #{provinper,jdbcType=INTEGER},
+      </if>
+      <if test="cityper != null" >
+        CityPer = #{cityper,jdbcType=INTEGER},
+      </if>
+      <if test="stateorgan != null" >
+        StateOrgan = #{stateorgan,jdbcType=INTEGER},
+      </if>
+      <if test="provinorgan != null" >
+        ProvinOrgan = #{provinorgan,jdbcType=INTEGER},
+      </if>
+      <if test="cityorgan != null" >
+        CityOrgan = #{cityorgan,jdbcType=INTEGER},
+      </if>
+      <if test="audit != null" >
+        Audit = #{audit,jdbcType=INTEGER},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="edu.uestc.lib.MSStudio.collecting.model.PartyBuild" >
+    update partybulid
+    set Admcode = #{admcode,jdbcType=VARCHAR},
+      Year = #{year,jdbcType=VARCHAR},
+      PartyMember = #{partymember,jdbcType=INTEGER},
+      BranchNum = #{branchnum,jdbcType=INTEGER},
+      StuPartyNum = #{stupartynum,jdbcType=INTEGER},
+      PartyWorkTrain = #{partyworktrain,jdbcType=INTEGER},
+      PartyTain = #{partytain,jdbcType=INTEGER},
+      PartyActivistTrainNum = #{partyactivisttrainnum,jdbcType=INTEGER},
+      PartyActivistTrainTime = #{partyactivisttraintime,jdbcType=INTEGER},
+      DevelopPartyNum = #{developpartynum,jdbcType=INTEGER},
+      SubscribNum = #{subscribnum,jdbcType=INTEGER},
+      Punish = #{punish,jdbcType=INTEGER},
+      StatePer = #{stateper,jdbcType=INTEGER},
+      ProvinPer = #{provinper,jdbcType=INTEGER},
+      CityPer = #{cityper,jdbcType=INTEGER},
+      StateOrgan = #{stateorgan,jdbcType=INTEGER},
+      ProvinOrgan = #{provinorgan,jdbcType=INTEGER},
+      CityOrgan = #{cityorgan,jdbcType=INTEGER},
+      Audit = #{audit,jdbcType=INTEGER}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,0 +1,289 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="edu.uestc.lib.MSStudio.collecting.dao.SchoolEnterpriseMapper" >
+  <resultMap id="BaseResultMap" type="edu.uestc.lib.MSStudio.collecting.model.SchoolEnterprise" >
+    <id column="ID" property="id" jdbcType="INTEGER" />
+    <result column="Admcode" property="admcode" jdbcType="VARCHAR" />
+    <result column="Year" property="year" jdbcType="VARCHAR" />
+    <result column="MajorNum" property="majornum" jdbcType="INTEGER" />
+    <result column="CoopAgreeEnterp" property="coopagreeenterp" jdbcType="INTEGER" />
+    <result column="CoopAgreeMajor" property="coopagreemajor" jdbcType="INTEGER" />
+    <result column="CoopEnterpJoinTeachMajor" property="coopenterpjointeachmajor" jdbcType="INTEGER" />
+    <result column="CoopEnterpJoinTeachTeacher" property="coopenterpjointeachteacher" jdbcType="INTEGER" />
+    <result column="CoopEnterpJoinTeachClass" property="coopenterpjointeachclass" jdbcType="INTEGER" />
+    <result column="CoopEnterpFund" property="coopenterpfund" jdbcType="DECIMAL" />
+    <result column="CoopEnterpArrivalFund" property="coopenterparrivalfund" jdbcType="DECIMAL" />
+    <result column="CoopEnterpEquitWorth" property="coopenterpequitworth" jdbcType="DECIMAL" />
+    <result column="EnterpBuildReseaDevelop" property="enterpbuildreseadevelop" jdbcType="INTEGER" />
+    <result column="OffSchoTeacherTrainBase" property="offschoteachertrainbase" jdbcType="INTEGER" />
+    <result column="ProdTrainBaseVal" property="prodtrainbaseval" jdbcType="DECIMAL" />
+    <result column="SchoEnterpCoopOrderClassNum" property="schoenterpcooporderclassnum" jdbcType="INTEGER" />
+    <result column="SchoEnterpDevelopCourse" property="schoenterpdevelopcourse" jdbcType="INTEGER" />
+    <result column="FullEnterPrac" property="fullenterprac" jdbcType="DECIMAL" />
+    <result column="FullEnterTime" property="fullentertime" jdbcType="INTEGER" />
+    <result column="PartTimeClassRadio" property="parttimeclassradio" jdbcType="DECIMAL" />
+    <result column="Audit" property="audit" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, Admcode, Year, MajorNum, CoopAgreeEnterp, CoopAgreeMajor, CoopEnterpJoinTeachMajor, 
+    CoopEnterpJoinTeachTeacher, CoopEnterpJoinTeachClass, CoopEnterpFund, CoopEnterpArrivalFund, 
+    CoopEnterpEquitWorth, EnterpBuildReseaDevelop, OffSchoTeacherTrainBase, ProdTrainBaseVal, 
+    SchoEnterpCoopOrderClassNum, SchoEnterpDevelopCourse, FullEnterPrac, FullEnterTime, 
+    PartTimeClassRadio, Audit
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from schoolenterprise
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from schoolenterprise
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="edu.uestc.lib.MSStudio.collecting.model.SchoolEnterprise" >
+    insert into schoolenterprise (ID, Admcode, Year, 
+      MajorNum, CoopAgreeEnterp, CoopAgreeMajor, 
+      CoopEnterpJoinTeachMajor, CoopEnterpJoinTeachTeacher, 
+      CoopEnterpJoinTeachClass, CoopEnterpFund, 
+      CoopEnterpArrivalFund, CoopEnterpEquitWorth, 
+      EnterpBuildReseaDevelop, OffSchoTeacherTrainBase, 
+      ProdTrainBaseVal, SchoEnterpCoopOrderClassNum, 
+      SchoEnterpDevelopCourse, FullEnterPrac, 
+      FullEnterTime, PartTimeClassRadio, Audit
+      )
+    values (#{id,jdbcType=INTEGER}, #{admcode,jdbcType=VARCHAR}, #{year,jdbcType=VARCHAR}, 
+      #{majornum,jdbcType=INTEGER}, #{coopagreeenterp,jdbcType=INTEGER}, #{coopagreemajor,jdbcType=INTEGER}, 
+      #{coopenterpjointeachmajor,jdbcType=INTEGER}, #{coopenterpjointeachteacher,jdbcType=INTEGER}, 
+      #{coopenterpjointeachclass,jdbcType=INTEGER}, #{coopenterpfund,jdbcType=DECIMAL}, 
+      #{coopenterparrivalfund,jdbcType=DECIMAL}, #{coopenterpequitworth,jdbcType=DECIMAL}, 
+      #{enterpbuildreseadevelop,jdbcType=INTEGER}, #{offschoteachertrainbase,jdbcType=INTEGER}, 
+      #{prodtrainbaseval,jdbcType=DECIMAL}, #{schoenterpcooporderclassnum,jdbcType=INTEGER}, 
+      #{schoenterpdevelopcourse,jdbcType=INTEGER}, #{fullenterprac,jdbcType=DECIMAL}, 
+      #{fullentertime,jdbcType=INTEGER}, #{parttimeclassradio,jdbcType=DECIMAL}, #{audit,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="edu.uestc.lib.MSStudio.collecting.model.SchoolEnterprise" >
+    insert into schoolenterprise
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="admcode != null" >
+        Admcode,
+      </if>
+      <if test="year != null" >
+        Year,
+      </if>
+      <if test="majornum != null" >
+        MajorNum,
+      </if>
+      <if test="coopagreeenterp != null" >
+        CoopAgreeEnterp,
+      </if>
+      <if test="coopagreemajor != null" >
+        CoopAgreeMajor,
+      </if>
+      <if test="coopenterpjointeachmajor != null" >
+        CoopEnterpJoinTeachMajor,
+      </if>
+      <if test="coopenterpjointeachteacher != null" >
+        CoopEnterpJoinTeachTeacher,
+      </if>
+      <if test="coopenterpjointeachclass != null" >
+        CoopEnterpJoinTeachClass,
+      </if>
+      <if test="coopenterpfund != null" >
+        CoopEnterpFund,
+      </if>
+      <if test="coopenterparrivalfund != null" >
+        CoopEnterpArrivalFund,
+      </if>
+      <if test="coopenterpequitworth != null" >
+        CoopEnterpEquitWorth,
+      </if>
+      <if test="enterpbuildreseadevelop != null" >
+        EnterpBuildReseaDevelop,
+      </if>
+      <if test="offschoteachertrainbase != null" >
+        OffSchoTeacherTrainBase,
+      </if>
+      <if test="prodtrainbaseval != null" >
+        ProdTrainBaseVal,
+      </if>
+      <if test="schoenterpcooporderclassnum != null" >
+        SchoEnterpCoopOrderClassNum,
+      </if>
+      <if test="schoenterpdevelopcourse != null" >
+        SchoEnterpDevelopCourse,
+      </if>
+      <if test="fullenterprac != null" >
+        FullEnterPrac,
+      </if>
+      <if test="fullentertime != null" >
+        FullEnterTime,
+      </if>
+      <if test="parttimeclassradio != null" >
+        PartTimeClassRadio,
+      </if>
+      <if test="audit != null" >
+        Audit,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="admcode != null" >
+        #{admcode,jdbcType=VARCHAR},
+      </if>
+      <if test="year != null" >
+        #{year,jdbcType=VARCHAR},
+      </if>
+      <if test="majornum != null" >
+        #{majornum,jdbcType=INTEGER},
+      </if>
+      <if test="coopagreeenterp != null" >
+        #{coopagreeenterp,jdbcType=INTEGER},
+      </if>
+      <if test="coopagreemajor != null" >
+        #{coopagreemajor,jdbcType=INTEGER},
+      </if>
+      <if test="coopenterpjointeachmajor != null" >
+        #{coopenterpjointeachmajor,jdbcType=INTEGER},
+      </if>
+      <if test="coopenterpjointeachteacher != null" >
+        #{coopenterpjointeachteacher,jdbcType=INTEGER},
+      </if>
+      <if test="coopenterpjointeachclass != null" >
+        #{coopenterpjointeachclass,jdbcType=INTEGER},
+      </if>
+      <if test="coopenterpfund != null" >
+        #{coopenterpfund,jdbcType=DECIMAL},
+      </if>
+      <if test="coopenterparrivalfund != null" >
+        #{coopenterparrivalfund,jdbcType=DECIMAL},
+      </if>
+      <if test="coopenterpequitworth != null" >
+        #{coopenterpequitworth,jdbcType=DECIMAL},
+      </if>
+      <if test="enterpbuildreseadevelop != null" >
+        #{enterpbuildreseadevelop,jdbcType=INTEGER},
+      </if>
+      <if test="offschoteachertrainbase != null" >
+        #{offschoteachertrainbase,jdbcType=INTEGER},
+      </if>
+      <if test="prodtrainbaseval != null" >
+        #{prodtrainbaseval,jdbcType=DECIMAL},
+      </if>
+      <if test="schoenterpcooporderclassnum != null" >
+        #{schoenterpcooporderclassnum,jdbcType=INTEGER},
+      </if>
+      <if test="schoenterpdevelopcourse != null" >
+        #{schoenterpdevelopcourse,jdbcType=INTEGER},
+      </if>
+      <if test="fullenterprac != null" >
+        #{fullenterprac,jdbcType=DECIMAL},
+      </if>
+      <if test="fullentertime != null" >
+        #{fullentertime,jdbcType=INTEGER},
+      </if>
+      <if test="parttimeclassradio != null" >
+        #{parttimeclassradio,jdbcType=DECIMAL},
+      </if>
+      <if test="audit != null" >
+        #{audit,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="edu.uestc.lib.MSStudio.collecting.model.SchoolEnterprise" >
+    update schoolenterprise
+    <set >
+      <if test="admcode != null" >
+        Admcode = #{admcode,jdbcType=VARCHAR},
+      </if>
+      <if test="year != null" >
+        Year = #{year,jdbcType=VARCHAR},
+      </if>
+      <if test="majornum != null" >
+        MajorNum = #{majornum,jdbcType=INTEGER},
+      </if>
+      <if test="coopagreeenterp != null" >
+        CoopAgreeEnterp = #{coopagreeenterp,jdbcType=INTEGER},
+      </if>
+      <if test="coopagreemajor != null" >
+        CoopAgreeMajor = #{coopagreemajor,jdbcType=INTEGER},
+      </if>
+      <if test="coopenterpjointeachmajor != null" >
+        CoopEnterpJoinTeachMajor = #{coopenterpjointeachmajor,jdbcType=INTEGER},
+      </if>
+      <if test="coopenterpjointeachteacher != null" >
+        CoopEnterpJoinTeachTeacher = #{coopenterpjointeachteacher,jdbcType=INTEGER},
+      </if>
+      <if test="coopenterpjointeachclass != null" >
+        CoopEnterpJoinTeachClass = #{coopenterpjointeachclass,jdbcType=INTEGER},
+      </if>
+      <if test="coopenterpfund != null" >
+        CoopEnterpFund = #{coopenterpfund,jdbcType=DECIMAL},
+      </if>
+      <if test="coopenterparrivalfund != null" >
+        CoopEnterpArrivalFund = #{coopenterparrivalfund,jdbcType=DECIMAL},
+      </if>
+      <if test="coopenterpequitworth != null" >
+        CoopEnterpEquitWorth = #{coopenterpequitworth,jdbcType=DECIMAL},
+      </if>
+      <if test="enterpbuildreseadevelop != null" >
+        EnterpBuildReseaDevelop = #{enterpbuildreseadevelop,jdbcType=INTEGER},
+      </if>
+      <if test="offschoteachertrainbase != null" >
+        OffSchoTeacherTrainBase = #{offschoteachertrainbase,jdbcType=INTEGER},
+      </if>
+      <if test="prodtrainbaseval != null" >
+        ProdTrainBaseVal = #{prodtrainbaseval,jdbcType=DECIMAL},
+      </if>
+      <if test="schoenterpcooporderclassnum != null" >
+        SchoEnterpCoopOrderClassNum = #{schoenterpcooporderclassnum,jdbcType=INTEGER},
+      </if>
+      <if test="schoenterpdevelopcourse != null" >
+        SchoEnterpDevelopCourse = #{schoenterpdevelopcourse,jdbcType=INTEGER},
+      </if>
+      <if test="fullenterprac != null" >
+        FullEnterPrac = #{fullenterprac,jdbcType=DECIMAL},
+      </if>
+      <if test="fullentertime != null" >
+        FullEnterTime = #{fullentertime,jdbcType=INTEGER},
+      </if>
+      <if test="parttimeclassradio != null" >
+        PartTimeClassRadio = #{parttimeclassradio,jdbcType=DECIMAL},
+      </if>
+      <if test="audit != null" >
+        Audit = #{audit,jdbcType=INTEGER},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="edu.uestc.lib.MSStudio.collecting.model.SchoolEnterprise" >
+    update schoolenterprise
+    set Admcode = #{admcode,jdbcType=VARCHAR},
+      Year = #{year,jdbcType=VARCHAR},
+      MajorNum = #{majornum,jdbcType=INTEGER},
+      CoopAgreeEnterp = #{coopagreeenterp,jdbcType=INTEGER},
+      CoopAgreeMajor = #{coopagreemajor,jdbcType=INTEGER},
+      CoopEnterpJoinTeachMajor = #{coopenterpjointeachmajor,jdbcType=INTEGER},
+      CoopEnterpJoinTeachTeacher = #{coopenterpjointeachteacher,jdbcType=INTEGER},
+      CoopEnterpJoinTeachClass = #{coopenterpjointeachclass,jdbcType=INTEGER},
+      CoopEnterpFund = #{coopenterpfund,jdbcType=DECIMAL},
+      CoopEnterpArrivalFund = #{coopenterparrivalfund,jdbcType=DECIMAL},
+      CoopEnterpEquitWorth = #{coopenterpequitworth,jdbcType=DECIMAL},
+      EnterpBuildReseaDevelop = #{enterpbuildreseadevelop,jdbcType=INTEGER},
+      OffSchoTeacherTrainBase = #{offschoteachertrainbase,jdbcType=INTEGER},
+      ProdTrainBaseVal = #{prodtrainbaseval,jdbcType=DECIMAL},
+      SchoEnterpCoopOrderClassNum = #{schoenterpcooporderclassnum,jdbcType=INTEGER},
+      SchoEnterpDevelopCourse = #{schoenterpdevelopcourse,jdbcType=INTEGER},
+      FullEnterPrac = #{fullenterprac,jdbcType=DECIMAL},
+      FullEnterTime = #{fullentertime,jdbcType=INTEGER},
+      PartTimeClassRadio = #{parttimeclassradio,jdbcType=DECIMAL},
+      Audit = #{audit,jdbcType=INTEGER}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

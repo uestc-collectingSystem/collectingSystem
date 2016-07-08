@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="edu.uestc.lib.MSStudio.collecting.dao.SchoolSizeMapper" >
+  <resultMap id="BaseResultMap" type="edu.uestc.lib.MSStudio.collecting.model.SchoolSize" >
+    <id column="ID" property="id" jdbcType="INTEGER" />
+    <result column="Admcode" property="admcode" jdbcType="VARCHAR" />
+    <result column="Year" property="year" jdbcType="VARCHAR" />
+    <result column="SchoolRun" property="schoolrun" jdbcType="VARCHAR" />
+    <result column="SchoolLevel" property="schoollevel" jdbcType="VARCHAR" />
+    <result column="SchoolSubject" property="schoolsubject" jdbcType="VARCHAR" />
+    <result column="Area" property="area" jdbcType="DECIMAL" />
+    <result column="OwnPropArea" property="ownproparea" jdbcType="DECIMAL" />
+    <result column="TotalArea" property="totalarea" jdbcType="DECIMAL" />
+    <result column="SchOwnConArea" property="schownconarea" jdbcType="DECIMAL" />
+    <result column="StuArea" property="stuarea" jdbcType="DECIMAL" />
+    <result column="TeaAuxArea" property="teaauxarea" jdbcType="DECIMAL" />
+    <result column="TrainArea" property="trainarea" jdbcType="DECIMAL" />
+    <result column="PsyArea" property="psyarea" jdbcType="DECIMAL" />
+    <result column="DormArea" property="dormarea" jdbcType="DECIMAL" />
+    <result column="DormPerArea" property="dormperarea" jdbcType="DECIMAL" />
+    <result column="Enrollment" property="enrollment" jdbcType="INTEGER" />
+    <result column="AnnualGraduate" property="annualgraduate" jdbcType="INTEGER" />
+    <result column="TotalStudent" property="totalstudent" jdbcType="INTEGER" />
+    <result column="Majors" property="majors" jdbcType="INTEGER" />
+    <result column="Audit" property="audit" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, Admcode, Year, SchoolRun, SchoolLevel, SchoolSubject, Area, OwnPropArea, TotalArea, 
+    SchOwnConArea, StuArea, TeaAuxArea, TrainArea, PsyArea, DormArea, DormPerArea, Enrollment, 
+    AnnualGraduate, TotalStudent, Majors, Audit
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from size
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from size
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="edu.uestc.lib.MSStudio.collecting.model.SchoolSize" >
+    insert into size (ID, Admcode, Year, 
+      SchoolRun, SchoolLevel, SchoolSubject, 
+      Area, OwnPropArea, TotalArea, 
+      SchOwnConArea, StuArea, TeaAuxArea, 
+      TrainArea, PsyArea, DormArea, 
+      DormPerArea, Enrollment, AnnualGraduate, 
+      TotalStudent, Majors, Audit
+      )
+    values (#{id,jdbcType=INTEGER}, #{admcode,jdbcType=VARCHAR}, #{year,jdbcType=VARCHAR}, 
+      #{schoolrun,jdbcType=VARCHAR}, #{schoollevel,jdbcType=VARCHAR}, #{schoolsubject,jdbcType=VARCHAR}, 
+      #{area,jdbcType=DECIMAL}, #{ownproparea,jdbcType=DECIMAL}, #{totalarea,jdbcType=DECIMAL}, 
+      #{schownconarea,jdbcType=DECIMAL}, #{stuarea,jdbcType=DECIMAL}, #{teaauxarea,jdbcType=DECIMAL}, 
+      #{trainarea,jdbcType=DECIMAL}, #{psyarea,jdbcType=DECIMAL}, #{dormarea,jdbcType=DECIMAL}, 
+      #{dormperarea,jdbcType=DECIMAL}, #{enrollment,jdbcType=INTEGER}, #{annualgraduate,jdbcType=INTEGER}, 
+      #{totalstudent,jdbcType=INTEGER}, #{majors,jdbcType=INTEGER}, #{audit,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="edu.uestc.lib.MSStudio.collecting.model.SchoolSize" >
+    insert into size
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="admcode != null" >
+        Admcode,
+      </if>
+      <if test="year != null" >
+        Year,
+      </if>
+      <if test="schoolrun != null" >
+        SchoolRun,
+      </if>
+      <if test="schoollevel != null" >
+        SchoolLevel,
+      </if>
+      <if test="schoolsubject != null" >
+        SchoolSubject,
+      </if>
+      <if test="area != null" >
+        Area,
+      </if>
+      <if test="ownproparea != null" >
+        OwnPropArea,
+      </if>
+      <if test="totalarea != null" >
+        TotalArea,
+      </if>
+      <if test="schownconarea != null" >
+        SchOwnConArea,
+      </if>
+      <if test="stuarea != null" >
+        StuArea,
+      </if>
+      <if test="teaauxarea != null" >
+        TeaAuxArea,
+      </if>
+      <if test="trainarea != null" >
+        TrainArea,
+      </if>
+      <if test="psyarea != null" >
+        PsyArea,
+      </if>
+      <if test="dormarea != null" >
+        DormArea,
+      </if>
+      <if test="dormperarea != null" >
+        DormPerArea,
+      </if>
+      <if test="enrollment != null" >
+        Enrollment,
+      </if>
+      <if test="annualgraduate != null" >
+        AnnualGraduate,
+      </if>
+      <if test="totalstudent != null" >
+        TotalStudent,
+      </if>
+      <if test="majors != null" >
+        Majors,
+      </if>
+      <if test="audit != null" >
+        Audit,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="admcode != null" >
+        #{admcode,jdbcType=VARCHAR},
+      </if>
+      <if test="year != null" >
+        #{year,jdbcType=VARCHAR},
+      </if>
+      <if test="schoolrun != null" >
+        #{schoolrun,jdbcType=VARCHAR},
+      </if>
+      <if test="schoollevel != null" >
+        #{schoollevel,jdbcType=VARCHAR},
+      </if>
+      <if test="schoolsubject != null" >
+        #{schoolsubject,jdbcType=VARCHAR},
+      </if>
+      <if test="area != null" >
+        #{area,jdbcType=DECIMAL},
+      </if>
+      <if test="ownproparea != null" >
+        #{ownproparea,jdbcType=DECIMAL},
+      </if>
+      <if test="totalarea != null" >
+        #{totalarea,jdbcType=DECIMAL},
+      </if>
+      <if test="schownconarea != null" >
+        #{schownconarea,jdbcType=DECIMAL},
+      </if>
+      <if test="stuarea != null" >
+        #{stuarea,jdbcType=DECIMAL},
+      </if>
+      <if test="teaauxarea != null" >
+        #{teaauxarea,jdbcType=DECIMAL},
+      </if>
+      <if test="trainarea != null" >
+        #{trainarea,jdbcType=DECIMAL},
+      </if>
+      <if test="psyarea != null" >
+        #{psyarea,jdbcType=DECIMAL},
+      </if>
+      <if test="dormarea != null" >
+        #{dormarea,jdbcType=DECIMAL},
+      </if>
+      <if test="dormperarea != null" >
+        #{dormperarea,jdbcType=DECIMAL},
+      </if>
+      <if test="enrollment != null" >
+        #{enrollment,jdbcType=INTEGER},
+      </if>
+      <if test="annualgraduate != null" >
+        #{annualgraduate,jdbcType=INTEGER},
+      </if>
+      <if test="totalstudent != null" >
+        #{totalstudent,jdbcType=INTEGER},
+      </if>
+      <if test="majors != null" >
+        #{majors,jdbcType=INTEGER},
+      </if>
+      <if test="audit != null" >
+        #{audit,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="edu.uestc.lib.MSStudio.collecting.model.SchoolSize" >
+    update size
+    <set >
+      <if test="admcode != null" >
+        Admcode = #{admcode,jdbcType=VARCHAR},
+      </if>
+      <if test="year != null" >
+        Year = #{year,jdbcType=VARCHAR},
+      </if>
+      <if test="schoolrun != null" >
+        SchoolRun = #{schoolrun,jdbcType=VARCHAR},
+      </if>
+      <if test="schoollevel != null" >
+        SchoolLevel = #{schoollevel,jdbcType=VARCHAR},
+      </if>
+      <if test="schoolsubject != null" >
+        SchoolSubject = #{schoolsubject,jdbcType=VARCHAR},
+      </if>
+      <if test="area != null" >
+        Area = #{area,jdbcType=DECIMAL},
+      </if>
+      <if test="ownproparea != null" >
+        OwnPropArea = #{ownproparea,jdbcType=DECIMAL},
+      </if>
+      <if test="totalarea != null" >
+        TotalArea = #{totalarea,jdbcType=DECIMAL},
+      </if>
+      <if test="schownconarea != null" >
+        SchOwnConArea = #{schownconarea,jdbcType=DECIMAL},
+      </if>
+      <if test="stuarea != null" >
+        StuArea = #{stuarea,jdbcType=DECIMAL},
+      </if>
+      <if test="teaauxarea != null" >
+        TeaAuxArea = #{teaauxarea,jdbcType=DECIMAL},
+      </if>
+      <if test="trainarea != null" >
+        TrainArea = #{trainarea,jdbcType=DECIMAL},
+      </if>
+      <if test="psyarea != null" >
+        PsyArea = #{psyarea,jdbcType=DECIMAL},
+      </if>
+      <if test="dormarea != null" >
+        DormArea = #{dormarea,jdbcType=DECIMAL},
+      </if>
+      <if test="dormperarea != null" >
+        DormPerArea = #{dormperarea,jdbcType=DECIMAL},
+      </if>
+      <if test="enrollment != null" >
+        Enrollment = #{enrollment,jdbcType=INTEGER},
+      </if>
+      <if test="annualgraduate != null" >
+        AnnualGraduate = #{annualgraduate,jdbcType=INTEGER},
+      </if>
+      <if test="totalstudent != null" >
+        TotalStudent = #{totalstudent,jdbcType=INTEGER},
+      </if>
+      <if test="majors != null" >
+        Majors = #{majors,jdbcType=INTEGER},
+      </if>
+      <if test="audit != null" >
+        Audit = #{audit,jdbcType=INTEGER},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="edu.uestc.lib.MSStudio.collecting.model.SchoolSize" >
+    update size
+    set Admcode = #{admcode,jdbcType=VARCHAR},
+      Year = #{year,jdbcType=VARCHAR},
+      SchoolRun = #{schoolrun,jdbcType=VARCHAR},
+      SchoolLevel = #{schoollevel,jdbcType=VARCHAR},
+      SchoolSubject = #{schoolsubject,jdbcType=VARCHAR},
+      Area = #{area,jdbcType=DECIMAL},
+      OwnPropArea = #{ownproparea,jdbcType=DECIMAL},
+      TotalArea = #{totalarea,jdbcType=DECIMAL},
+      SchOwnConArea = #{schownconarea,jdbcType=DECIMAL},
+      StuArea = #{stuarea,jdbcType=DECIMAL},
+      TeaAuxArea = #{teaauxarea,jdbcType=DECIMAL},
+      TrainArea = #{trainarea,jdbcType=DECIMAL},
+      PsyArea = #{psyarea,jdbcType=DECIMAL},
+      DormArea = #{dormarea,jdbcType=DECIMAL},
+      DormPerArea = #{dormperarea,jdbcType=DECIMAL},
+      Enrollment = #{enrollment,jdbcType=INTEGER},
+      AnnualGraduate = #{annualgraduate,jdbcType=INTEGER},
+      TotalStudent = #{totalstudent,jdbcType=INTEGER},
+      Majors = #{majors,jdbcType=INTEGER},
+      Audit = #{audit,jdbcType=INTEGER}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

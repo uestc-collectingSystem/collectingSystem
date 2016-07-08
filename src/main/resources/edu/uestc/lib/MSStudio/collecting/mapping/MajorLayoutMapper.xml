@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="edu.uestc.lib.MSStudio.collecting.dao.MajorLayoutMapper" >
+  <resultMap id="BaseResultMap" type="edu.uestc.lib.MSStudio.collecting.model.MajorLayout" >
+    <id column="ID" property="id" jdbcType="INTEGER" />
+    <result column="AdmCode" property="admcode" jdbcType="VARCHAR" />
+    <result column="Year" property="year" jdbcType="VARCHAR" />
+    <result column="OneIndu" property="oneindu" jdbcType="INTEGER" />
+    <result column="TwoIndu" property="twoindu" jdbcType="INTEGER" />
+    <result column="ThreeIndu" property="threeindu" jdbcType="INTEGER" />
+    <result column="LocalPillar" property="localpillar" jdbcType="INTEGER" />
+    <result column="ProvinceMore" property="provincemore" jdbcType="INTEGER" />
+    <result column="StaUniKeyMajor" property="staunikeymajor" jdbcType="INTEGER" />
+    <result column="NewMajor" property="newmajor" jdbcType="INTEGER" />
+    <result column="StopMajor" property="stopmajor" jdbcType="INTEGER" />
+    <result column="Audit" property="audit" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, AdmCode, Year, OneIndu, TwoIndu, ThreeIndu, LocalPillar, ProvinceMore, StaUniKeyMajor, 
+    NewMajor, StopMajor, Audit
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from majorlayout
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from majorlayout
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="edu.uestc.lib.MSStudio.collecting.model.MajorLayout" >
+    insert into majorlayout (ID, AdmCode, Year, 
+      OneIndu, TwoIndu, ThreeIndu, 
+      LocalPillar, ProvinceMore, StaUniKeyMajor, 
+      NewMajor, StopMajor, Audit
+      )
+    values (#{id,jdbcType=INTEGER}, #{admcode,jdbcType=VARCHAR}, #{year,jdbcType=VARCHAR}, 
+      #{oneindu,jdbcType=INTEGER}, #{twoindu,jdbcType=INTEGER}, #{threeindu,jdbcType=INTEGER}, 
+      #{localpillar,jdbcType=INTEGER}, #{provincemore,jdbcType=INTEGER}, #{staunikeymajor,jdbcType=INTEGER}, 
+      #{newmajor,jdbcType=INTEGER}, #{stopmajor,jdbcType=INTEGER}, #{audit,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="edu.uestc.lib.MSStudio.collecting.model.MajorLayout" >
+    insert into majorlayout
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="admcode != null" >
+        AdmCode,
+      </if>
+      <if test="year != null" >
+        Year,
+      </if>
+      <if test="oneindu != null" >
+        OneIndu,
+      </if>
+      <if test="twoindu != null" >
+        TwoIndu,
+      </if>
+      <if test="threeindu != null" >
+        ThreeIndu,
+      </if>
+      <if test="localpillar != null" >
+        LocalPillar,
+      </if>
+      <if test="provincemore != null" >
+        ProvinceMore,
+      </if>
+      <if test="staunikeymajor != null" >
+        StaUniKeyMajor,
+      </if>
+      <if test="newmajor != null" >
+        NewMajor,
+      </if>
+      <if test="stopmajor != null" >
+        StopMajor,
+      </if>
+      <if test="audit != null" >
+        Audit,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="admcode != null" >
+        #{admcode,jdbcType=VARCHAR},
+      </if>
+      <if test="year != null" >
+        #{year,jdbcType=VARCHAR},
+      </if>
+      <if test="oneindu != null" >
+        #{oneindu,jdbcType=INTEGER},
+      </if>
+      <if test="twoindu != null" >
+        #{twoindu,jdbcType=INTEGER},
+      </if>
+      <if test="threeindu != null" >
+        #{threeindu,jdbcType=INTEGER},
+      </if>
+      <if test="localpillar != null" >
+        #{localpillar,jdbcType=INTEGER},
+      </if>
+      <if test="provincemore != null" >
+        #{provincemore,jdbcType=INTEGER},
+      </if>
+      <if test="staunikeymajor != null" >
+        #{staunikeymajor,jdbcType=INTEGER},
+      </if>
+      <if test="newmajor != null" >
+        #{newmajor,jdbcType=INTEGER},
+      </if>
+      <if test="stopmajor != null" >
+        #{stopmajor,jdbcType=INTEGER},
+      </if>
+      <if test="audit != null" >
+        #{audit,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="edu.uestc.lib.MSStudio.collecting.model.MajorLayout" >
+    update majorlayout
+    <set >
+      <if test="admcode != null" >
+        AdmCode = #{admcode,jdbcType=VARCHAR},
+      </if>
+      <if test="year != null" >
+        Year = #{year,jdbcType=VARCHAR},
+      </if>
+      <if test="oneindu != null" >
+        OneIndu = #{oneindu,jdbcType=INTEGER},
+      </if>
+      <if test="twoindu != null" >
+        TwoIndu = #{twoindu,jdbcType=INTEGER},
+      </if>
+      <if test="threeindu != null" >
+        ThreeIndu = #{threeindu,jdbcType=INTEGER},
+      </if>
+      <if test="localpillar != null" >
+        LocalPillar = #{localpillar,jdbcType=INTEGER},
+      </if>
+      <if test="provincemore != null" >
+        ProvinceMore = #{provincemore,jdbcType=INTEGER},
+      </if>
+      <if test="staunikeymajor != null" >
+        StaUniKeyMajor = #{staunikeymajor,jdbcType=INTEGER},
+      </if>
+      <if test="newmajor != null" >
+        NewMajor = #{newmajor,jdbcType=INTEGER},
+      </if>
+      <if test="stopmajor != null" >
+        StopMajor = #{stopmajor,jdbcType=INTEGER},
+      </if>
+      <if test="audit != null" >
+        Audit = #{audit,jdbcType=INTEGER},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="edu.uestc.lib.MSStudio.collecting.model.MajorLayout" >
+    update majorlayout
+    set AdmCode = #{admcode,jdbcType=VARCHAR},
+      Year = #{year,jdbcType=VARCHAR},
+      OneIndu = #{oneindu,jdbcType=INTEGER},
+      TwoIndu = #{twoindu,jdbcType=INTEGER},
+      ThreeIndu = #{threeindu,jdbcType=INTEGER},
+      LocalPillar = #{localpillar,jdbcType=INTEGER},
+      ProvinceMore = #{provincemore,jdbcType=INTEGER},
+      StaUniKeyMajor = #{staunikeymajor,jdbcType=INTEGER},
+      NewMajor = #{newmajor,jdbcType=INTEGER},
+      StopMajor = #{stopmajor,jdbcType=INTEGER},
+      Audit = #{audit,jdbcType=INTEGER}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
