@@ -23,6 +23,10 @@ import edu.uestc.lib.MSStudio.collecting.test.DaoTest;
 @RequestMapping("/auth")
 public class AuthController {
 	
+	public final static String cookieKey = "UserID";
+
+	public final static String sessionKey = "UserID";
+	
 	@Resource
 	private UserService userService;
 	
@@ -39,8 +43,8 @@ public class AuthController {
 			@RequestParam(value="rememberme",required = false) String rememberMe,
 			HttpServletRequest request,Model model,HttpServletResponse response
 			){
-		String userId = userService.UserInfoCheck(name, password);
-		if (userId != null){
+		int userId = userService.UserInfoCheck(name, password);
+		if (userId != 0){
 			/*
 			  用户的权限级别方式为：录入人员<检查人员<管理员
 			  因此录入人员权限为检查 Cookie 中的内容即可，检查人员为检查 Cookie 中人员等级大于2即可
@@ -50,18 +54,20 @@ public class AuthController {
 			  为了帮助管理员通过低层级的身份拦截，同样为其分配 Cookie，
 			  但是管理员权限才能通过的部分还是要验证 session 信息
 			*/
-			if (userService.getUserLevel(Integer.valueOf(userId)).equals(User.ADMINISTER)){
-				request.getSession().invalidate();
-				request.getSession().setAttribute("UserID", userId);
+			//System.out.print(Integer.valueOf(userId));
+			request.getSession(true).invalidate();
+			if (userService.getUserLevel(userId).equals(User.ADMINISTER)){
+				//request.getSession().invalidate();
+				request.getSession().setAttribute(AuthController.sessionKey, userId);
 			}
 			
 			if (rememberMe == null || rememberMe.equals("")){
-				Cookie identity = new Cookie("UserID",userId);
+				Cookie identity = new Cookie(AuthController.cookieKey,String.valueOf(userId));
 				identity.setMaxAge(3600);//设定超时日期
 				response.addCookie(identity);
 			}
 			else{
-				Cookie identity = new Cookie("UserID",userId);
+				Cookie identity = new Cookie(AuthController.cookieKey,String.valueOf(userId));
 				identity.setMaxAge(3600*24);//设定超时日期
 				response.addCookie(identity);
 			}
@@ -72,8 +78,22 @@ public class AuthController {
 		return "login";
 	}
 	
-	@RequestMapping("/json")
-	public @ResponseBody String json(HttpServletRequest request,Model model){
+	@RequestMapping("/collectorAuth")
+	public @ResponseBody String collectorAuth(HttpServletRequest request,Model model){
+		request.setAttribute("userID", "h1?");
+		String result = JSON.toJSON(userService.UserInfoCheck("20161", "111111")).toString();
+		return result;
+	}
+	
+	@RequestMapping("/checkerAuth")
+	public @ResponseBody String checkerAuth(HttpServletRequest request,Model model){
+		request.setAttribute("userID", "h1?");
+		String result = JSON.toJSON(userService.UserInfoCheck("20161", "111111")).toString();
+		return result;
+	}
+	
+	@RequestMapping("/adminAuth")
+	public @ResponseBody String adminAuth(HttpServletRequest request,Model model){
 		request.setAttribute("userID", "h1?");
 		String result = JSON.toJSON(userService.UserInfoCheck("20161", "111111")).toString();
 		return result;
