@@ -5,6 +5,7 @@ import org.apache.ibatis.annotations.Param;
 import edu.uestc.lib.MSStudio.collecting.model.User;
 
 public interface UserMapper {
+	
     int deleteByPrimaryKey(Integer id);
 
     int insert(User record);
@@ -18,4 +19,7 @@ public interface UserMapper {
     int updateByPrimaryKey(User record);
     
     int countMembers(@Param("name")String name,@Param("pass")String pass);
+    
+    User findMember(@Param("name")String name,@Param("pass")String pass);
+    
 }

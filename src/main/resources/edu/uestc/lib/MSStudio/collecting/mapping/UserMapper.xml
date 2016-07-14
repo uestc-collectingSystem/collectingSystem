@@ -25,6 +25,13 @@
     where Usercode = #{name,jdbcType = VARCHAR} and Password = #{pass,jdbcType = VARCHAR}
   </select>
   
+  <select id="findMember" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from user
+    where Usercode = #{name,jdbcType = VARCHAR} and Password = #{pass,jdbcType = VARCHAR}
+  </select>
+  
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from user
     where ID = #{id,jdbcType=INTEGER}

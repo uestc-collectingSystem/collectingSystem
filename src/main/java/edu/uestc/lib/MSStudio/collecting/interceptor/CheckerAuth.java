@@ -6,12 +6,10 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
-public class IdentityAuth implements HandlerInterceptor{
-
+public class CheckerAuth implements HandlerInterceptor {
 	@Override
-	public boolean preHandle(HttpServletRequest arg0, HttpServletResponse arg1, Object arg2) throws Exception {
+	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object obj) throws Exception {
 		// TODO 请求控制器之前需要做的事情，返回值决定是否有后续拦截器的同时，也直接决定了整个调用链的终点
-		//System.out.println("hello");
 		return true;
 	}
 	
@@ -19,7 +17,6 @@ public class IdentityAuth implements HandlerInterceptor{
 	public void postHandle(HttpServletRequest arg0, HttpServletResponse arg1, Object arg2, ModelAndView arg3)
 			throws Exception {
 		// TODO 在控制器处理完毕之后做的收尾工作，比如对象处理
-		
 	}
 	
 	@Override

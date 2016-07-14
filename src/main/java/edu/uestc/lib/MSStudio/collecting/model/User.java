@@ -1,7 +1,12 @@
 package edu.uestc.lib.MSStudio.collecting.model;
 
 public class User {
-    private Integer id;
+	
+	public static final String ADMINISTER = "3";
+	public static final String CHECHKER = "2";
+	public static final String COLLECTOR = "1"; 
+
+	private Integer id;
 
     private String usercode;
 

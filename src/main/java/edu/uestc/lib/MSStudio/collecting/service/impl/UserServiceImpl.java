@@ -14,13 +14,18 @@ public class UserServiceImpl implements UserService {
 	private UserMapper dao;
 	
 	@Override
-	public boolean UserInfoCheck(String name,String password) {
+	public String UserInfoCheck(String name,String password) {
 		// TODO Auto-generated method stub
 		if (dao.countMembers(name, password)==1){
-			return true;
+			return dao.findMember(name, password).getLevel();
 		}
-		
-		return false;
+		return null;
+	}
+	
+	@Override
+	public String getUserLevel(Integer id) {
+		// TODO Auto-generated method stub
+		return dao.selectByPrimaryKey(id).getLevel();
 	}
 
 }

@@ -6,9 +6,3 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>数据采集系统</title>
 </head>
-
-
-<body>
-	这是首页，不管你信不信
-</body>
-</html>

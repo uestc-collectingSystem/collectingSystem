@@ -10,7 +10,6 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.alibaba.fastjson.JSON;
 
-import edu.uestc.lib.MSStudio.collecting.dao.AuditSchoolMapper;
 import edu.uestc.lib.MSStudio.collecting.service.UserService;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -24,7 +23,7 @@ public class DaoTest {
 	
 	@Test
 	public void DBTest(){
-		logProducer.info(JSON.toJSON(userService.UserInfoCheck(null, null)));
+		logProducer.info(JSON.toJSON(userService.UserInfoCheck("20161", "111111")));
 	}
 	
 }
