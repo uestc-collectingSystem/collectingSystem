@@ -18,6 +18,12 @@
     where ID = #{id,jdbcType=INTEGER}
   </select>
   
+  <select id="getAllUsers" resultType="java.util.HashMap">
+    select 
+    <include refid="Base_Column_List" />
+    from user
+  </select>
+  
   <select id="countMembers" resultType="java.lang.Integer">
     select count(*)
     <include refid="Base_Column_List" />

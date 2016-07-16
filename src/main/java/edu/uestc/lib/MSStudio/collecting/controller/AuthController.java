@@ -5,7 +5,6 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,7 +16,6 @@ import com.alibaba.fastjson.JSON;
 
 import edu.uestc.lib.MSStudio.collecting.model.User;
 import edu.uestc.lib.MSStudio.collecting.service.UserService;
-import edu.uestc.lib.MSStudio.collecting.test.DaoTest;
 
 @Controller
 @RequestMapping("/auth")
