@@ -1,5 +1,7 @@
 package edu.uestc.lib.MSStudio.collecting.dao;
 
+import java.util.List;
+
 import edu.uestc.lib.MSStudio.collecting.model.SchoolSize;
 
 public interface SchoolSizeMapper {
@@ -14,4 +16,13 @@ public interface SchoolSizeMapper {
     int updateByPrimaryKeySelective(SchoolSize record);
 
     int updateByPrimaryKey(SchoolSize record);
+    
+    List<SchoolSize> getAllSize(Integer begin,Integer end);
+    
+    /**
+     * 0 for uncheck
+     * 1 for check
+     */
+    int checkByID(Integer value,Integer id);
+    
 }

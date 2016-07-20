@@ -23,6 +23,8 @@ public class SchoolSize {
 
     private BigDecimal schownconarea;
 
+    private BigDecimal officearea;
+    
     private BigDecimal stuarea;
 
     private BigDecimal teaauxarea;
@@ -44,8 +46,18 @@ public class SchoolSize {
     private Integer majors;
 
     private Integer audit;
+    
+    private Double consolidationrate;
 
-    public Integer getId() {
+    public Double getConsolidationrate() {
+		return consolidationrate;
+	}
+
+	public void setConsolidationrate(Double consolidationrate) {
+		this.consolidationrate = consolidationrate;
+	}
+
+	public Integer getId() {
         return id;
     }
 
@@ -65,7 +77,15 @@ public class SchoolSize {
         return year;
     }
 
-    public void setYear(String year) {
+    public BigDecimal getOfficearea() {
+		return officearea;
+	}
+
+	public void setOfficearea(BigDecimal officearea) {
+		this.officearea = officearea;
+	}
+
+	public void setYear(String year) {
         this.year = year == null ? null : year.trim();
     }
 
@@ -212,4 +232,6 @@ public class SchoolSize {
     public void setAudit(Integer audit) {
         this.audit = audit;
     }
+    
+    
 }

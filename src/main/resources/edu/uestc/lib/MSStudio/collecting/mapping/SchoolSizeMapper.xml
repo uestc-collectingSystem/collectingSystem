@@ -10,6 +10,7 @@
     <result column="SchoolSubject" property="schoolsubject" jdbcType="VARCHAR" />
     <result column="Area" property="area" jdbcType="DECIMAL" />
     <result column="OwnPropArea" property="ownproparea" jdbcType="DECIMAL" />
+    <result column="OfficeArea" property="officearea" jdbcType="DECIMAL" />
     <result column="TotalArea" property="totalarea" jdbcType="DECIMAL" />
     <result column="SchOwnConArea" property="schownconarea" jdbcType="DECIMAL" />
     <result column="StuArea" property="stuarea" jdbcType="DECIMAL" />
@@ -23,11 +24,12 @@
     <result column="TotalStudent" property="totalstudent" jdbcType="INTEGER" />
     <result column="Majors" property="majors" jdbcType="INTEGER" />
     <result column="Audit" property="audit" jdbcType="INTEGER" />
+    <result column="ConsolidationRate" property="consolidationrate" jdbcType="FLOAT"/>
   </resultMap>
   <sql id="Base_Column_List" >
     ID, Admcode, Year, SchoolRun, SchoolLevel, SchoolSubject, Area, OwnPropArea, TotalArea, 
     SchOwnConArea, StuArea, TeaAuxArea, TrainArea, PsyArea, DormArea, DormPerArea, Enrollment, 
-    AnnualGraduate, TotalStudent, Majors, Audit
+    AnnualGraduate, TotalStudent, Majors, Audit, OfficeArea,ConsolidationRate
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
@@ -35,6 +37,13 @@
     from size
     where ID = #{id,jdbcType=INTEGER}
   </select>
+  
+  <select id="getAllSize" resultType="java.util.HashMap" parameterType="java.lang.Integer">
+    select 
+    <include refid="Base_Column_List" />
+    from size limit #{0},#{1}
+  </select>
+  
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from size
     where ID = #{id,jdbcType=INTEGER}
@@ -46,7 +55,7 @@
       SchOwnConArea, StuArea, TeaAuxArea, 
       TrainArea, PsyArea, DormArea, 
       DormPerArea, Enrollment, AnnualGraduate, 
-      TotalStudent, Majors, Audit
+      TotalStudent, Majors, Audit,OfficeArea,ConsolidationRate
       )
     values (#{id,jdbcType=INTEGER}, #{admcode,jdbcType=VARCHAR}, #{year,jdbcType=VARCHAR}, 
       #{schoolrun,jdbcType=VARCHAR}, #{schoollevel,jdbcType=VARCHAR}, #{schoolsubject,jdbcType=VARCHAR}, 
@@ -55,6 +64,7 @@
       #{trainarea,jdbcType=DECIMAL}, #{psyarea,jdbcType=DECIMAL}, #{dormarea,jdbcType=DECIMAL}, 
       #{dormperarea,jdbcType=DECIMAL}, #{enrollment,jdbcType=INTEGER}, #{annualgraduate,jdbcType=INTEGER}, 
       #{totalstudent,jdbcType=INTEGER}, #{majors,jdbcType=INTEGER}, #{audit,jdbcType=INTEGER}
+      ,#{officearea,jdbcType=DECIMAL},#{consolidationrate,jdbcType=FLOAT}
       )
   </insert>
   <insert id="insertSelective" parameterType="edu.uestc.lib.MSStudio.collecting.model.SchoolSize" >
@@ -279,5 +289,10 @@
       Majors = #{majors,jdbcType=INTEGER},
       Audit = #{audit,jdbcType=INTEGER}
     where ID = #{id,jdbcType=INTEGER}
+  </update>
+  
+  <update id="checkByID" parameterType="java.lang.Integer" >
+    update size set Audit = #{0}
+    where ID = #{1}
   </update>
 </mapper>

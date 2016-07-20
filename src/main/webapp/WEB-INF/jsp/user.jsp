@@ -10,7 +10,7 @@
 <body>
 
 <c:forEach items="${list}" var="li">
-${li.Usercode}
+${li}
 </c:forEach>
 </body>
 </html>
