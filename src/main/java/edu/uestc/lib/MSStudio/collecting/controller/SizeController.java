@@ -2,7 +2,6 @@ package edu.uestc.lib.MSStudio.collecting.controller;
 
 import java.io.IOException;
 import java.math.BigDecimal;
-import java.time.Year;
 import java.util.Calendar;
 
 import javax.annotation.Resource;
@@ -45,6 +44,67 @@ public class SizeController {
 		return sizePage;
 	}
 	
+	public static Integer transInteger(String string){
+		if (string.contains(".0"))
+		return Integer.valueOf(string.substring(0, string.length()-2));
+		else return Integer.valueOf(string);
+	}
+	
+	public static SchoolSize preSaveSchoolSize(
+			 String Admcode,
+			 String Year,
+			 String SchoolRun,
+			 String SchoolLevel,
+			 String SchoolSubject,
+			 String Area,
+			 String OwnPropArea,
+			 String TotalArea,
+			 String SchOwnConArea,
+			 String StuArea,
+			 String OfficeArea,
+			 String TeaAuxArea,
+			 String TrainArea,
+			 String PsyArea,
+			 String DormArea,
+			 String DormPerArea,
+			 String TotalStudent,
+			 String AnnualGraduate,
+			 String ConsolidationRate,
+			 String Enrollment,
+			 String Majors
+			){
+		SchoolSize temp = new SchoolSize();
+		try{
+			temp.setAdmcode(Admcode);
+			temp.setAnnualgraduate(transInteger(AnnualGraduate));
+			temp.setArea(new BigDecimal(Area));
+			temp.setAudit(0);
+			temp.setDormarea(new BigDecimal(DormArea));
+			temp.setDormperarea(new BigDecimal(DormPerArea));
+			temp.setEnrollment(transInteger(Enrollment));
+			temp.setMajors(transInteger(Majors));
+			temp.setOfficearea(new BigDecimal(OfficeArea));
+			temp.setOwnproparea(new BigDecimal(OwnPropArea));
+			temp.setPsyarea(new BigDecimal(PsyArea));
+			temp.setSchoollevel(SchoolLevel);
+			temp.setSchoolrun(SchoolRun);
+			temp.setSchoolsubject(SchoolSubject);
+			temp.setSchownconarea(new BigDecimal(SchOwnConArea));
+			temp.setStuarea(new BigDecimal(StuArea));
+			temp.setTeaauxarea(new BigDecimal(TeaAuxArea));
+			temp.setTotalarea(new BigDecimal(TotalArea));
+			temp.setTotalstudent(transInteger(TotalStudent));
+			temp.setTrainarea(new BigDecimal(TrainArea));
+			temp.setConsolidationrate(Double.valueOf(ConsolidationRate));
+			if (Year==null||Year.equals("")) temp.setYear(String.valueOf(Calendar.getInstance().get(Calendar.YEAR)));
+			else temp.setYear(Year);
+		}catch(Exception e){
+			//e.printStackTrace();
+			return null;
+		}
+		return temp;
+	}
+	
 	@RequestMapping(value="create",method=RequestMethod.POST)
 	public String createSchoolSize(
 			@RequestParam String Admcode,
@@ -71,30 +131,12 @@ public class SizeController {
 			@RequestParam(defaultValue="20") String pageSize,
 			@RequestParam String ConsolidationRate,
 			HttpServletRequest request,Model model){
-		SchoolSize temp = new SchoolSize();
-		temp.setAdmcode(Admcode);
-		temp.setAnnualgraduate(Integer.valueOf(AnnualGraduate));
-		temp.setArea(new BigDecimal(Area));
-		temp.setAudit(0);
-		temp.setDormarea(new BigDecimal(DormArea));
-		temp.setDormperarea(new BigDecimal(DormPerArea));
-		temp.setEnrollment(Integer.valueOf(Enrollment));
-		temp.setMajors(Integer.valueOf(Majors));
-		temp.setOfficearea(new BigDecimal(OfficeArea));
-		temp.setOwnproparea(new BigDecimal(OwnPropArea));
-		temp.setPsyarea(new BigDecimal(PsyArea));
-		temp.setSchoollevel(SchoolLevel);
-		temp.setSchoolrun(SchoolRun);
-		temp.setSchoolsubject(SchoolSubject);
-		temp.setSchownconarea(new BigDecimal(SchOwnConArea));
-		temp.setStuarea(new BigDecimal(StuArea));
-		temp.setTeaauxarea(new BigDecimal(TeaAuxArea));
-		temp.setTotalarea(new BigDecimal(TotalArea));
-		temp.setTotalstudent(Integer.valueOf(TotalStudent));
-		temp.setTrainarea(new BigDecimal(TrainArea));
-		temp.setConsolidationrate(Double.valueOf(ConsolidationRate));
-		if (Year==null||Year.equals("")) temp.setYear(String.valueOf(Calendar.getInstance().get(Calendar.YEAR)));
-		else temp.setYear(Year);
+		SchoolSize temp = SizeController.preSaveSchoolSize(
+				Admcode, Year, SchoolRun, SchoolLevel, SchoolSubject, 
+				Area, OwnPropArea, TotalArea, SchOwnConArea, 
+				StuArea, OfficeArea, TeaAuxArea, TrainArea, PsyArea, DormArea, 
+				DormPerArea, TotalStudent, AnnualGraduate, 
+				ConsolidationRate, Enrollment, Majors);
 		if (sizeService.save(temp)) {
 			model.addAttribute("list", sizeService.listAllSize(pageNum, pageSize));
 			return sizePage;
@@ -122,5 +164,4 @@ public class SizeController {
 		response.sendRedirect("../");
 		return ;
 	}
-	
 }

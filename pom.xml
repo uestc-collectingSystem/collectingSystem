@@ -164,6 +164,7 @@
 			<artifactId>commons-codec</artifactId>
 			<version>1.9</version>
 		</dependency>
+		<!-- Excel 解析工具 -->
 		<dependency>
 			<groupId>org.apache.poi</groupId>
 			<artifactId>poi</artifactId>
@@ -174,7 +175,12 @@
 			<artifactId>poi-ooxml</artifactId>
 			<version>3.10-FINAL</version>
 		</dependency>
-		
+		<!-- Java 的 Eval -->
+		<dependency>
+		  <groupId>org.apache.commons</groupId>
+		  <artifactId>commons-jexl3</artifactId>
+		  <version>3.0</version>
+		</dependency>
 		
 	</dependencies>
   <build>

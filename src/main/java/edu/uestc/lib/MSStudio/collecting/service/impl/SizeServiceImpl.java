@@ -76,5 +76,4 @@ public class SizeServiceImpl implements SizeService {
 		else return false;
 	}
 	
-	
 }
