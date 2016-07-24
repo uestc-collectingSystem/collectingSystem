@@ -73,6 +73,11 @@
 				<c:if test="${li.Audit==1}">信息已通过审批</c:if>
 			</td>
 		</tr>
+		
+		<form action = "./test" method="post"> 
+			<input name="temp/"></input>
+		</form>
+		
 	</c:forEach>
 	</table>
 </body>

@@ -66,7 +66,7 @@ public class SizeServiceImpl implements SizeService {
 	
 	@Override
 	public boolean deleteSizeByID(String id){
-		dao.deleteByPrimaryKey(Integer.valueOf(id));
+		if (dao.deleteByPrimaryKey(Integer.valueOf(id))!=0) return true;
 		return false;
 	}
 	

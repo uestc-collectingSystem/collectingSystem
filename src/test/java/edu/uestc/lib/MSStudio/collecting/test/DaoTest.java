@@ -8,6 +8,7 @@ import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import edu.uestc.lib.MSStudio.collecting.dao.FileInfoMapper;
 import edu.uestc.lib.MSStudio.collecting.service.SizeService;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -17,12 +18,11 @@ public class DaoTest {
 	private static Logger logProducer = Logger.getLogger(DaoTest.class);
 	
 	@Resource
-	private SizeService sizeService;
+	private FileInfoMapper dao;
 	
 	@Test
 	public void DBTest(){
-		logProducer.info(sizeService.getSchoolSize("4"));
-		
+		logProducer.info(dao.getAllFile(0, 100));
 	}
 	
 }

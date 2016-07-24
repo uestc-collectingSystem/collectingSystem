@@ -24,14 +24,6 @@ public class SizeController {
 	//这是一个用来描述基本情况模块中规模子模块中的东西
 	//里面需要用到的是 size 表
 	
-	private final String sizePage = "basic/size"; 
-	
-	private final String errorPage="error";
-	
-	private final String errorSourceParam="ErrorSource";
-	
-	private final String errorMsgParam="ErrorMsg";
-	
 	@Resource
 	private SizeService sizeService;
 	
@@ -41,7 +33,7 @@ public class SizeController {
 			@RequestParam(defaultValue="20") String pageSize,
 			HttpServletRequest request,Model model){
 		model.addAttribute("list", sizeService.listAllSize(pageNum, pageSize));
-		return sizePage;
+		return PageRoutes.sizePage;
 	}
 	
 	public static Integer transInteger(String string){
@@ -139,11 +131,11 @@ public class SizeController {
 				ConsolidationRate, Enrollment, Majors);
 		if (sizeService.save(temp)) {
 			model.addAttribute("list", sizeService.listAllSize(pageNum, pageSize));
-			return sizePage;
+			return PageRoutes.sizePage;
 		}else{
-			model.addAttribute(errorSourceParam, "SizePage");
-			model.addAttribute(errorMsgParam, "参数有错，请检查");
-			return errorPage;
+			model.addAttribute(PageRoutes.errorSourceParam, "SizePage");
+			model.addAttribute(PageRoutes.errorMsgParam, "参数有错，请检查");
+			return PageRoutes.errorPage;
 		}
 	}
 	
@@ -151,7 +143,12 @@ public class SizeController {
 	public void deleteSchoolSize(
 			@PathVariable String id,
 			HttpServletRequest request,Model model,HttpServletResponse response) throws IOException{
-		sizeService.deleteSizeByID(id);	
+		SchoolSize temp = sizeService.getSchoolSize(id);
+		if (temp.getAudit()==1){
+			response.sendError(401,"You Can Not Delete An Record After It's Checked");
+			return ;
+		}
+		sizeService.deleteSizeByID(id);
 		response.sendRedirect("../");
 		return ;
 	}
@@ -164,4 +161,12 @@ public class SizeController {
 		response.sendRedirect("../");
 		return ;
 	}
+	
+//	@RequestMapping(value="test",method=RequestMethod.POST)
+//	public void testForm(
+//			SchoolSize temp,HttpServletRequest request,Model model)
+//	{
+//		System.out.println(temp.getArea());
+//		return ;
+//	}
 }
