@@ -41,7 +41,7 @@
   <select id="getAllSize" resultType="java.util.HashMap" parameterType="java.lang.Integer">
     select 
     <include refid="Base_Column_List" />
-    from size limit #{0},#{1}
+    from size order by ID DESC limit #{0},#{1}
   </select>
   
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >

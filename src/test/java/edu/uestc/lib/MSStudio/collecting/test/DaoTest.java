@@ -9,7 +9,6 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import edu.uestc.lib.MSStudio.collecting.dao.FileInfoMapper;
-import edu.uestc.lib.MSStudio.collecting.service.SizeService;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {"classpath:spring-mybatis.xml"})
@@ -22,7 +21,7 @@ public class DaoTest {
 	
 	@Test
 	public void DBTest(){
-		logProducer.info(dao.getAllFile(0, 100));
+		logProducer.info(dao.getAllObject(0, 100));
 	}
 	
 }

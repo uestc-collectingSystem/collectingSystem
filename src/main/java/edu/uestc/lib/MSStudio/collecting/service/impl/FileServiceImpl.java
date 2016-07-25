@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 
 import edu.uestc.lib.MSStudio.collecting.dao.FileInfoMapper;
 import edu.uestc.lib.MSStudio.collecting.model.FileInfo;
-import edu.uestc.lib.MSStudio.collecting.model.SchoolSize;
 import edu.uestc.lib.MSStudio.collecting.service.FileService;
 
 @Service("fileService")
@@ -22,7 +21,7 @@ public class FileServiceImpl implements FileService {
 		// 列举所有的 School 类
 		int pageNum = Integer.valueOf(num);
 		int pageSize = Integer.valueOf(size);
-		return dao.getAllFile((pageNum-1)*pageSize,pageNum*pageSize);
+		return dao.getAllObject((pageNum-1)*pageSize,pageNum*pageSize);
 	}
 
 	@Override
@@ -58,7 +57,7 @@ public class FileServiceImpl implements FileService {
 	@Override
 	public List<FileInfo> listFilePage() {
 		// TODO Auto-generated method stub
-		return dao.getAllFile(0,20);
+		return this.listFilePage("0","20");
 	}
 	
 }

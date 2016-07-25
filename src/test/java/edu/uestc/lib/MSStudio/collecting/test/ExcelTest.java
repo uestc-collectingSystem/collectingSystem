@@ -1,7 +1,5 @@
 package edu.uestc.lib.MSStudio.collecting.test;
 
-import java.util.List;
-
 import org.apache.log4j.Logger;
 import org.junit.Test;
 import org.junit.runner.RunWith;

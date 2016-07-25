@@ -17,7 +17,7 @@ public interface FileInfoMapper {
 
     int updateByPrimaryKey(FileInfo record);
     
-    List<FileInfo> getAllFile(Integer begin,Integer end);
+    List<FileInfo> getAllObject(Integer begin,Integer end);
     
     /**
      * 0 for uncheck

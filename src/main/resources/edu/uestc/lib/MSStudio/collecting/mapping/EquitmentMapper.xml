@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="edu.uestc.lib.MSStudio.collecting.dao.EquitmentMapper" >
-  <resultMap id="BaseResultMap" type="edu.uestc.lib.MSStudio.collecting.model.Equitment" >
+  <resultMap id="BaseResultMap" type="edu.uestc.lib.MSStudio.collecting.model.Equipment" >
     <id column="ID" property="id" jdbcType="INTEGER" />
     <result column="AdmCode" property="admcode" jdbcType="VARCHAR" />
     <result column="Year" property="year" jdbcType="VARCHAR" />
@@ -37,11 +37,16 @@
     from equitment
     where ID = #{id,jdbcType=INTEGER}
   </select>
+  <select id="getAllObject" resultType="java.util.HashMap" parameterType="java.lang.Integer">
+    select 
+    <include refid="Base_Column_List" />
+    from equitment order by ID  DESC limit #{0},#{1}
+  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from equitment
     where ID = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="edu.uestc.lib.MSStudio.collecting.model.Equitment" >
+  <insert id="insert" parameterType="edu.uestc.lib.MSStudio.collecting.model.Equipment" >
     insert into equitment (ID, AdmCode, Year, 
       TotalAssertWorth, TeacEquitWorth, TrainEquitWorth, 
       YearTeacEquitWorth, YearTrainEquitWorth, 
@@ -61,7 +66,7 @@
       #{elecbooks,jdbcType=INTEGER}, #{elecseats,jdbcType=INTEGER}, #{audit,jdbcType=INTEGER}
       )
   </insert>
-  <insert id="insertSelective" parameterType="edu.uestc.lib.MSStudio.collecting.model.Equitment" >
+  <insert id="insertSelective" parameterType="edu.uestc.lib.MSStudio.collecting.model.Equipment" >
     insert into equitment
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -200,7 +205,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="edu.uestc.lib.MSStudio.collecting.model.Equitment" >
+  <update id="updateByPrimaryKeySelective" parameterType="edu.uestc.lib.MSStudio.collecting.model.Equipment" >
     update equitment
     <set >
       <if test="admcode != null" >
@@ -269,7 +274,7 @@
     </set>
     where ID = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="edu.uestc.lib.MSStudio.collecting.model.Equitment" >
+  <update id="updateByPrimaryKey" parameterType="edu.uestc.lib.MSStudio.collecting.model.Equipment" >
     update equitment
     set AdmCode = #{admcode,jdbcType=VARCHAR},
       Year = #{year,jdbcType=VARCHAR},
@@ -293,5 +298,9 @@
       ElecSeats = #{elecseats,jdbcType=INTEGER},
       Audit = #{audit,jdbcType=INTEGER}
     where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="checkByID" parameterType="java.lang.Integer" >
+    update equitment set Audit = #{0}
+    where ID = #{1}
   </update>
 </mapper>

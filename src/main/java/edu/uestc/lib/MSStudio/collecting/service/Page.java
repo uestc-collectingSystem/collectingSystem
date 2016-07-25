@@ -7,6 +7,7 @@ public class Page {
 	private int pageNumber;//页面号
 	private int pageSize=20;//页面大小
 	
+	@SuppressWarnings("unused")
 	private Page(){}
 	
 	public Page(int num,int size,List<Object> result){

@@ -15,31 +15,26 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import edu.uestc.lib.MSStudio.collecting.excel.ReaderUtils;
 import edu.uestc.lib.MSStudio.collecting.model.SchoolSize;
 import edu.uestc.lib.MSStudio.collecting.service.SizeService;
 
 @Controller
 @RequestMapping("/basic/size")
-public class SizeController {
+public class SizeController implements OriginController {
 	//这是一个用来描述基本情况模块中规模子模块中的东西
 	//里面需要用到的是 size 表
 	
 	@Resource
 	private SizeService sizeService;
 	
-	@RequestMapping(value="",method=RequestMethod.GET)
-	public String schoolSizeList(
-			@RequestParam(defaultValue="1") String pageNum,
-			@RequestParam(defaultValue="20") String pageSize,
+	@RequestMapping(value="{pageNum}&{pageSize}",method=RequestMethod.GET)
+	public String indexWithPage(
+			@PathVariable String pageNum,
+			@PathVariable String pageSize,
 			HttpServletRequest request,Model model){
-		model.addAttribute("list", sizeService.listAllSize(pageNum, pageSize));
+		model.addAttribute("list", sizeService.listAllSchoolSize(pageNum, pageSize));
 		return PageRoutes.sizePage;
-	}
-	
-	public static Integer transInteger(String string){
-		if (string.contains(".0"))
-		return Integer.valueOf(string.substring(0, string.length()-2));
-		else return Integer.valueOf(string);
 	}
 	
 	public static SchoolSize preSaveSchoolSize(
@@ -68,13 +63,13 @@ public class SizeController {
 		SchoolSize temp = new SchoolSize();
 		try{
 			temp.setAdmcode(Admcode);
-			temp.setAnnualgraduate(transInteger(AnnualGraduate));
+			temp.setAnnualgraduate(ReaderUtils.transInteger(AnnualGraduate));
 			temp.setArea(new BigDecimal(Area));
 			temp.setAudit(0);
 			temp.setDormarea(new BigDecimal(DormArea));
 			temp.setDormperarea(new BigDecimal(DormPerArea));
-			temp.setEnrollment(transInteger(Enrollment));
-			temp.setMajors(transInteger(Majors));
+			temp.setEnrollment(ReaderUtils.transInteger(Enrollment));
+			temp.setMajors(ReaderUtils.transInteger(Majors));
 			temp.setOfficearea(new BigDecimal(OfficeArea));
 			temp.setOwnproparea(new BigDecimal(OwnPropArea));
 			temp.setPsyarea(new BigDecimal(PsyArea));
@@ -85,7 +80,7 @@ public class SizeController {
 			temp.setStuarea(new BigDecimal(StuArea));
 			temp.setTeaauxarea(new BigDecimal(TeaAuxArea));
 			temp.setTotalarea(new BigDecimal(TotalArea));
-			temp.setTotalstudent(transInteger(TotalStudent));
+			temp.setTotalstudent(ReaderUtils.transInteger(TotalStudent));
 			temp.setTrainarea(new BigDecimal(TrainArea));
 			temp.setConsolidationrate(Double.valueOf(ConsolidationRate));
 			if (Year==null||Year.equals("")) temp.setYear(String.valueOf(Calendar.getInstance().get(Calendar.YEAR)));
@@ -130,7 +125,7 @@ public class SizeController {
 				DormPerArea, TotalStudent, AnnualGraduate, 
 				ConsolidationRate, Enrollment, Majors);
 		if (sizeService.save(temp)) {
-			model.addAttribute("list", sizeService.listAllSize(pageNum, pageSize));
+			model.addAttribute("list", sizeService.listAllSchoolSize(pageNum, pageSize));
 			return PageRoutes.sizePage;
 		}else{
 			model.addAttribute(PageRoutes.errorSourceParam, "SizePage");
@@ -139,8 +134,7 @@ public class SizeController {
 		}
 	}
 	
-	@RequestMapping(value="delete/{id}",method=RequestMethod.GET)
-	public void deleteSchoolSize(
+	public void deleteObject(
 			@PathVariable String id,
 			HttpServletRequest request,Model model,HttpServletResponse response) throws IOException{
 		SchoolSize temp = sizeService.getSchoolSize(id);
@@ -148,25 +142,17 @@ public class SizeController {
 			response.sendError(401,"You Can Not Delete An Record After It's Checked");
 			return ;
 		}
-		sizeService.deleteSizeByID(id);
+		sizeService.deleteObjectByID(id);
 		response.sendRedirect("../");
 		return ;
 	}
 	
-	@RequestMapping(value="check/{id}",method=RequestMethod.GET)
-	public void checkSchoolSize(
+	public void checkObject(
 			@PathVariable String id,
 			HttpServletRequest request,Model model,HttpServletResponse response) throws IOException{
-		sizeService.checkSchoolSize(id);
+		sizeService.checkObjectByID(id);
 		response.sendRedirect("../");
 		return ;
 	}
 	
-//	@RequestMapping(value="test",method=RequestMethod.POST)
-//	public void testForm(
-//			SchoolSize temp,HttpServletRequest request,Model model)
-//	{
-//		System.out.println(temp.getArea());
-//		return ;
-//	}
 }

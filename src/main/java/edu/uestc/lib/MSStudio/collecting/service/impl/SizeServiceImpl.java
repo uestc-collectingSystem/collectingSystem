@@ -57,21 +57,22 @@ public class SizeServiceImpl implements SizeService {
 //	}
 	
 	@Override
-	public List<SchoolSize> listAllSize(String num,String size) {
+	public List<SchoolSize> listAllSchoolSize(String num,String size) {
 		// 列举所有的 School 类
 		int pageNum = Integer.valueOf(num);
 		int pageSize = Integer.valueOf(size);
-		return dao.getAllSize((pageNum-1)*pageSize,pageNum*pageSize);
+		//System.out.println((pageNum-1)*pageSize+" "+pageNum*pageSize);
+		return dao.getAllSize((pageNum-1)*pageSize,pageSize);
 	}
 	
 	@Override
-	public boolean deleteSizeByID(String id){
+	public boolean deleteObjectByID(String id){
 		if (dao.deleteByPrimaryKey(Integer.valueOf(id))!=0) return true;
 		return false;
 	}
 	
 	@Override
-	public boolean checkSchoolSize(String id){
+	public boolean checkObjectByID(String id){
 		if (dao.checkByID(1,Integer.valueOf(id))!=0) return true;
 		else return false;
 	}

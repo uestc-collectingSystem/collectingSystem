@@ -1,17 +1,23 @@
 package edu.uestc.lib.MSStudio.collecting.dao;
 
-import edu.uestc.lib.MSStudio.collecting.model.Equitment;
+import java.util.List;
+
+import edu.uestc.lib.MSStudio.collecting.model.Equipment;
 
 public interface EquitmentMapper {
     int deleteByPrimaryKey(Integer id);
 
-    int insert(Equitment record);
+    int insert(Equipment record);
 
-    int insertSelective(Equitment record);
+    int insertSelective(Equipment record);
 
-    Equitment selectByPrimaryKey(Integer id);
+    Equipment selectByPrimaryKey(Integer id);
 
-    int updateByPrimaryKeySelective(Equitment record);
+    int updateByPrimaryKeySelective(Equipment record);
 
-    int updateByPrimaryKey(Equitment record);
+    int updateByPrimaryKey(Equipment record);
+
+	int checkByID(int i, Integer id);
+	
+	List<Equipment> getAllObject(Integer begin,Integer end);
 }

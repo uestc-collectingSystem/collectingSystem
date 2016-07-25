@@ -14,5 +14,16 @@ public class ReaderUtils {
 		}
 		return null;
 	}
+	
+	public static Integer transInteger(String string){
+		if (string.contains(".0"))
+		return Integer.valueOf(string.substring(0, string.length()-2));
+		else return Integer.valueOf(string);
+	}
 
+	public static Long transLong(String string){
+		if (string.contains(".0"))
+		return Long.valueOf(string.substring(0, string.length()-2));
+		else return Long.valueOf(string);
+	}
 }

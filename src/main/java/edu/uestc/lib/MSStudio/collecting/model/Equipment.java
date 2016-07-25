@@ -2,7 +2,7 @@ package edu.uestc.lib.MSStudio.collecting.model;
 
 import java.math.BigDecimal;
 
-public class Equitment {
+public class Equipment {
     private Integer id;
 
     private String admcode;
