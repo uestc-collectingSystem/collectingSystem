@@ -1,7 +1,12 @@
 package edu.uestc.lib.MSStudio.collecting.controller;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.io.UnsupportedEncodingException;
 import java.util.Iterator;
 import java.util.List;
 
@@ -29,8 +34,11 @@ public class FileController {
 	private FileService fileService;
 	
 	@RequestMapping(value="",method=RequestMethod.GET)
-	public String listFiles(HttpServletRequest request,Model model){
-		model.addAttribute("list", fileService.listFilePage("1","2"));
+	public String listFiles(
+			@RequestParam(value="pageNum",defaultValue="1") String pageNum,
+			@RequestParam(value="pageSize",defaultValue="20")String pageSize,
+			HttpServletRequest request,Model model){
+		model.addAttribute("list", fileService.listFilePage(pageNum,pageSize));
 		return PageRoutes.filePage;
 	}
 	
@@ -82,7 +90,9 @@ public class FileController {
 			while (nameList.hasNext()){
 				MultipartFile file = multiRequest.getFile(nameList.next());
 				//System.out.println(file.getOriginalFilename());
-				file.transferTo(new File(sourcePath+file.getOriginalFilename()));
+				File old = new File(sourcePath+file.getOriginalFilename());
+				if (old.exists()) {response.sendError(400, "File Parameter Error,A Repeating File");}
+				file.transferTo(old);
 				FileInfo temp = FileController.preSaveFileInfo(name, writer, source, writeTime, sourcePath+file.getOriginalFilename());
 				if (temp==null){
 					response.sendError(400, "Request Parameters Illegal");
@@ -100,7 +110,7 @@ public class FileController {
 		else {
 			response.sendError(400, "None Request Parameters:file/files");
 		}
-		model.addAttribute("list", fileService.listFilePage("1","2"));
+		model.addAttribute("list", fileService.listFilePage());
 		return PageRoutes.filePage;
 	}
 	
@@ -123,7 +133,7 @@ public class FileController {
 			}
 		}
 		else response.sendError(404, "Can Not Find Object");
-		model.addAttribute("list", fileService.listFilePage("1","2"));
+		model.addAttribute("list", fileService.listFilePage());
 		return PageRoutes.filePage;
 	}
 	
@@ -136,5 +146,33 @@ public class FileController {
 		}
 		else response.sendError(404, "Can Not Find Object");
 		return ;
+	}
+	
+	@RequestMapping(value="/download/{id}",method=RequestMethod.GET)
+	public void downloadFile(
+			@PathVariable String id,
+			HttpServletRequest request,Model model,HttpServletResponse response) throws Exception{
+		FileInfo temp = fileService.findById(id);
+		response.setCharacterEncoding("utf-8");
+		response.setContentType("multipart/form-data");
+		response.setHeader("Content-Disposition", "attachment;fileName="+new String(temp.getName().getBytes("utf-8"),"iso-8859-1"));
+		System.out.println(temp.getName());
+		try {
+			InputStream inputStream = new FileInputStream(new File(temp.getUrl()));
+
+			OutputStream os = response.getOutputStream();
+			byte[] b = new byte[2048];
+			int length;
+			while ((length = inputStream.read(b)) > 0) {
+				os.write(b, 0, length);
+			}
+			 // 这里主要关闭。
+			os.close();
+			inputStream.close();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 }

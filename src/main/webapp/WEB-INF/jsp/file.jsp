@@ -14,18 +14,17 @@
 	<table border="1">
 		<tr>
 		<td>文件名</td>
-		<td>上传路径</td>
 		<td>上传时间</td>
 		<td>上传人员帐号</td>
 		<td>文件所属模块</td>
 		<td>文件审核情况</td>
+		<td>下载链接</td>
 		<td>删除文件</td>
 		<td>审核文件</td>
 		</tr>
 	<c:forEach items="${list}" var="li">
 		<tr>
 			<td>${li.Name}</td>
-			<td>${li.Url}</td>
 			<td>${li.WriteTime}</td>
 			<td>${li.Writer}</td>
 			<td>${li.Source}</td>
@@ -33,6 +32,7 @@
 				<c:if test="${li.Audit==1}">通过</c:if>
 				<c:if test="${li.Audit==0}">未通过</c:if>
 			</td>
+			<td><a target="_blank" href="./download/<c:out value="${li.ID}"/>">下载</a></td>
 			<td>
 				<c:if test="${li.Audit==0}"><a href="./delete/<c:out value="${li.ID}"/>">删除该文件</a></c:if>
 				<c:if test="${li.Audit==1}">信息已通过审批</c:if>
@@ -42,12 +42,13 @@
 				<a href="./check/<c:out value="${li.ID}"/>">通过审核</a></c:if>
 				<c:if test="${li.Audit==1}">信息已通过审批</c:if>
 			</td>
+			
 		</tr>
 	</c:forEach>
 	</table>
 	
 	<form action="./create" enctype="multipart/form-data" method="post">  
-        <div id="newUpload2">  
+        <div id="upload">
             文件上传：<input type="file" name="file">
         </div><!-- 想加 js 自己加,用 jQuery 增加行数可以做到多文件上传 -->
         	文件名：<input type="text" name="name"/>

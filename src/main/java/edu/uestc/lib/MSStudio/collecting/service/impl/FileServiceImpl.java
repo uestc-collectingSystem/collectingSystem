@@ -54,5 +54,11 @@ public class FileServiceImpl implements FileService {
 			return true;
 		}
 	}
+
+	@Override
+	public List<FileInfo> listFilePage() {
+		// TODO Auto-generated method stub
+		return dao.getAllFile(0,20);
+	}
 	
 }
