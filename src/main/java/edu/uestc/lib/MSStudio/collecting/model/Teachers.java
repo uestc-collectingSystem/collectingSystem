@@ -67,6 +67,10 @@ public class Teachers {
 
     private Integer audit;
 
+    private Integer exerproteac;
+
+    private Integer foreignteac;
+
     public Integer getId() {
         return id;
     }
@@ -321,5 +325,21 @@ public class Teachers {
 
     public void setAudit(Integer audit) {
         this.audit = audit;
+    }
+
+    public Integer getExerproteac() {
+        return exerproteac;
+    }
+
+    public void setExerproteac(Integer exerproteac) {
+        this.exerproteac = exerproteac;
+    }
+
+    public Integer getForeignteac() {
+        return foreignteac;
+    }
+
+    public void setForeignteac(Integer foreignteac) {
+        this.foreignteac = foreignteac;
     }
 }

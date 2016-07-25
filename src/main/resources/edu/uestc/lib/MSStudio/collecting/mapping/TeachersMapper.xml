@@ -34,13 +34,15 @@
     <result column="CityDiscipLeader" property="citydiscipleader" jdbcType="INTEGER" />
     <result column="ProvSuper" property="provsuper" jdbcType="INTEGER" />
     <result column="Audit" property="audit" jdbcType="INTEGER" />
+    <result column="ExerProTeac" property="exerproteac" jdbcType="INTEGER" />
+    <result column="ForeignTeac" property="foreignteac" jdbcType="INTEGER" />
   </resultMap>
   <sql id="Base_Column_List" >
     ID, Admcode, Year, StaffNum, StaffAdmin, StaffPrepJob, FullTime, BasicCourse, Course, 
     IndustryEnterprise, UndergraLess, Undergra, FullPostgrad, SubHighMore, IntermediateGrade, 
     JuniorTitle, NoConferTeac, ThreeFiveLess, ThreeSixFourFive, FourSixFiveFive, FiveSixMore, 
     Male, Female, DoubleTeac, FullClassHour, CourseClassHour, InduEnterHour, CounselCertificate, 
-    FulltimeCounsel, CityDiscipLeader, ProvSuper, Audit
+    FulltimeCounsel, CityDiscipLeader, ProvSuper, Audit, ExerProTeac, ForeignTeac
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
@@ -63,7 +65,8 @@
       Male, Female, DoubleTeac, 
       FullClassHour, CourseClassHour, InduEnterHour, 
       CounselCertificate, FulltimeCounsel, CityDiscipLeader, 
-      ProvSuper, Audit)
+      ProvSuper, Audit, ExerProTeac, 
+      ForeignTeac)
     values (#{id,jdbcType=INTEGER}, #{admcode,jdbcType=VARCHAR}, #{year,jdbcType=VARCHAR}, 
       #{staffnum,jdbcType=INTEGER}, #{staffadmin,jdbcType=INTEGER}, #{staffprepjob,jdbcType=INTEGER}, 
       #{fulltime,jdbcType=INTEGER}, #{basiccourse,jdbcType=INTEGER}, #{course,jdbcType=INTEGER}, 
@@ -74,7 +77,8 @@
       #{male,jdbcType=INTEGER}, #{female,jdbcType=INTEGER}, #{doubleteac,jdbcType=INTEGER}, 
       #{fullclasshour,jdbcType=DECIMAL}, #{courseclasshour,jdbcType=DECIMAL}, #{induenterhour,jdbcType=INTEGER}, 
       #{counselcertificate,jdbcType=INTEGER}, #{fulltimecounsel,jdbcType=INTEGER}, #{citydiscipleader,jdbcType=INTEGER}, 
-      #{provsuper,jdbcType=INTEGER}, #{audit,jdbcType=INTEGER})
+      #{provsuper,jdbcType=INTEGER}, #{audit,jdbcType=INTEGER}, #{exerproteac,jdbcType=INTEGER}, 
+      #{foreignteac,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="edu.uestc.lib.MSStudio.collecting.model.Teachers" >
     insert into teachers
@@ -175,6 +179,12 @@
       <if test="audit != null" >
         Audit,
       </if>
+      <if test="exerproteac != null" >
+        ExerProTeac,
+      </if>
+      <if test="foreignteac != null" >
+        ForeignTeac,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -272,6 +282,12 @@
       </if>
       <if test="audit != null" >
         #{audit,jdbcType=INTEGER},
+      </if>
+      <if test="exerproteac != null" >
+        #{exerproteac,jdbcType=INTEGER},
+      </if>
+      <if test="foreignteac != null" >
+        #{foreignteac,jdbcType=INTEGER},
       </if>
     </trim>
   </insert>
@@ -371,6 +387,12 @@
       <if test="audit != null" >
         Audit = #{audit,jdbcType=INTEGER},
       </if>
+      <if test="exerproteac != null" >
+        ExerProTeac = #{exerproteac,jdbcType=INTEGER},
+      </if>
+      <if test="foreignteac != null" >
+        ForeignTeac = #{foreignteac,jdbcType=INTEGER},
+      </if>
     </set>
     where ID = #{id,jdbcType=INTEGER}
   </update>
@@ -406,7 +428,9 @@
       FulltimeCounsel = #{fulltimecounsel,jdbcType=INTEGER},
       CityDiscipLeader = #{citydiscipleader,jdbcType=INTEGER},
       ProvSuper = #{provsuper,jdbcType=INTEGER},
-      Audit = #{audit,jdbcType=INTEGER}
+      Audit = #{audit,jdbcType=INTEGER},
+      ExerProTeac = #{exerproteac,jdbcType=INTEGER},
+      ForeignTeac = #{foreignteac,jdbcType=INTEGER}
     where ID = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

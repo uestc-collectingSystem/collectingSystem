@@ -23,13 +23,21 @@
     <result column="FullEnterTime" property="fullentertime" jdbcType="INTEGER" />
     <result column="PartTimeClassRadio" property="parttimeclassradio" jdbcType="DECIMAL" />
     <result column="Audit" property="audit" jdbcType="INTEGER" />
+    <result column="BookPublishCount" property="bookpublishcount" jdbcType="INTEGER" />
+    <result column="FullTimeStu" property="fulltimestu" jdbcType="INTEGER" />
+    <result column="GraduEnterRate" property="graduenterrate" jdbcType="INTEGER" />
+    <result column="DevelopeIncomeCount" property="developeincomecount" jdbcType="DECIMAL" />
+    <result column="TeacOutcomeCount" property="teacoutcomecount" jdbcType="DECIMAL" />
+    <result column="CoopDonateCount" property="coopdonatecount" jdbcType="DECIMAL" />
+    <result column="ExperBaseCount" property="experbasecount" jdbcType="INTEGER" />
   </resultMap>
   <sql id="Base_Column_List" >
     ID, Admcode, Year, MajorNum, CoopAgreeEnterp, CoopAgreeMajor, CoopEnterpJoinTeachMajor, 
     CoopEnterpJoinTeachTeacher, CoopEnterpJoinTeachClass, CoopEnterpFund, CoopEnterpArrivalFund, 
     CoopEnterpEquitWorth, EnterpBuildReseaDevelop, OffSchoTeacherTrainBase, ProdTrainBaseVal, 
     SchoEnterpCoopOrderClassNum, SchoEnterpDevelopCourse, FullEnterPrac, FullEnterTime, 
-    PartTimeClassRadio, Audit
+    PartTimeClassRadio, Audit, BookPublishCount, FullTimeStu, GraduEnterRate, DevelopeIncomeCount, 
+    TeacOutcomeCount, CoopDonateCount, ExperBaseCount
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
@@ -50,8 +58,10 @@
       EnterpBuildReseaDevelop, OffSchoTeacherTrainBase, 
       ProdTrainBaseVal, SchoEnterpCoopOrderClassNum, 
       SchoEnterpDevelopCourse, FullEnterPrac, 
-      FullEnterTime, PartTimeClassRadio, Audit
-      )
+      FullEnterTime, PartTimeClassRadio, Audit, 
+      BookPublishCount, FullTimeStu, GraduEnterRate, 
+      DevelopeIncomeCount, TeacOutcomeCount, 
+      CoopDonateCount, ExperBaseCount)
     values (#{id,jdbcType=INTEGER}, #{admcode,jdbcType=VARCHAR}, #{year,jdbcType=VARCHAR}, 
       #{majornum,jdbcType=INTEGER}, #{coopagreeenterp,jdbcType=INTEGER}, #{coopagreemajor,jdbcType=INTEGER}, 
       #{coopenterpjointeachmajor,jdbcType=INTEGER}, #{coopenterpjointeachteacher,jdbcType=INTEGER}, 
@@ -60,8 +70,10 @@
       #{enterpbuildreseadevelop,jdbcType=INTEGER}, #{offschoteachertrainbase,jdbcType=INTEGER}, 
       #{prodtrainbaseval,jdbcType=DECIMAL}, #{schoenterpcooporderclassnum,jdbcType=INTEGER}, 
       #{schoenterpdevelopcourse,jdbcType=INTEGER}, #{fullenterprac,jdbcType=DECIMAL}, 
-      #{fullentertime,jdbcType=INTEGER}, #{parttimeclassradio,jdbcType=DECIMAL}, #{audit,jdbcType=INTEGER}
-      )
+      #{fullentertime,jdbcType=INTEGER}, #{parttimeclassradio,jdbcType=DECIMAL}, #{audit,jdbcType=INTEGER}, 
+      #{bookpublishcount,jdbcType=INTEGER}, #{fulltimestu,jdbcType=INTEGER}, #{graduenterrate,jdbcType=INTEGER}, 
+      #{developeincomecount,jdbcType=DECIMAL}, #{teacoutcomecount,jdbcType=DECIMAL}, 
+      #{coopdonatecount,jdbcType=DECIMAL}, #{experbasecount,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="edu.uestc.lib.MSStudio.collecting.model.SchoolEnterprise" >
     insert into schoolenterprise
@@ -129,6 +141,27 @@
       <if test="audit != null" >
         Audit,
       </if>
+      <if test="bookpublishcount != null" >
+        BookPublishCount,
+      </if>
+      <if test="fulltimestu != null" >
+        FullTimeStu,
+      </if>
+      <if test="graduenterrate != null" >
+        GraduEnterRate,
+      </if>
+      <if test="developeincomecount != null" >
+        DevelopeIncomeCount,
+      </if>
+      <if test="teacoutcomecount != null" >
+        TeacOutcomeCount,
+      </if>
+      <if test="coopdonatecount != null" >
+        CoopDonateCount,
+      </if>
+      <if test="experbasecount != null" >
+        ExperBaseCount,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -193,6 +226,27 @@
       </if>
       <if test="audit != null" >
         #{audit,jdbcType=INTEGER},
+      </if>
+      <if test="bookpublishcount != null" >
+        #{bookpublishcount,jdbcType=INTEGER},
+      </if>
+      <if test="fulltimestu != null" >
+        #{fulltimestu,jdbcType=INTEGER},
+      </if>
+      <if test="graduenterrate != null" >
+        #{graduenterrate,jdbcType=INTEGER},
+      </if>
+      <if test="developeincomecount != null" >
+        #{developeincomecount,jdbcType=DECIMAL},
+      </if>
+      <if test="teacoutcomecount != null" >
+        #{teacoutcomecount,jdbcType=DECIMAL},
+      </if>
+      <if test="coopdonatecount != null" >
+        #{coopdonatecount,jdbcType=DECIMAL},
+      </if>
+      <if test="experbasecount != null" >
+        #{experbasecount,jdbcType=INTEGER},
       </if>
     </trim>
   </insert>
@@ -259,6 +313,27 @@
       <if test="audit != null" >
         Audit = #{audit,jdbcType=INTEGER},
       </if>
+      <if test="bookpublishcount != null" >
+        BookPublishCount = #{bookpublishcount,jdbcType=INTEGER},
+      </if>
+      <if test="fulltimestu != null" >
+        FullTimeStu = #{fulltimestu,jdbcType=INTEGER},
+      </if>
+      <if test="graduenterrate != null" >
+        GraduEnterRate = #{graduenterrate,jdbcType=INTEGER},
+      </if>
+      <if test="developeincomecount != null" >
+        DevelopeIncomeCount = #{developeincomecount,jdbcType=DECIMAL},
+      </if>
+      <if test="teacoutcomecount != null" >
+        TeacOutcomeCount = #{teacoutcomecount,jdbcType=DECIMAL},
+      </if>
+      <if test="coopdonatecount != null" >
+        CoopDonateCount = #{coopdonatecount,jdbcType=DECIMAL},
+      </if>
+      <if test="experbasecount != null" >
+        ExperBaseCount = #{experbasecount,jdbcType=INTEGER},
+      </if>
     </set>
     where ID = #{id,jdbcType=INTEGER}
   </update>
@@ -283,7 +358,14 @@
       FullEnterPrac = #{fullenterprac,jdbcType=DECIMAL},
       FullEnterTime = #{fullentertime,jdbcType=INTEGER},
       PartTimeClassRadio = #{parttimeclassradio,jdbcType=DECIMAL},
-      Audit = #{audit,jdbcType=INTEGER}
+      Audit = #{audit,jdbcType=INTEGER},
+      BookPublishCount = #{bookpublishcount,jdbcType=INTEGER},
+      FullTimeStu = #{fulltimestu,jdbcType=INTEGER},
+      GraduEnterRate = #{graduenterrate,jdbcType=INTEGER},
+      DevelopeIncomeCount = #{developeincomecount,jdbcType=DECIMAL},
+      TeacOutcomeCount = #{teacoutcomecount,jdbcType=DECIMAL},
+      CoopDonateCount = #{coopdonatecount,jdbcType=DECIMAL},
+      ExperBaseCount = #{experbasecount,jdbcType=INTEGER}
     where ID = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

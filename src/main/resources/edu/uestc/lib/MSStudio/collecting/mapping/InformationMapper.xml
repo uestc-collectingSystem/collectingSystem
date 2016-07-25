@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="edu.uestc.lib.MSStudio.collecting.dao.InformationMapper" >
+  <resultMap id="BaseResultMap" type="edu.uestc.lib.MSStudio.collecting.model.Information" >
+    <id column="ID" property="id" jdbcType="INTEGER" />
+    <result column="Admcode" property="admcode" jdbcType="VARCHAR" />
+    <result column="Year" property="year" jdbcType="VARCHAR" />
+    <result column="EducateInfo" property="educateinfo" jdbcType="INTEGER" />
+    <result column="Server" property="server" jdbcType="INTEGER" />
+    <result column="NetworkNum" property="networknum" jdbcType="INTEGER" />
+    <result column="NetworkMain" property="networkmain" jdbcType="INTEGER" />
+    <result column="VideoStu" property="videostu" jdbcType="DECIMAL" />
+    <result column="ElecBookStu" property="elecbookstu" jdbcType="DECIMAL" />
+    <result column="TeacComputer" property="teaccomputer" jdbcType="INTEGER" />
+    <result column="TeacCompStu" property="teaccompstu" jdbcType="DECIMAL" />
+    <result column="Audit" property="audit" jdbcType="INTEGER" />
+    <result column="NetMediaRoom" property="netmediaroom" jdbcType="INTEGER" />
+    <result column="NetClassCount" property="netclasscount" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, Admcode, Year, EducateInfo, Server, NetworkNum, NetworkMain, VideoStu, ElecBookStu, 
+    TeacComputer, TeacCompStu, Audit, NetMediaRoom, NetClassCount
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from information
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from information
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="edu.uestc.lib.MSStudio.collecting.model.Information" >
+    insert into information (ID, Admcode, Year, 
+      EducateInfo, Server, NetworkNum, 
+      NetworkMain, VideoStu, ElecBookStu, 
+      TeacComputer, TeacCompStu, Audit, 
+      NetMediaRoom, NetClassCount)
+    values (#{id,jdbcType=INTEGER}, #{admcode,jdbcType=VARCHAR}, #{year,jdbcType=VARCHAR}, 
+      #{educateinfo,jdbcType=INTEGER}, #{server,jdbcType=INTEGER}, #{networknum,jdbcType=INTEGER}, 
+      #{networkmain,jdbcType=INTEGER}, #{videostu,jdbcType=DECIMAL}, #{elecbookstu,jdbcType=DECIMAL}, 
+      #{teaccomputer,jdbcType=INTEGER}, #{teaccompstu,jdbcType=DECIMAL}, #{audit,jdbcType=INTEGER}, 
+      #{netmediaroom,jdbcType=INTEGER}, #{netclasscount,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="edu.uestc.lib.MSStudio.collecting.model.Information" >
+    insert into information
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="admcode != null" >
+        Admcode,
+      </if>
+      <if test="year != null" >
+        Year,
+      </if>
+      <if test="educateinfo != null" >
+        EducateInfo,
+      </if>
+      <if test="server != null" >
+        Server,
+      </if>
+      <if test="networknum != null" >
+        NetworkNum,
+      </if>
+      <if test="networkmain != null" >
+        NetworkMain,
+      </if>
+      <if test="videostu != null" >
+        VideoStu,
+      </if>
+      <if test="elecbookstu != null" >
+        ElecBookStu,
+      </if>
+      <if test="teaccomputer != null" >
+        TeacComputer,
+      </if>
+      <if test="teaccompstu != null" >
+        TeacCompStu,
+      </if>
+      <if test="audit != null" >
+        Audit,
+      </if>
+      <if test="netmediaroom != null" >
+        NetMediaRoom,
+      </if>
+      <if test="netclasscount != null" >
+        NetClassCount,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="admcode != null" >
+        #{admcode,jdbcType=VARCHAR},
+      </if>
+      <if test="year != null" >
+        #{year,jdbcType=VARCHAR},
+      </if>
+      <if test="educateinfo != null" >
+        #{educateinfo,jdbcType=INTEGER},
+      </if>
+      <if test="server != null" >
+        #{server,jdbcType=INTEGER},
+      </if>
+      <if test="networknum != null" >
+        #{networknum,jdbcType=INTEGER},
+      </if>
+      <if test="networkmain != null" >
+        #{networkmain,jdbcType=INTEGER},
+      </if>
+      <if test="videostu != null" >
+        #{videostu,jdbcType=DECIMAL},
+      </if>
+      <if test="elecbookstu != null" >
+        #{elecbookstu,jdbcType=DECIMAL},
+      </if>
+      <if test="teaccomputer != null" >
+        #{teaccomputer,jdbcType=INTEGER},
+      </if>
+      <if test="teaccompstu != null" >
+        #{teaccompstu,jdbcType=DECIMAL},
+      </if>
+      <if test="audit != null" >
+        #{audit,jdbcType=INTEGER},
+      </if>
+      <if test="netmediaroom != null" >
+        #{netmediaroom,jdbcType=INTEGER},
+      </if>
+      <if test="netclasscount != null" >
+        #{netclasscount,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="edu.uestc.lib.MSStudio.collecting.model.Information" >
+    update information
+    <set >
+      <if test="admcode != null" >
+        Admcode = #{admcode,jdbcType=VARCHAR},
+      </if>
+      <if test="year != null" >
+        Year = #{year,jdbcType=VARCHAR},
+      </if>
+      <if test="educateinfo != null" >
+        EducateInfo = #{educateinfo,jdbcType=INTEGER},
+      </if>
+      <if test="server != null" >
+        Server = #{server,jdbcType=INTEGER},
+      </if>
+      <if test="networknum != null" >
+        NetworkNum = #{networknum,jdbcType=INTEGER},
+      </if>
+      <if test="networkmain != null" >
+        NetworkMain = #{networkmain,jdbcType=INTEGER},
+      </if>
+      <if test="videostu != null" >
+        VideoStu = #{videostu,jdbcType=DECIMAL},
+      </if>
+      <if test="elecbookstu != null" >
+        ElecBookStu = #{elecbookstu,jdbcType=DECIMAL},
+      </if>
+      <if test="teaccomputer != null" >
+        TeacComputer = #{teaccomputer,jdbcType=INTEGER},
+      </if>
+      <if test="teaccompstu != null" >
+        TeacCompStu = #{teaccompstu,jdbcType=DECIMAL},
+      </if>
+      <if test="audit != null" >
+        Audit = #{audit,jdbcType=INTEGER},
+      </if>
+      <if test="netmediaroom != null" >
+        NetMediaRoom = #{netmediaroom,jdbcType=INTEGER},
+      </if>
+      <if test="netclasscount != null" >
+        NetClassCount = #{netclasscount,jdbcType=INTEGER},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="edu.uestc.lib.MSStudio.collecting.model.Information" >
+    update information
+    set Admcode = #{admcode,jdbcType=VARCHAR},
+      Year = #{year,jdbcType=VARCHAR},
+      EducateInfo = #{educateinfo,jdbcType=INTEGER},
+      Server = #{server,jdbcType=INTEGER},
+      NetworkNum = #{networknum,jdbcType=INTEGER},
+      NetworkMain = #{networkmain,jdbcType=INTEGER},
+      VideoStu = #{videostu,jdbcType=DECIMAL},
+      ElecBookStu = #{elecbookstu,jdbcType=DECIMAL},
+      TeacComputer = #{teaccomputer,jdbcType=INTEGER},
+      TeacCompStu = #{teaccompstu,jdbcType=DECIMAL},
+      Audit = #{audit,jdbcType=INTEGER},
+      NetMediaRoom = #{netmediaroom,jdbcType=INTEGER},
+      NetClassCount = #{netclasscount,jdbcType=INTEGER}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

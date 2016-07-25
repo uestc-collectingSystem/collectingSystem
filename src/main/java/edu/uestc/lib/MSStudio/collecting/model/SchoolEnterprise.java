@@ -45,6 +45,20 @@ public class SchoolEnterprise {
 
     private Integer audit;
 
+    private Integer bookpublishcount;
+
+    private Integer fulltimestu;
+
+    private Integer graduenterrate;
+
+    private BigDecimal developeincomecount;
+
+    private BigDecimal teacoutcomecount;
+
+    private BigDecimal coopdonatecount;
+
+    private Integer experbasecount;
+
     public Integer getId() {
         return id;
     }
@@ -211,5 +225,61 @@ public class SchoolEnterprise {
 
     public void setAudit(Integer audit) {
         this.audit = audit;
+    }
+
+    public Integer getBookpublishcount() {
+        return bookpublishcount;
+    }
+
+    public void setBookpublishcount(Integer bookpublishcount) {
+        this.bookpublishcount = bookpublishcount;
+    }
+
+    public Integer getFulltimestu() {
+        return fulltimestu;
+    }
+
+    public void setFulltimestu(Integer fulltimestu) {
+        this.fulltimestu = fulltimestu;
+    }
+
+    public Integer getGraduenterrate() {
+        return graduenterrate;
+    }
+
+    public void setGraduenterrate(Integer graduenterrate) {
+        this.graduenterrate = graduenterrate;
+    }
+
+    public BigDecimal getDevelopeincomecount() {
+        return developeincomecount;
+    }
+
+    public void setDevelopeincomecount(BigDecimal developeincomecount) {
+        this.developeincomecount = developeincomecount;
+    }
+
+    public BigDecimal getTeacoutcomecount() {
+        return teacoutcomecount;
+    }
+
+    public void setTeacoutcomecount(BigDecimal teacoutcomecount) {
+        this.teacoutcomecount = teacoutcomecount;
+    }
+
+    public BigDecimal getCoopdonatecount() {
+        return coopdonatecount;
+    }
+
+    public void setCoopdonatecount(BigDecimal coopdonatecount) {
+        this.coopdonatecount = coopdonatecount;
+    }
+
+    public Integer getExperbasecount() {
+        return experbasecount;
+    }
+
+    public void setExperbasecount(Integer experbasecount) {
+        this.experbasecount = experbasecount;
     }
 }
