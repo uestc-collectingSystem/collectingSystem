@@ -19,5 +19,6 @@ public class PageRoutes {
 	
 	public static final String informationPage = "basic/info";
 	
+	public static final String stuQuaPage = "dev/stu";
 	
 }
