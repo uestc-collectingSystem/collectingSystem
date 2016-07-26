@@ -50,6 +50,11 @@
     from teachers
     where ID = #{id,jdbcType=INTEGER}
   </select>
+  <select id="getAllObject" resultType="java.util.HashMap" parameterType="java.lang.Integer">
+    select 
+    <include refid="Base_Column_List" />
+    from teachers order by ID  DESC limit #{0},#{1}
+  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from teachers
     where ID = #{id,jdbcType=INTEGER}
@@ -432,5 +437,9 @@
       ExerProTeac = #{exerproteac,jdbcType=INTEGER},
       ForeignTeac = #{foreignteac,jdbcType=INTEGER}
     where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="checkByID" parameterType="java.lang.Integer" >
+    update teachers set Audit = #{0}
+    where ID = #{1}
   </update>
 </mapper>

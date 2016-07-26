@@ -1,5 +1,7 @@
 package edu.uestc.lib.MSStudio.collecting.dao;
 
+import java.util.List;
+
 import edu.uestc.lib.MSStudio.collecting.model.Teachers;
 
 public interface TeachersMapper {
@@ -14,4 +16,8 @@ public interface TeachersMapper {
     int updateByPrimaryKeySelective(Teachers record);
 
     int updateByPrimaryKey(Teachers record);
+
+	int checkByID(int i, Integer id);
+
+	List<Teachers> getAllObject(int begin, int size);
 }

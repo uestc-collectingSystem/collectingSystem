@@ -6,15 +6,15 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
-import edu.uestc.lib.MSStudio.collecting.dao.EquitmentMapper;
-import edu.uestc.lib.MSStudio.collecting.model.Equipment;
-import edu.uestc.lib.MSStudio.collecting.service.EquipService;
+import edu.uestc.lib.MSStudio.collecting.dao.TeachersMapper;
+import edu.uestc.lib.MSStudio.collecting.model.Teachers;
+import edu.uestc.lib.MSStudio.collecting.service.TeacherService;
 
-@Service("equipService")
-public class EquipServiceImpl implements EquipService{
+@Service("teacherService")
+public class TeacherServiceImpl implements TeacherService{
 
 	@Resource
-	private EquitmentMapper dao;
+	private TeachersMapper dao;
 	
 	@Override
 	public boolean deleteObjectByID(String id) {
@@ -31,20 +31,20 @@ public class EquipServiceImpl implements EquipService{
 	}
 
 	@Override
-	public Equipment getEquipment(String id) {
+	public Teachers getTeacher(String id) {
 		// TODO Auto-generated method stub
 		return dao.selectByPrimaryKey(Integer.valueOf(id));
 	}
 
 	@Override
-	public boolean save(Equipment record) {
+	public boolean save(Teachers record) {
 		// TODO Auto-generated method stub
 		if (dao.insert(record)!=0) return true;
 		return true;
 	}
 
 	@Override
-	public List<Equipment> listAllEquipment(String num, String size) {
+	public List<Teachers> listAllTeacher(String num, String size) {
 		// TODO Auto-generated method stub
 		int pageNum = Integer.valueOf(num);
 		int pageSize = Integer.valueOf(size);
@@ -52,4 +52,5 @@ public class EquipServiceImpl implements EquipService{
 		return dao.getAllObject((pageNum-1)*pageSize,pageSize);
 	}
 
+		
 }
