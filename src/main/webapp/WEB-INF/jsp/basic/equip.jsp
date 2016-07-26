@@ -9,7 +9,7 @@
 <title>数据录入部分</title>
 </head>
 <body>
-<h1>基础情况：规模</h1>
+<h1>基础情况：教师团队</h1>
 	<h2>错误信息：${ErrorMsg}</h2>
 	<table border="1">
 		<tr>

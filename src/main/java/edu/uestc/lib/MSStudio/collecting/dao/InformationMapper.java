@@ -1,5 +1,7 @@
 package edu.uestc.lib.MSStudio.collecting.dao;
 
+import java.util.List;
+
 import edu.uestc.lib.MSStudio.collecting.model.Information;
 
 public interface InformationMapper {
@@ -14,4 +16,8 @@ public interface InformationMapper {
     int updateByPrimaryKeySelective(Information record);
 
     int updateByPrimaryKey(Information record);
+    
+    int checkByID(int i, Integer id);
+
+	List<Information> getAllObject(int begin, int size);
 }

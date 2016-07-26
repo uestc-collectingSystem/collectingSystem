@@ -20,7 +20,7 @@ import edu.uestc.lib.MSStudio.collecting.model.SchoolSize;
 import edu.uestc.lib.MSStudio.collecting.service.SizeService;
 
 @Controller
-@RequestMapping("/basic/size")
+@RequestMapping("basic/size")
 public class SizeController implements OriginController {
 	//这是一个用来描述基本情况模块中规模子模块中的东西
 	//里面需要用到的是 size 表

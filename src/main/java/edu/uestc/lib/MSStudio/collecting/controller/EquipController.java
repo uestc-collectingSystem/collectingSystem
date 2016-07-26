@@ -140,7 +140,7 @@ public class EquipController implements OriginController{
 				ElecBooks, ElecSeats);
 		try{
 			equipService.save(temp);
-			return this.indexWithPage(request, model);
+			return this.indexWithPage("1", request, model);
 		}catch(Exception e){
 			model.addAttribute(PageRoutes.errorSourceParam, "EquipPage");
 			model.addAttribute(PageRoutes.errorMsgParam, "参数有错，请检查:");

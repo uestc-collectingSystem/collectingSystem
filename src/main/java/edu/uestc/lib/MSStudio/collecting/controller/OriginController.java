@@ -15,7 +15,11 @@ public interface OriginController {
 	
 	@RequestMapping(value="",method=RequestMethod.GET)
 	public default String indexWithPage(
-			HttpServletRequest request,Model model){
+			HttpServletRequest request,Model model,HttpServletResponse response) throws IOException{
+		if (request.getRequestURL().reverse().charAt(0)!='/'){
+			response.sendRedirect(request.getRequestURL().append('/').toString());
+		}
+		
 		return indexWithPage("1", "20", request, model);
 	}
 	

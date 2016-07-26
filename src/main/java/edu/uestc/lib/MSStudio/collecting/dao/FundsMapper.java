@@ -1,5 +1,7 @@
 package edu.uestc.lib.MSStudio.collecting.dao;
 
+import java.util.List;
+
 import edu.uestc.lib.MSStudio.collecting.model.Funds;
 
 public interface FundsMapper {
@@ -14,4 +16,9 @@ public interface FundsMapper {
     int updateByPrimaryKeySelective(Funds record);
 
     int updateByPrimaryKey(Funds record);
+    
+    int checkByID(int i, Integer id);
+
+	List<Funds> getAllObject(int begin, int size);
+
 }

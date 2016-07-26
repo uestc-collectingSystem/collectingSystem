@@ -14,4 +14,10 @@ public class PageRoutes {
 	public static final String equipmentPage = "basic/equip";
 	
 	public static final String teacherPage = "basic/teachers";
+	
+	public static final String fundPage = "basic/funds";
+	
+	public static final String informationPage = "basic/info";
+	
+	
 }
