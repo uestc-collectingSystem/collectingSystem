@@ -95,7 +95,7 @@ public class ProjectController implements OriginController{
 			}catch(Exception e){
 				model.addAttribute(PageRoutes.errorSourceParam, "TeachersPage");
 				model.addAttribute(PageRoutes.errorMsgParam, "参数有错，请检查:");
-				//e.printStackTrace();
+				e.printStackTrace();
 				return PageRoutes.errorPage;
 		}
 	}

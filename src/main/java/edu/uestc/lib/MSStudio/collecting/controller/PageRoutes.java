@@ -33,6 +33,8 @@ public class PageRoutes {
 	
 	public static final String quaProjectPage = "qua/project";
 	
+	public static final String quaEducationPage = "qua/education";
+	
 	
 	
 }
