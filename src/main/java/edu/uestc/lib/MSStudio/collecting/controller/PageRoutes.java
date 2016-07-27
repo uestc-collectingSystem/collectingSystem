@@ -40,4 +40,12 @@ public class PageRoutes {
 	public static final String internshipPage = "coor/internship";
 	
 	public static final String groupschoolPage = "coor/group";
+	
+	public static final String skillTrainPage = "social/skill";
+	
+	public static final String socialServicePage="social/service";
+	
+	public static final String counpaSupportPage = "social/support";
+	
+	public static final String partyBuildPage = "social/party";
 }
