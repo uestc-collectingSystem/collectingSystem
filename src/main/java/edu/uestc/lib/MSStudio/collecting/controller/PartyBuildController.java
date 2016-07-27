@@ -35,7 +35,7 @@ public class PartyBuildController implements OriginController{
 	}
 
 	@Override
-	public void deleteObject(String id, HttpServletRequest request, Model model, HttpServletResponse response)
+	public void deleteObject(@PathVariable String id, HttpServletRequest request, Model model, HttpServletResponse response)
 			throws IOException {
 		PartyBuild temp = partyBuildService.getPartyBuild(id);
 		if (temp.getAudit()==1){
@@ -48,7 +48,7 @@ public class PartyBuildController implements OriginController{
 	}
 
 	@Override
-	public void checkObject(String id, HttpServletRequest request, Model model, HttpServletResponse response)
+	public void checkObject(@PathVariable String id, HttpServletRequest request, Model model, HttpServletResponse response)
 			throws IOException {
 		partyBuildService.checkObjectByID(id);
 		response.sendRedirect("../");

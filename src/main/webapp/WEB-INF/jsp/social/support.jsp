@@ -17,11 +17,13 @@
 		<td>学校代码</td>
 		<td>录入年份</td>
 		
-		<td>本校牵头组织的职教集团数</td>
-		<td>本校参与的职教集团数</td>
-		<td>参加本校牵头的职教集团学校数</td>
-		<td>参加本校牵头的职教集团企业数</td>
-		<td>参加本校牵头的职教集团专业数</td>
+		<td>对口帮扶对象单位数</td>
+		<td>扶贫对象数</td>
+		<td>资金扶贫（万元）</td>
+		<td>服务人数</td>
+		<td>扶贫技术名称</td>
+		<td>扶贫项目名称</td>
+		
 		
 		<td>审核状态</td>
 		<td>删除记录</td>
@@ -32,12 +34,13 @@
 			<td>${li.Admcode}</td>
 			<td>${li.Year}</td>
 			
-			<td>${li.LeadVocEduGroup}</td>
-			<td>${li.JoinVocEduGroup}</td>
-			<td>${li.JoinLeadVocEduGroupScho}</td>
-			<td>${li.JoinLeadVocEduGroupEnterp}</td>
-			<td>${li.JoinLeadVocEduGroupMajor}</td>
-			
+			<td>${li.HelpObject}</td>
+			<td>${li.PoverReducTarget}</td>
+			<td>${li.Fund}</td>
+			<td>${li.ServiceNum}</td>
+			<td>${li.Skill}</td>
+			<td>${li.Project}</td>
+
 			<td> 
 				<c:if test="${li.Audit==1}">通过</c:if>
 				<c:if test="${li.Audit==0}">未通过</c:if>
@@ -57,11 +60,12 @@
 			<td><input name ="Admcode"/></td>
 			<td><input name ="Year"/></td>
 
-			<td><input name = "LeadVocEduGroup"/></td>
-			<td><input name = "JoinVocEduGroup"/></td>
-			<td><input name = "JoinLeadVocEduGroupScho"/></td>
-			<td><input name = "JoinLeadVocEduGroupEnterp"/></td>
-			<td><input name = "JoinLeadVocEduGroupMajor"/></td>
+			<td><input name = "HelpObject"/></td>
+			<td><input name = "PoverReducTarget"/></td>
+			<td><input name = "Fund"/></td>
+			<td><input name = "ServiceNum"/></td>
+			<td><input name = "Skill"/></td>
+			<td><input name = "Project"/></td>
 			 
 			<td><input type="submit" value="确定"/></td>
 		</tr>
