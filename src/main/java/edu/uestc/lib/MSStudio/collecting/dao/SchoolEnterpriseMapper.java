@@ -1,5 +1,7 @@
 package edu.uestc.lib.MSStudio.collecting.dao;
 
+import java.util.List;
+
 import edu.uestc.lib.MSStudio.collecting.model.SchoolEnterprise;
 
 public interface SchoolEnterpriseMapper {
@@ -14,4 +16,8 @@ public interface SchoolEnterpriseMapper {
     int updateByPrimaryKeySelective(SchoolEnterprise record);
 
     int updateByPrimaryKey(SchoolEnterprise record);
+    
+    int checkByID(int i, Integer id);
+
+	List<SchoolEnterprise> getAllObject(int begin, int size);
 }

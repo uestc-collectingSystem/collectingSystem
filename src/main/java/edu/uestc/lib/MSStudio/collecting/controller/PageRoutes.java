@@ -35,6 +35,9 @@ public class PageRoutes {
 	
 	public static final String quaEducationPage = "qua/education";
 	
+	public static final String coorSchoolenterPage = "coor/schoolEnter";
 	
+	public static final String internshipPage = "coor/internship";
 	
+	public static final String groupschoolPage = "coor/group";
 }
