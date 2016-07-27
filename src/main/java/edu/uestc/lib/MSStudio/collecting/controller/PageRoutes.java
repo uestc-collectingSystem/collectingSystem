@@ -21,4 +21,5 @@ public class PageRoutes {
 	
 	public static final String stuQuaPage = "dev/stu";
 	
+	public static final String empQuaPage = "dev/emp";
 }
