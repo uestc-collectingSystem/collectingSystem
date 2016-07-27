@@ -315,4 +315,14 @@
       Audit = #{audit,jdbcType=INTEGER}
     where ID = #{id,jdbcType=INTEGER}
   </update>
+  <select id="getAllObject" resultType="java.util.HashMap" parameterType="java.lang.Integer">
+    select 
+    <include refid="Base_Column_List" />
+    from majornum order by ID  DESC limit #{0},#{1}
+  </select>
+
+  <update id="checkByID" parameterType="java.lang.Integer" >
+    update majornum set Audit = #{0}
+    where ID = #{1}
+  </update>
 </mapper>

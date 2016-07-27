@@ -22,4 +22,11 @@ public class PageRoutes {
 	public static final String stuQuaPage = "dev/stu";
 	
 	public static final String empQuaPage = "dev/emp";
+	
+	public static final String quaMajLayPage ="qua/majlay";
+	
+	public static final String quaMajStuPage = "qua/majstu";
+	
+	public static final String quaMajNumPage = "qua/majnum";
+	
 }

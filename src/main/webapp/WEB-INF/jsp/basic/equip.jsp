@@ -11,6 +11,7 @@
 <body>
 <h1>基础情况：教师团队</h1>
 	<h2>错误信息：${ErrorMsg}</h2>
+	<form action="./create" method="POST">
 	<table border="1">
 		<tr>
 		<td>学校代码</td>
@@ -76,7 +77,6 @@
 			</td>
 		</tr>
 	</c:forEach>
-	<form action="./create" method="POST">
 		<tr>
 			<td><input name="AdmCode"/></td>
 			<td><input name="Year"/></td>
@@ -100,8 +100,8 @@
 			<td><input name="ElecSeats"/></td>
 			<td><input type="submit" value="确定"/></td>
 		</tr>
-	</form>
 	</table>
+</form>
 </body>
 </html>
 

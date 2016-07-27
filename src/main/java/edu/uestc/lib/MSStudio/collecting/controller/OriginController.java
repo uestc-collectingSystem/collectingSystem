@@ -19,6 +19,7 @@ public interface OriginController {
 		if (request.getRequestURL().reverse().charAt(0)!='/'){
 			try {
 				response.sendRedirect(request.getRequestURL().append('/').toString());
+				return null;
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
