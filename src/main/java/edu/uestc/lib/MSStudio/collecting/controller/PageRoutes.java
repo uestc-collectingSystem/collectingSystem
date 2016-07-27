@@ -29,4 +29,8 @@ public class PageRoutes {
 	
 	public static final String quaMajNumPage = "qua/majnum";
 	
+	public static final String quaAssurePage = "qua/assure";
+	
+	
+	
 }
