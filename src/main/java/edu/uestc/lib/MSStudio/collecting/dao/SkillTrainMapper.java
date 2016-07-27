@@ -1,5 +1,7 @@
 package edu.uestc.lib.MSStudio.collecting.dao;
 
+import java.util.List;
+
 import edu.uestc.lib.MSStudio.collecting.model.SkillTrain;
 
 public interface SkillTrainMapper {
@@ -14,4 +16,8 @@ public interface SkillTrainMapper {
     int updateByPrimaryKeySelective(SkillTrain record);
 
     int updateByPrimaryKey(SkillTrain record);
+    
+    int checkByID(int i, Integer id);
+
+	List<SkillTrain> getAllObject(int begin, int size);
 }

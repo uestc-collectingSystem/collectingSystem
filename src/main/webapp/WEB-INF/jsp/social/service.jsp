@@ -8,7 +8,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 </head>
 <body>
-<h1>校企：合作情况</h1>
+<h1>社会建设：社会服务</h1>
 	<h2>错误信息：${ErrorMsg}</h2>
 	
 	<form action="./create" method="POST">
@@ -17,11 +17,14 @@
 		<td>学校代码</td>
 		<td>录入年份</td>
 		
-		<td>本校牵头组织的职教集团数</td>
-		<td>本校参与的职教集团数</td>
-		<td>参加本校牵头的职教集团学校数</td>
-		<td>参加本校牵头的职教集团企业数</td>
-		<td>参加本校牵头的职教集团专业数</td>
+		<td>培训企业员工数</td>
+		<td>培训残疾人人数</td>
+		<td>培训失业人员人数</td>
+		<td>培训农民工人数</td>
+		<td>培训退役士兵人数</td>
+		<td>技能鉴定项目人次</td>
+		<td>师生参与当地技术服务才次</td>
+		
 		
 		<td>审核状态</td>
 		<td>删除记录</td>
@@ -32,11 +35,13 @@
 			<td>${li.Admcode}</td>
 			<td>${li.Year}</td>
 			
-			<td>${li.LeadVocEduGroup}</td>
-			<td>${li.JoinVocEduGroup}</td>
-			<td>${li.JoinLeadVocEduGroupScho}</td>
-			<td>${li.JoinLeadVocEduGroupEnterp}</td>
-			<td>${li.JoinLeadVocEduGroupMajor}</td>
+			<td>${li.TrainStaff}</td>
+			<td>${li.TrainUnabled}</td>
+			<td>${li.TrainUnemStaff}</td>
+			<td>${li.TrainFarmer}</td>
+			<td>${li.TrainRetireSoldier}</td>
+			<td>${li.SkillIdentNum}</td>
+			<td>${li.TeachServe}</td>
 			
 			<td> 
 				<c:if test="${li.Audit==1}">通过</c:if>
@@ -57,11 +62,13 @@
 			<td><input name ="Admcode"/></td>
 			<td><input name ="Year"/></td>
 
-			<td><input name = "LeadVocEduGroup"/></td>
-			<td><input name = "JoinVocEduGroup"/></td>
-			<td><input name = "JoinLeadVocEduGroupScho"/></td>
-			<td><input name = "JoinLeadVocEduGroupEnterp"/></td>
-			<td><input name = "JoinLeadVocEduGroupMajor"/></td>
+			<td><input name = "TrainStaff"/></td>
+			<td><input name = "TrainUnabled"/></td>
+			<td><input name = "TrainUnemStaff"/></td>
+			<td><input name = "TrainFarmer"/></td>
+			<td><input name = "TrainRetireSoldier"/></td>
+			<td><input name = "SkillIdentNum"/></td>
+			<td><input name = "TeachServe"/></td>
 			 
 			<td><input type="submit" value="确定"/></td>
 		</tr>
