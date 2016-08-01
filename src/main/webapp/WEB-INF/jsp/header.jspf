@@ -4,13 +4,18 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<%@include file="./common.jspf"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<link href="../../static/css/sjcj.css" rel="stylesheet" />
+<script src="../../static/js/jquery-1.7.2.min.js"></script>
+<script src="../../static/js/jquery.placeholder.min.js"></script>
 <title>数据采集系统</title>
 <script type="text/javascript">
 
 $(function(){
 $('input, textarea').placeholder();
 });
+
 $(function() {
     $(".id_10");
     $(".id_08").click(function(){
@@ -18,8 +23,14 @@ $(function() {
     });
 });
 
+
+
+
+var $rootPath;
+$rootPath=this.location.host;
+$rootPath="http://"+$rootPath+"/collectingSystem/";
 $(document).ready(function(){
-	  htmlobj=$.ajax({url:"./current",async:false});
+	  htmlobj=$.ajax({url:$rootPath+"auth/current",async:false});
 	  $("#currentUser").html(htmlobj.responseText.replace("\"","").replace("\"",""));
 	});
 </script>
@@ -29,7 +40,6 @@ $(document).ready(function(){
 <div class="id_02"></div>
 <div class="id_03"><span id=currentUser></span><a href="#" id = click class="id_04">个人信息</a><a href="#" class="id_04">修改密码</a><a id="logout" href="" class="id_04">退出系统</a></div>
 </div>
-
 <div id="id_content">
 <!--左边导航栏-->
 <div id="id_05">
@@ -107,7 +117,14 @@ $(document).ready(function(){
 	
 	<!--添加删除修改-->
 	<div class="id_12">
-		<div class="id_13"><span>基本情况</span><i></i><a href="#">规模</a></div>
+		<div class="id_13">
+			<span>${firstMenu}</span>
+			<i></i>
+			<a id="home" href="">${subMenu} &nbsp</a>
+			<span><a id="before" href="">前一页</a></span>
+			<span id="currentPage">1</span>
+			<span><a id="next" href="#">后一页</a></span>
+		</div>
 		<div class="id_14">
 		<a href="#" class="id_15"></a><!-- 删除 -->
 		<a href="#" class="id_16"></a><!-- 新增 -->
@@ -115,74 +132,7 @@ $(document).ready(function(){
 		<div class="id_18"><input type="text" class="id_19" placeholder="请输入年份查询"><input type="submit" value="" class="id_20"></div>
 		</div>
 	</div>
+	<div class = "id_13">
 	
-		<!-- 
-		<div id = "id_22" class="id_21">
-		  <iframe name = "frame1" id = "targetTable" src="http://localhost:8080/collectingSystem/basic/size" width="100%" height="680px" frameborder="0" target="_top">
-		  </iframe>
-		</div> -->
 	</div>
-</div>
-<script>
-total = document.documentElement.clientHeight;
-colHeight = total-document.getElementById("id_05").offsetTop;
-document.getElementById("id_05").style.height=colHeight+"px";
-document.getElementById("id_11").style.height=colHeight+"px";
-document.getElementById("id_content").style.height=colHeight+"px";
-//绑定路由串
-var $rootPath;
-$rootPath=this.location.host;
-$rootPath="http://"+$rootPath+"/collectingSystem/";
-var $routeLogOut=$rootPath+"auth/loggout/";
-
-var $routeSize=$rootPath+"basic/size/";
-var $routeFunds=$rootPath+"basic/funds/";
-var $routeInfo = $rootPath+"basic/info/";
-var $routeTeac = $rootPath+"basic/teacher/";
-var $routeEquip = $rootPath+"basic/equip/";
-
-var $routeGroup = $rootPath+"coor/group/";
-var $routeInternship = $rootPath+"coor/internship/";
-var $routeSchoolEnter = $rootPath+"coor/enterprise/";
-
-var $routeEmp = $rootPath+"dev/emp/";
-var $routeStu = $rootPath+"dev/stu/";
-
-var $routeAssure = $rootPath+"qua/assure/";
-var $routeEducation = $rootPath+"qua/edu/";
-var $routeMajNum = $rootPath+"qua/majnum/";
-var $routeProject = $rootPath+"qua/project/";
-
-var $routeParty = $rootPath+"social/party/";
-var $routeService = $rootPath+"social/service/";
-var $routeSkill = $rootPath+"social/skill/";
-var $routeSupport = $rootPath+"social/support";
-
-var $routeFile = $rootPath+"file/";
-
-$("#logout").attr("href",$routeLogOut);
-$("#size").attr("href",$routeSize);
-$("#funds").attr("href",$routeFunds);
-$("#equip").attr("href",$routeInfo);
-$("#info").attr("href",$routeTeac);
-$("#teachers").attr("href",$routeEquip);
-/* attr("href",$routeGroup);
-attr("href",$routeInternship);
-attr("href",$routeSchoolEnter);
-attr("href",$routeEmp);
-attr("href",$routeStu);
-attr("href",$routeAssure);
-attr("href",$routeEducation);
-attr("href",$routeMajNum);
-attr("href",$routeProject);
-attr("href",$routeParty);
-attr("href",$routeService);
-attr("href",$routeSkill);
-attr("href",$routeSupport); */
-
-
-var $routeFile = $rootPath+"file/";
-//$("#targetTable").attr("src",$rootPath+"basic/info");
-</script>
-</body>
-</html>
+	<div id = "id_22" class="id_21">

@@ -17,16 +17,17 @@ public class CollectorAuth implements HandlerInterceptor{
 		Cookie[] cookieList = request.getCookies();
 		//遍历所有 Cookie，如果存在名字为 UserID 的值，重置，如果遍历之后没有，返回403错误
 		//收集者权限最低，只要有一个验证权限即可
-		for(Cookie temp : cookieList){
-			if (temp.getName().equals(AuthController.cookieKey)){
-				String userID = temp.getValue();
-				response.addCookie(temp);
-				request.removeAttribute(AuthController.cookieKey);
-				request.setAttribute(AuthController.cookieKey, userID);
-				return true;
+		if (cookieList!=null){
+			for(Cookie temp : cookieList){
+				if (temp.getName().equals(AuthController.attriKey)){
+					String userID = temp.getValue();
+					response.addCookie(temp);
+					request.removeAttribute(AuthController.attriKey);
+					request.setAttribute(AuthController.attriKey, userID);
+					return true;
+				}
 			}
 		}
-		
 		response.sendError(403, "No Log in Trace");
 		return false;
 	}

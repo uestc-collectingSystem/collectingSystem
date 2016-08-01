@@ -26,14 +26,14 @@ public interface OriginController {
 			}
 		}
 		
-		return indexWithPage("1", "20", request, model);
+		return indexWithPage("1", "10", request, model);
 	}
 	
 	@RequestMapping(value="{pageNum}*",method=RequestMethod.GET)
 	public default String indexWithPage(
 			@PathVariable String pageNum,
 			HttpServletRequest request,Model model){
-		return indexWithPage(pageNum, "20", request, model);
+		return indexWithPage(pageNum, "10", request, model);
 	}
 	
 	public String indexWithPage(

@@ -1,0 +1,274 @@
+﻿
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="ctl00_Head1"><title>
+	四川省中等职业教育年度质量保证数据采集系统
+</title><link href="../pageview/css/sjcj.css" rel="stylesheet" />
+    <script src="../pageview/js/jquery-1.7.2.min.js"  type="text/javascript"></script>
+    <script src="../pageview/js/jquery.placeholder.min.js" type="text/javascript"></script>
+  
+   <script language="javascript" type="text/javascript">
+    
+       $(function () {
+           $('input, textarea').placeholder();
+       });
+       $(function () {
+           $(".id_10");
+           $(".id_08").click(function () {
+               $(this).toggleClass("open").next().slideToggle("fast");
+           });
+       });
+       function openwindow(url, name, iWidth, iHeight) {
+           var url;                                 //转向网页的地址;
+           var name;                           //网页名称，可为空;
+           var iWidth;                          //弹出窗口的宽度;
+           var iHeight;                        //弹出窗口的高度;
+           var iTop = (window.screen.availHeight - iHeight) / 2;       //获得窗口的垂直位置;
+           var iLeft = (window.screen.availWidth - iWidth) / 2;           //获得窗口的水平位置;
+           window.open(url, name, 'height=' + iHeight + ',innerHeight=' + iHeight + ',width=' + iWidth + ',innerWidth=' + iWidth + ',top=' + iTop + ',left=' + iLeft + ',toolbar=no,menubar=no,scrollbars=no,resizeable=no,location=no,status=no');
+
+       }
+       function look() {
+           var url = "/Informant_Info.aspx?rnd=" + Math.random();
+            openwindow(url, "", 600, 400);
+            location.reload();
+       }
+       function change() {
+           var url = "/change.aspx?rnd=" + Math.random();
+           openwindow(url, "", 600, 400);
+           location.reload();
+       }
+   </script>
+</head>
+<body>
+    <form name="aspnetForm" method="post" action="PartyBuild.aspx" id="aspnetForm">
+<div>
+<input type="hidden" name="__EVENTTARGET" id="__EVENTTARGET" value="" />
+<input type="hidden" name="__EVENTARGUMENT" id="__EVENTARGUMENT" value="" />
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwUKLTMyNjU5NzU3NQ9kFgJmD2QWAgIDD2QWBAIDDw8WAh4EVGV4dAUS5Zub5bed55yB5pWZ56eR5omAZGQCBQ9kFgQCBw8PZBYCHglvbmtleWRvd24FNVN1Ym1pdEtleUNsaWNrKCdjdGwwMCRjdGwwMCRjb250ZW50JGNvbnRlbnQkQnV0dG9uMScpZAILDzwrAA0BAA8WBB4LXyFEYXRhQm91bmRnHgtfIUl0ZW1Db3VudGZkZBgBBRdjdGwwMCRjb250ZW50JEdyaWRWaWV3MQ88KwAKAgYVAQJJRAhmZAuzSMPqqc36Gw57L/zPH478RWBi" />
+</div>
+
+<script type="text/javascript">
+//<![CDATA[
+var theForm = document.forms['aspnetForm'];
+if (!theForm) {
+    theForm = document.aspnetForm;
+}
+function __doPostBack(eventTarget, eventArgument) {
+    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+        theForm.__EVENTTARGET.value = eventTarget;
+        theForm.__EVENTARGUMENT.value = eventArgument;
+        theForm.submit();
+    }
+}
+//]]>
+</script>
+
+
+<div>
+
+	<input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="/wEWBgKElInrCgLF18nhBQKAhoPsCQK22L6WDgKNuunKBQL34ejwCHonmJxY1pCCglDD7k5xBPYzg+y5" />
+</div>
+    <div class="id_01">
+        <div class="id_02"></div>
+        <div class="id_03">
+            <a href="#" class="id_04" onclick="look()">个人信息</a>
+            <a href="#" class="id_04" onclick="change()">修改密码</a>
+            <a class="id_04" href="javascript:__doPostBack('ctl00$ctl02','')">退出系统</a></div>
+    </div>
+    <!--左边导航栏-->
+    <div id="id_content">
+        <div id="id_05">
+            <div class="id_06">
+                <div class="id_07"></div>
+                <p><span id="ctl00_Label_dept">四川省教科所</span></p>
+               
+            </div>
+            <a href="#" class="id_08">
+                <div class="icon_01"></div>
+                <span>基本情况</span></a>
+            <div class="id_10">
+                <a href="/BasicInformation/Size.aspx">规模</a>
+                <a href="/BasicInformation/Equitment.aspx">设施设备</>
+                <a href="/BasicInformation/Teachers.aspx">教师队伍</a>
+                <a href="/BasicInformation/Funds.aspx">经费</a>
+                <a href="/BasicInformation/Information.aspx">信息化建设</a>
+            </div>
+            <a href="#" class="id_08">
+                <div class="icon_02"></div>
+                <span>学生发展</span></a>
+            <div class="id_10">
+                <a href="/StudentsDevelopment/Quality.aspx">学生素质</a>
+                <a href="/StudentsDevelopment/Employment.aspx">就业质量</a>
+            </div>
+            <a href="#" class="id_08">
+                <div class="icon_03"></div>
+                <span>质量保障措施</span></a>
+            <div class="id_10">
+                <a href="/QualityAssuranceMeasures/MajorLayout.aspx">专业布局</a>
+                <a href="/QualityAssuranceMeasures/MajorCourse.aspx">课程开设</a>
+                <a href="/QualityAssuranceMeasures/QualityAssurance.aspx">质量保证</a>
+                <a href="/QualityAssuranceMeasures/EducationTrain.aspx">教师培养培训</a>
+            </div>
+            <a href="#" class="id_08">
+                <div class="icon_04"></div>
+                <span>校企合作</span></a>
+            <div class="id_10">
+                <a href="/SchoolEnterprise/Situation.aspx">合作情况</a>
+                <a href="/SchoolEnterprise/StudentInternship.aspx">学生实习情况</a>
+                <a href="/SchoolEnterprise/GroupRunning.aspx">集团化办学情况</a>
+            </div>
+            <a href="#" class="id_08">
+                <div class="icon_05"></div>
+                <span>社会贡献</span></a>
+            <div class="id_10">
+                <a href="/SocialContribution/TechnicalSkills.aspx">技术技能人才培养</a>
+                <a href="/SocialContribution/SocialCultivation.aspx">社会服务</a>
+                <a href="/SocialContribution/CounterpartSupport.aspx">对口支援</a>
+            </div>
+            <a href="#" class="id_08">
+                <div class="icon_06"></div>
+                <span>党建工作</span></a>
+            <div class="id_10">
+                <a href="/PartyBuild/PartyBuild.aspx">学校党建工作</a>
+            </div>
+            <a href="#" class="id_08">
+                <div class="icon_07"></div>
+                <span>资料上传</span></a>
+            <div class="id_11">
+                <a href="/File/MoralWork.aspx">德育工作经验措施</a>
+                <a href="/File/StudentPolitical.aspx">学生思想政治状况</a>
+                <a href="/File/OutstandingGraduate.aspx">优秀毕业生典型案例</a>
+                <a href="/File/QualifyControl.aspx">质量监控体系建设</a>
+                <a href="/File/GroupRun.aspx">学校集团化办学</a>
+                <a href="/File/Culture.aspx">传统文化（地方特色）教育活动开展情况</a>
+                <a href="/File/HelpPoverty.aspx">对口帮扶（扶贫）情况</a>
+                <a href="/File/Innovation.aspx">特色创新</a>
+                <a href="/File/PartyBuild.aspx">党建工作</a>
+                <a href="File/ProblemMeasure.aspx">主要问题和改进措施</a>
+            </div>
+        </div>
+     
+    <script language="javascript" type="text/javascript">
+        function openwindow(url, name, iWidth, iHeight) {
+            var url;                                 //转向网页的地址;
+            var name;                           //网页名称，可为空;
+            var iWidth;                          //弹出窗口的宽度;
+            var iHeight;                        //弹出窗口的高度;
+            var iTop = (window.screen.availHeight - iHeight) / 2;       //获得窗口的垂直位置;
+            var iLeft = (window.screen.availWidth - iWidth) / 2;           //获得窗口的水平位置;
+            window.open(url, name, 'height=' + iHeight + ',innerHeight=' + iHeight + ',width=' + iWidth + ',innerWidth=' + iWidth + ',top=' + iTop + ',left=' + iLeft + ',toolbar=no,menubar=no,scrollbars=yes,resizeable=no,location=no,status=no');
+
+        }
+        function showAddWindow() {
+            var url = "PartyBuild_Add.aspx?rnd=" + Math.random();
+            openwindow(url, "", 1200, 600);
+            location.reload();
+        }
+        function showDetailWindow(id) {
+            var url = "PartyBuild_Details.aspx?id=" + id;
+            openwindow(url, "", 1200, 600);
+            location.reload();
+
+        }
+        function checkupdate() {
+            var checknum = 0;
+            var tags = document.getElementsByTagName("input");
+            for (var i = 0; i < tags.length; i++) {
+                if (tags[i].type == "checkbox" && tags[i].checked == true)
+                    checknum++;
+
+            }
+            if (checknum < 1) {
+                alert("请选择修改项");
+                //$.messager.alert("操作提示", "请选择修改项！");
+                return false;
+            }
+            if (checknum > 1) {
+                alert("一次只能修改一项");
+                //$.messager.alert("操作提示", "一次只能修改一项！");
+                return false;
+            }
+            if (checknum == 1)
+                return true;
+        }
+
+        function checkdelete() {
+            var checknum = 0;
+            var tags = document.getElementsByTagName("input");
+            for (var i = 0; i < tags.length; i++) {
+                if (tags[i].type == "checkbox" && tags[i].checked == true)
+                    checknum++;
+
+            }
+            if (checknum < 1) {
+                alert("请选择删除项")
+                // $.messager.alert("操作提示", "请选择删除项！");
+                return false;
+            }
+            else {
+                if (confirm("你确定要删除吗")) {
+                    return true;
+                } else {
+                    return false;
+                }
+
+            }
+        }
+        function SubmitKeyClick(button) {
+            if (event.keyCode == 13) {
+                event.keyCode = 9;
+                event.returnValue = false;
+                document.all[button].click();
+            }
+        }
+    </script>
+
+    <div id="id_11">
+        
+        <div class="id_12">
+            <div class="id_13">
+                <span>党建工作</span><i></i><a href="#">学校党建工作</a>
+            </div>
+            <div class="id_14">
+             <a class="id_15" onclick="return checkdelete();" href="javascript:__doPostBack('ctl00$content$ctl00','')"></a>
+                <a href="#" class="id_16" onclick="showAddWindow()"></a>
+                <a class="id_17" onclick="return checkupdate();" href="javascript:__doPostBack('ctl00$content$ctl02','')"></a>
+              
+                <div class="id_18">
+              
+               <input name="ctl00$content$Textbox1" type="text" id="ctl00_content_Textbox1" class="id_19" placeholder="请输入年份查询" onkeydown="SubmitKeyClick('ctl00$ctl00$content$content$Button1')" />
+              <input type="submit" name="ctl00$content$Button1" value="" id="ctl00_content_Button1" class="id_20" />   
+                </div>
+            </div>
+        </div>
+        <!--表格区-->
+        <div class="id_21">
+       <div>
+
+</div>
+           
+    </div>
+   </div>
+    <script type="text/javascript">
+        total = document.documentElement.clientHeight;
+        colHeight = total - document.getElementById("id_05").offsetTop;
+        document.getElementById("id_11").style.height = colHeight + "px";
+    </script>
+
+  
+    </div>
+   <script type="text/javascript">
+       total = document.documentElement.clientHeight;
+       colHeight = total - document.getElementById("id_05").offsetTop;
+       document.getElementById("id_05").style.height = colHeight + "px";
+      
+       document.getElementById("id_content").style.height = colHeight + "px";
+    </script>
+  
+    
+  </form>
+</body>
+</html>

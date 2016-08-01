@@ -34,6 +34,8 @@ public class SizeController implements OriginController {
 			@PathVariable String pageSize,
 			HttpServletRequest request,Model model){
 		model.addAttribute("list", sizeService.listAllSchoolSize(pageNum, pageSize));
+		model.addAttribute("firstMenu", "基本情况");
+		model.addAttribute("subMenu", " 规模");
 		return PageRoutes.sizePage;
 	}
 	

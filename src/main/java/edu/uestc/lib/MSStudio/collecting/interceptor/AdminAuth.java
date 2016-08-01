@@ -22,15 +22,17 @@ public class AdminAuth implements HandlerInterceptor {
 		// TODO 验证 Session 中是否带有需要验证的信息，如果没有 Session 信息，返回403错误,验证当前 Session
 		// 中的信息
 		HttpSession temp = request.getSession(false);
-		if (temp == null || temp.getAttribute(AuthController.sessionKey) == null) {
+		if (temp == null || temp.getAttribute(AuthController.attriKey) == null) {
 			response.sendError(403, "No Session Data");
 			return false;
 		}
-		String userId = temp.getAttribute(AuthController.sessionKey).toString();
+		String userId = temp.getAttribute(AuthController.attriKey).toString();
 		if (userService.getUserLevel(Integer.valueOf(userId)).equals(User.ADMINISTER)) {
 			System.out.println(userService.getUserLevel(Integer.valueOf(userId)));
 			request.getSession().invalidate();
-			request.getSession().setAttribute(AuthController.sessionKey, userId);
+			request.getSession().setAttribute(AuthController.attriKey, userId);
+			request.removeAttribute(AuthController.attriKey);
+			request.setAttribute(AuthController.attriKey, userId);
 			//记得要把这个 Session 控制写到任何响应报文控制的后面
 			return true;
 		} else {

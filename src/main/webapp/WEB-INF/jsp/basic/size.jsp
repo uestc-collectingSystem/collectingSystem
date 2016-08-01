@@ -4,16 +4,13 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
-<title>数据录入部分</title>
-</head>
-<body>
-	<h1>基础情况：规模</h1>
-	<h2>错误信息：${ErrorMsg}</h2>
-	<table border="1">
+<%@include file="../header.jspf"%>
+<form action = "./test" method="post">
+	<table border="1" class = "id_22">
+	<thread>
 		<tr>
 		<td>学校代码</td>
+		<td>年份</td>
 		<td>办学性质</td>
 		<td>办学水平</td>
 		<td>办学主体</td>
@@ -37,9 +34,11 @@
 		<td>删除记录</td>
 		<td>通过审核</td>
 		</tr>
+	</thread>
 	<c:forEach items="${list}" var="li">
 		<tr>
 			<td>${li.Admcode}</td>
+			<td>${li.Year}</td>
 			<td>${li.SchoolRun}</td>
 			<td>${li.SchoolLevel}</td>
 			<td>${li.SchoolSubject}</td>
@@ -73,12 +72,33 @@
 				<c:if test="${li.Audit==1}">信息已通过审批</c:if>
 			</td>
 		</tr>
-		
-		<form action = "./test" method="post"> 
-			<input name="temp/"></input>
-		</form>
-		
 	</c:forEach>
+	<!-- <tr>
+		<td><input name="Admcode"/></td>
+		<td><input name="Year"/></td>
+
+		<td><input name = "SchoolRun"/></td>
+		<td><input name = "SchoolLevel"/></td>
+		<td><input name = "SchoolSubject"/></td>
+		<td><input name = "Area"/></td>
+		<td><input name = "OwnPropArea"/></td>
+		<td><input name = "TotalArea"/></td>
+		<td><input name = "SchOwnConArea"/></td>
+		<td><input name = "OfficeArea"/></td>
+		<td><input name = "StuArea"/></td>
+		<td><input name = "TeaAuxArea"/></td>
+		<td><input name = "TrainArea"/></td>
+		<td><input name = "PsyArea"/></td>
+		<td><input name = "DormArea"/></td>
+		<td><input name = "DormPerArea"/></td>
+		<td><input name = "TotalStudent"/></td>
+		<td><input name = "AnnualGraduate"/></td>
+		<td><input name = "ConsolidationRate"/></td>
+		<td><input name = "Enrollment"/></td>
+		<td><input name = "Majors"/></td>
+		
+		<td><input type="submit" value="确定"/></td>
+	</tr> -->
 	</table>
-</body>
-</html>
+</form>
+<%@include file="../footer.jspf"%>

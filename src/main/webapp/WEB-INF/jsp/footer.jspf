@@ -1,0 +1,85 @@
+</div>
+</div>
+</div>
+<script>
+total = document.documentElement.clientHeight;
+colHeight = total-document.getElementById("id_05").offsetTop;
+document.getElementById("id_05").style.height=colHeight+"px";
+document.getElementById("id_11").style.height=colHeight+"px";
+document.getElementById("id_content").style.height=colHeight+"px";
+//绑定路由串
+var $rootPath;
+$rootPath=this.location.host;
+$rootPath="http://"+$rootPath+"/collectingSystem/";
+var $routeLogOut=$rootPath+"auth/loggout/";
+
+var $routeSize=$rootPath+"basic/size/";
+var $routeFunds=$rootPath+"basic/funds/";
+var $routeInfo = $rootPath+"basic/info/";
+var $routeTeac = $rootPath+"basic/teacher/";
+var $routeEquip = $rootPath+"basic/equip/";
+
+var $routeGroup = $rootPath+"coor/group/";
+var $routeInternship = $rootPath+"coor/internship/";
+var $routeSchoolEnter = $rootPath+"coor/enterprise/";
+
+var $routeEmp = $rootPath+"dev/emp/";
+var $routeStu = $rootPath+"dev/stu/";
+
+var $routeAssure = $rootPath+"qua/assure/";
+var $routeEducation = $rootPath+"qua/edu/";
+var $routeMajNum = $rootPath+"qua/majnum/";
+var $routeProject = $rootPath+"qua/project/";
+
+var $routeParty = $rootPath+"social/party/";
+var $routeService = $rootPath+"social/service/";
+var $routeSkill = $rootPath+"social/skill/";
+var $routeSupport = $rootPath+"social/support";
+
+var $routeFile = $rootPath+"file/";
+
+$("#logout").attr("href",$routeLogOut);
+$("#size").attr("href",$routeSize);
+$("#funds").attr("href",$routeFunds);
+$("#equip").attr("href",$routeInfo);
+$("#info").attr("href",$routeTeac);
+$("#teachers").attr("href",$routeEquip);
+/* attr("href",$routeGroup);
+attr("href",$routeInternship);
+attr("href",$routeSchoolEnter);
+attr("href",$routeEmp);
+attr("href",$routeStu);
+attr("href",$routeAssure);
+attr("href",$routeEducation);
+attr("href",$routeMajNum);
+attr("href",$routeProject);
+attr("href",$routeParty);
+attr("href",$routeService);
+attr("href",$routeSkill);
+attr("href",$routeSupport); */
+
+
+var $routeFile = $rootPath+"file/";
+//$("#targetTable").attr("src",$rootPath+"basic/info");
+//翻页
+$urlArray = document.URL.split("/");
+var $cur;
+var $url;
+if (!isNaN($urlArray[$urlArray.length-1])){
+	$cur = $urlArray.pop();
+	if (!$cur) $cur=1;
+	$url = $urlArray.join("/");
+}//最后一个参数是否是数字，如果是数字，则取这个数字
+else $cur=1;
+if ($cur == 1) $("#before").hide();
+var $rows = $(".id_22")[0].rows.length;
+if ($rows < 11) $("#next").hide();
+$next = $url+"/"+(parseInt($cur)+1);
+$before = $url+"/"+($cur-1);
+//alert($cur-1);
+$("#before").attr("href",$before);
+$("#next").attr("href",$next);
+$("#home").attr("href",$url);
+</script>
+</body>
+</html>

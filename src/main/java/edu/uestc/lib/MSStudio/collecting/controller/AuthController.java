@@ -1,9 +1,12 @@
 package edu.uestc.lib.MSStudio.collecting.controller;
 
+import java.io.IOException;
+
 import javax.annotation.Resource;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,15 +24,35 @@ import edu.uestc.lib.MSStudio.collecting.service.UserService;
 @RequestMapping("/auth")
 public class AuthController {
 	
-	public final static String cookieKey = "UserID";
+	public final static String attriKey = "UserID";
 
-	public final static String sessionKey = "UserID";
+	public final static String typeKey = "UserType";
 	
 	@Resource
 	private UserService userService;
 	
-	@RequestMapping(method=RequestMethod.GET)
-	public String index(HttpServletRequest request,Model model){
+	@RequestMapping(method={RequestMethod.GET,RequestMethod.POST})
+	public String index(HttpServletRequest request,Model model,HttpServletResponse response){
+		if (request.getRequestURL().reverse().charAt(0)!='/'){
+			try {
+				response.sendRedirect(request.getRequestURL().append('/').toString());
+				return null;
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		model.addAttribute("welcomeMsg","您好，请输入指定工号和密码");
+		return "login";
+	}
+	
+	@RequestMapping("/loggout")
+	public String loggout(HttpServletRequest request,Model model,HttpServletResponse response){
+		Cookie[] currentCookies = request.getCookies();
+		for(Cookie temp : currentCookies){
+			if (temp.getName().equals(AuthController.attriKey)){temp.setMaxAge(0);
+			response.addCookie(temp);}
+		}
 		model.addAttribute("welcomeMsg","您好，请输入指定工号和密码");
 		return "login";
 	}
@@ -56,16 +79,16 @@ public class AuthController {
 			request.getSession(true).invalidate();
 			if (userService.getUserLevel(userId).equals(User.ADMINISTER)){
 				//request.getSession().invalidate();
-				request.getSession().setAttribute(AuthController.sessionKey, userId);
+				request.getSession().setAttribute(AuthController.attriKey, userId);
 			}
 			
 			if (rememberMe == null || rememberMe.equals("")){
-				Cookie identity = new Cookie(AuthController.cookieKey,String.valueOf(userId));
+				Cookie identity = new Cookie(AuthController.attriKey,String.valueOf(userId));
 				identity.setMaxAge(3600);//设定超时日期
 				response.addCookie(identity);
 			}
 			else{
-				Cookie identity = new Cookie(AuthController.cookieKey,String.valueOf(userId));
+				Cookie identity = new Cookie(AuthController.attriKey,String.valueOf(userId));
 				identity.setMaxAge(3600*24);//设定超时日期
 				response.addCookie(identity);
 			}
@@ -95,5 +118,40 @@ public class AuthController {
 		request.setAttribute("userID", "h1?");
 		String result = JSON.toJSON(userService.UserInfoCheck("20161", "111111")).toString();
 		return result;
+	}
+	
+	@RequestMapping("/current")
+	public @ResponseBody String currentUser(HttpServletRequest request,Model model){
+		HttpSession session = request.getSession(false);
+		if (session == null || session.getAttribute(AuthController.attriKey) == null){
+			Cookie[] cookieList = request.getCookies();
+			for(Cookie temp : cookieList){
+				if (temp.getName().equals(AuthController.attriKey)) {
+					User curr = userService.findUser(temp.getValue());
+					String UserLevel=null;
+					switch (curr.getLevel()) {
+						case User.ADMINISTER : UserLevel = "管理员";break;
+						case User.CHECHKER : UserLevel = "检查员";break;
+						case User.COLLECTOR : UserLevel = "录入员";break;
+					}
+					return UserLevel+" 学校名:"+curr.getSchoolname() +" 学校编号:"+curr.getUsercode();
+				}
+			}//遍历无果
+			return "You Need To Login";
+		}
+		else {
+			try {
+				User curr = userService.findUser(session.getAttribute(AuthController.attriKey).toString());
+				String UserLevel=null;
+				switch (curr.getLevel()) {
+					case User.ADMINISTER : UserLevel = "管理员";break;
+					case User.CHECHKER : UserLevel = "检查员";break;
+					case User.COLLECTOR : UserLevel = "录入员";break;
+				}
+				return UserLevel+" 学校名:"+curr.getSchoolname() +" 学校编号:"+curr.getUsercode();
+			}catch(Exception e){
+				return "You Need To Login";
+			}
+		}//处理 Session
 	}
 }

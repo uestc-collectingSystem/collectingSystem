@@ -48,4 +48,6 @@ public class PageRoutes {
 	public static final String counpaSupportPage = "social/support";
 	
 	public static final String partyBuildPage = "social/party";
+	
+	public static final String index = "static/index";
 }

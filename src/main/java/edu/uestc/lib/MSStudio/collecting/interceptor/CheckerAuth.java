@@ -22,18 +22,20 @@ public class CheckerAuth implements HandlerInterceptor {
 		Cookie[] cookieList = request.getCookies();
 		//遍历所有 Cookie，如果存在名字为 UserID 的值，重置，如果遍历之后没有，返回403，并通告用户需要登录
 		//检查者要略高一些，需要验证 UserID 后继续获取该用户的用户等级，只要有一个验证权限即可
-		for(Cookie temp : cookieList){
-			if (temp.getName().equals(AuthController.cookieKey)){
-				String userID = temp.getValue();
-				response.addCookie(temp);
-				request.removeAttribute(AuthController.cookieKey);
-				request.setAttribute(AuthController.cookieKey, userID);
-				if (!userService.getUserLevel(Integer.valueOf(userID)).equals(User.COLLECTOR)){
-					return true;
-				}
-				else{
-					response.sendError(403,"Have No Enough Right");
-					return false;
+		if (cookieList!=null){
+			for(Cookie temp : cookieList){
+				if (temp.getName().equals(AuthController.attriKey)){
+					String userID = temp.getValue();
+					response.addCookie(temp);
+					request.removeAttribute(AuthController.attriKey);
+					request.setAttribute(AuthController.attriKey, userID);
+					if (!userService.getUserLevel(Integer.valueOf(userID)).equals(User.COLLECTOR)){
+						return true;
+					}
+					else{
+						response.sendError(403,"Have No Enough Right");
+						return false;
+					}
 				}
 			}
 		}
