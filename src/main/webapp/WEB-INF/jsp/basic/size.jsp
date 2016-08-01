@@ -5,7 +5,6 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <%@include file="../header.jspf"%>
-<form action = "./test" method="post">
 	<table border="1" class = "id_22">
 	<thread>
 		<tr>
@@ -72,33 +71,34 @@
 				<c:if test="${li.Audit==1}">信息已通过审批</c:if>
 			</td>
 		</tr>
-	</c:forEach>
-	<!-- <tr>
-		<td><input name="Admcode"/></td>
-		<td><input name="Year"/></td>
-
-		<td><input name = "SchoolRun"/></td>
-		<td><input name = "SchoolLevel"/></td>
-		<td><input name = "SchoolSubject"/></td>
-		<td><input name = "Area"/></td>
-		<td><input name = "OwnPropArea"/></td>
-		<td><input name = "TotalArea"/></td>
-		<td><input name = "SchOwnConArea"/></td>
-		<td><input name = "OfficeArea"/></td>
-		<td><input name = "StuArea"/></td>
-		<td><input name = "TeaAuxArea"/></td>
-		<td><input name = "TrainArea"/></td>
-		<td><input name = "PsyArea"/></td>
-		<td><input name = "DormArea"/></td>
-		<td><input name = "DormPerArea"/></td>
-		<td><input name = "TotalStudent"/></td>
-		<td><input name = "AnnualGraduate"/></td>
-		<td><input name = "ConsolidationRate"/></td>
-		<td><input name = "Enrollment"/></td>
-		<td><input name = "Majors"/></td>
 		
-		<td><input type="submit" value="确定"/></td>
-	</tr> -->
-	</table>
-</form>
+		<tr class="hidden">
+			<form action="./update" method="POST">
+			<input name="id" type="hidden" value='${li.ID}'/>
+			<td><input name="admcode" value ="${li.Admcode}" /></td>
+			<td><input name="year" value = "${li.Year}"/></td>
+			<td><input name = "schoolrun" value ="${li.SchoolRun}"/></td>
+			<td><input name = "schoollevel" value ="${li.SchoolLevel}"/></td>
+			<td><input name = "schoolsubject" value="${li.SchoolSubject}" /></td>
+			<td><input name = "area"/></td>
+			<td><input name = "ownproparea"/></td>
+			<td><input name = "totalarea"/></td>
+			<td><input name = "schownconarea"/></td>
+			<td><input name = "officearea"/></td>
+			<td><input name = "stuarea"/></td>
+			<td><input name = "teaauxarea"/></td>
+			<td><input name = "trainarea"/></td>
+			<td><input name = "psyarea"/></td>
+			<td><input name = "dormarea"/></td>
+			<td><input name = "dormperarea"/></td>
+			<td><input name = "totalstudent"/></td>
+			<td><input name = "annualgraduate"/></td>
+			<td><input name = "consolidationrate"/></td>
+			<td><input name = "enrollment"/></td>
+			<td><input name = "majors"/></td>
+			<td><input type="submit" value="确定"/></td>
+			</form>
+		</tr>
+	</c:forEach>
+</table>
 <%@include file="../footer.jspf"%>

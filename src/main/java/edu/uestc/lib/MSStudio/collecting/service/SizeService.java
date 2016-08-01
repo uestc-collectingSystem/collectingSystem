@@ -12,4 +12,5 @@ public interface SizeService extends OriginService {
 
 	List<SchoolSize> listAllSchoolSize(String num, String size);
 	
+	public boolean update(SchoolSize record);
 }

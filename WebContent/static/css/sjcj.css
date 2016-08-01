@@ -6,12 +6,20 @@ body {
 	padding:0;
 	background:#fff;
 }
+
 .abc{
 
 }
 .abc > tbody > tr:first-child > td{
     border:hidden;
 }
+
+input {
+	width:95%;
+	height:100%;
+	border:0px;
+}
+
 ul,li,p {
 	margin: 0px;
 	padding: 0px;
@@ -513,7 +521,7 @@ img {
 	
 }
 .id_22 tbody td {
-	height:40px;
+	height:20px;
 	border-bottom:1px solid #e5e5e5;
 }
 .id_23 {

@@ -47,14 +47,16 @@ public class AuthController {
 	}
 	
 	@RequestMapping("/loggout")
-	public String loggout(HttpServletRequest request,Model model,HttpServletResponse response){
+	public void loggout(HttpServletRequest request,Model model,HttpServletResponse response) throws IOException{
 		Cookie[] currentCookies = request.getCookies();
 		for(Cookie temp : currentCookies){
-			if (temp.getName().equals(AuthController.attriKey)){temp.setMaxAge(0);
-			response.addCookie(temp);}
+			if (temp.getName().equals(AuthController.attriKey)){
+				temp.setMaxAge(0);
+				response.addCookie(temp);
+			}
 		}
+		response.sendRedirect("../");
 		model.addAttribute("welcomeMsg","您好，请输入指定工号和密码");
-		return "login";
 	}
 	
 	@RequestMapping(value = "/login",method=RequestMethod.POST)

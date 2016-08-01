@@ -2,6 +2,8 @@
 </div>
 </div>
 <script>
+
+hideRows();
 total = document.documentElement.clientHeight;
 colHeight = total-document.getElementById("id_05").offsetTop;
 document.getElementById("id_05").style.height=colHeight+"px";

@@ -4,3 +4,4 @@ encoding//src/main/resources/log4j.properties=UTF-8
 encoding//src/main/webapp/WEB-INF/jsp/basic/size.jsp=UTF-8
 encoding//src/main/webapp/WEB-INF/jsp/footer.jspf=UTF-8
 encoding//src/main/webapp/WEB-INF/jsp/index.jsp=UTF-8
+encoding//src/main/webapp/WEB-INF/jsp/inputs/size.jsp=UTF-8

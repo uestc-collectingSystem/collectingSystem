@@ -76,5 +76,12 @@ public class SizeServiceImpl implements SizeService {
 		if (dao.checkByID(1,Integer.valueOf(id))!=0) return true;
 		else return false;
 	}
+
+	@Override
+	public boolean update(SchoolSize record) {
+		// TODO Auto-generated method stub
+		if (dao.updateByPrimaryKeySelective(record)!=0) return true;
+		return false;
+	}
 	
 }

@@ -36,6 +36,13 @@ public interface OriginController {
 		return indexWithPage(pageNum, "10", request, model);
 	}
 	
+	@RequestMapping(value="input")
+	public default String inputPage(HttpServletRequest request){
+		String requestDict = request.getRequestURI();
+		String[] targets = requestDict.split("/");
+		return "inputs/"+targets[targets.length-2];
+	}
+	
 	public String indexWithPage(
 			@PathVariable String pageNum,
 			@PathVariable String pageSize,
