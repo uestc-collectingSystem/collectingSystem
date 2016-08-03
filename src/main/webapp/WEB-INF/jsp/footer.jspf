@@ -44,7 +44,8 @@ $("#logout").attr("href",$routeLogOut);
 $("#size").attr("href",$routeSize);
 $("#info").attr("href",$routeInfo);
 $("#funds").attr("href",$routeFunds);
-$("#")
+$("#teachers").attr("href",$routeTeac);
+
 /* attr("href",$routeGroup);
 attr("href",$routeInternship);
 attr("href",$routeSchoolEnter);

@@ -5,12 +5,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <%@include file="../header.jspf"%>
-</head>
-<body>
-<h1>基础情况：经济信息</h1>
-	<h2>错误信息：${ErrorMsg}</h2>
-	
-	<table border="1">
+	<table border="1" class = "id_22">
+	<thread>
 		<tr>
 		<td>学校代码</td>
 		<td>录入年份</td>
@@ -29,6 +25,7 @@
 		<td>删除记录</td>
 		<td>通过审核</td>
 		</tr>
+	</thread>
 	<c:forEach items="${list}" var="li">
 		<tr>
 			<td>${li.Admcode}</td>

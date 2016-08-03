@@ -10,4 +10,6 @@ public interface TeacherService extends OriginService {
 	public boolean save(Teachers record);
 
 	List<Teachers> listAllTeacher(String num, String size);
+
+	public boolean update(Teachers record);
 }

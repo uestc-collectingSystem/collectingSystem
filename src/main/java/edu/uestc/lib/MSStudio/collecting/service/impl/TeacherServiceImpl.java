@@ -52,5 +52,11 @@ public class TeacherServiceImpl implements TeacherService{
 		return dao.getAllObject((pageNum-1)*pageSize,pageSize);
 	}
 
+	@Override
+	public boolean update(Teachers record) {
+		if (dao.updateByPrimaryKeySelective(record)!=0) return true;
+		return false;
+	}
+
 		
 }

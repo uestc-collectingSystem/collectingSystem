@@ -31,6 +31,8 @@ public class FundsController implements OriginController{
 			@PathVariable String pageNum,
 			@PathVariable String pageSize,
 			HttpServletRequest request,Model model){
+		model.addAttribute("firstMenu", "基本情况");
+		model.addAttribute("subMenu", "经济信息");
 		model.addAttribute("list", fundsService.listAllFunds(pageNum, pageSize));
 		return PageRoutes.fundPage;
 	}

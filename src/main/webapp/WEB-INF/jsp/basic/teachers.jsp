@@ -4,15 +4,9 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
-<title>数据录入部分</title>
-</head>
-<body>
-<h1>基础情况：规模</h1>
-	<h2>错误信息：${ErrorMsg}</h2>
-	<form action="./create" method="POST">
-	<table border="1">
+<%@include file="../header.jspf"%>
+	<table border="1" class = "id_22">
+	<thread>
 		<tr>
 		<td>学校代码</td>
 		<td>录入年份</td>
@@ -52,6 +46,7 @@
 		<td>删除记录</td>
 		<td>通过审核</td>
 		</tr>
+		</thread>
 	<c:forEach items="${list}" var="li">
 		<tr>
 			<td>${li.Admcode}</td>
@@ -103,82 +98,48 @@
 				<c:if test="${li.Audit==1}">信息已通过审批</c:if>
 			</td>
 		</tr>
+		
+		<tr class="hidden">
+			<form action="./update" method="POST">
+				<input name="id" type="hidden" value='${li.ID}'/>
+				<td><input name="Admcode" value='${li.Admcode}'/></td>
+				<td><input name="Year" value='${li.Year}'/></td>
+				
+				<td><input name="StaffNum"/></td>
+				<td><input name="StaffAdmin"/></td>
+				<td><input name="StaffPrepJob"/></td>
+				<td><input name="FullTime"/></td>
+				<td><input name="BasicCourse"/></td>
+				<td><input name="Course"/></td>
+				<td><input name="IndustryEnterprise"/></td>
+				<td><input name="UndergraLess"/></td>
+				<td><input name="Undergra"/></td>
+				<td><input name="FullPostgrad"/></td>
+				<td><input name="SubHighMore"/></td>
+				<td><input name="IntermediateGrade"/></td>
+				<td><input name="JuniorTitle"/></td>
+				<td><input name="NoConferTeac"/></td>
+				<td><input name="ThreeFiveLess"/></td>
+				<td><input name="ThreeSixFourFive"/></td>
+				<td><input name="FourSixFiveFive"/></td>
+				<td><input name="FiveSixMore"/></td>
+				<td><input name="Male"/></td>
+				<td><input name="Female"/></td>
+				<td><input name="DoubleTeac"/></td>
+				<td><input name="FullClassHour"/></td>
+				<td><input name="CourseClassHour"/></td>
+				<td><input name="InduEnterHour"/></td>
+				<td><input name="CounselCertificate"/></td>
+				<td><input name="FulltimeCounsel"/></td>
+				<td><input name="CityDiscipLeader"/></td>
+				<td><input name="ProvSuper"/></td>
+				<td><input name="ExerProTeac"/></td>
+				<td><input name="ForeignTeac"/></td>
+				
+				<td><input type="submit" value="确定"/></td>
+			</form>
+		</tr>
 	</c:forEach>
 	
-		<tr>
-			<td><input name="Admcode"/></td>
-			<td><input name="Year"/></td>
-			
-			<td><input name="StaffNum"/></td>
-			<td><input name="StaffAdmin"/></td>
-			<td><input name="StaffPrepJob"/></td>
-			<td><input name="FullTime"/></td>
-			<td><input name="BasicCourse"/></td>
-			<td><input name="Course"/></td>
-			<td><input name="IndustryEnterprise"/></td>
-			<td><input name="UndergraLess"/></td>
-			<td><input name="Undergra"/></td>
-			<td><input name="FullPostgrad"/></td>
-			<td><input name="SubHighMore"/></td>
-			<td><input name="IntermediateGrade"/></td>
-			<td><input name="JuniorTitle"/></td>
-			<td><input name="NoConferTeac"/></td>
-			<td><input name="ThreeFiveLess"/></td>
-			<td><input name="ThreeSixFourFive"/></td>
-			<td><input name="FourSixFiveFive"/></td>
-			<td><input name="FiveSixMore"/></td>
-			<td><input name="Male"/></td>
-			<td><input name="Female"/></td>
-			<td><input name="DoubleTeac"/></td>
-			<td><input name="FullClassHour"/></td>
-			<td><input name="CourseClassHour"/></td>
-			<td><input name="InduEnterHour"/></td>
-			<td><input name="CounselCertificate"/></td>
-			<td><input name="FulltimeCounsel"/></td>
-			<td><input name="CityDiscipLeader"/></td>
-			<td><input name="ProvSuper"/></td>
-			<td><input name="ExerProTeac"/></td>
-			<td><input name="ForeignTeac"/></td>
-			
-			<td><input type="submit" value="确定"/></td>
-		</tr>
 	</table>
-</form>
-</body>
-</html>
-
-<!-- 
-<td>${li.Admcode}</td>
-<td>${li.Year}</td>
-
-<td><input name="StaffNum"/></td>
-<td><input name="StaffAdmin"/></td>
-<td><input name="StaffPrepJob"/></td>
-<td><input name="FullTime"/></td>
-<td><input name="BasicCourse"/></td>
-<td><input name="Course"/></td>
-<td><input name="IndustryEnterprise"/></td>
-<td><input name="UndergraLess"/></td>
-<td><input name="Undergra"/></td>
-<td><input name="FullPostgrad"/></td>
-<td><input name="SubHighMore"/></td>
-<td><input name="IntermediateGrade"/></td>
-<td><input name="JuniorTitle"/></td>
-<td><input name="NoConferTeac"/></td>
-<td><input name="ThreeFiveLess"/></td>
-<td><input name="ThreeSixFourFive"/></td>
-<td><input name="FourSixFiveFive"/></td>
-<td><input name="FiveSixMore"/></td>
-<td><input name="Male"/></td>
-<td><input name="Female"/></td>
-<td><input name="DoubleTeac"/></td>
-<td><input name="FullClassHour"/></td>
-<td><input name="CourseClassHour"/></td>
-<td><input name="InduEnterHour"/></td>
-<td><input name="CounselCertificate"/></td>
-<td><input name="FulltimeCounsel"/></td>
-<td><input name="CityDiscipLeader"/></td>
-<td><input name="ProvSuper"/></td>
-<td><input name="ExerProTeac"/></td>
-<td><input name="ForeignTeac"/></td>
- -->
+<%@include file="../footer.jspf"%>
