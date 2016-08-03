@@ -10,4 +10,6 @@ public interface EquipService extends OriginService {
 	public boolean save(Equipment record);
 
 	List<Equipment> listAllEquipment(String num, String size);
+
+	public boolean update(Equipment record);
 }

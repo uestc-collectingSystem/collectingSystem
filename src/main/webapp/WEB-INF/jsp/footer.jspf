@@ -41,10 +41,12 @@ var $routeSupport = $rootPath+"social/support";
 var $routeFile = $rootPath+"file/";
 
 $("#logout").attr("href",$routeLogOut);
+
 $("#size").attr("href",$routeSize);
 $("#info").attr("href",$routeInfo);
 $("#funds").attr("href",$routeFunds);
 $("#teachers").attr("href",$routeTeac);
+$("#equip").attr("href",$routeEquip);
 
 /* attr("href",$routeGroup);
 attr("href",$routeInternship);

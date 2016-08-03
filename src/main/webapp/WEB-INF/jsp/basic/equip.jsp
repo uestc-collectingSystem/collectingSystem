@@ -4,15 +4,9 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
-<title>数据录入部分</title>
-</head>
-<body>
-<h1>基础情况：教师团队</h1>
-	<h2>错误信息：${ErrorMsg}</h2>
-	<form action="./create" method="POST">
-	<table border="1">
+<%@include file="../header.jspf"%>
+	<table border="1" class = "id_22">
+	<thread>
 		<tr>
 		<td>学校代码</td>
 		<td>录入年份</td>
@@ -76,58 +70,35 @@
 				<c:if test="${li.Audit==1}">信息已通过审批</c:if>
 			</td>
 		</tr>
-	</c:forEach>
-		<tr>
-			<td><input name="AdmCode"/></td>
-			<td><input name="Year"/></td>
-			<td><input name="TotalAssertWorth"/></td>
-			<td><input name="TeacEquitWorth"/></td>
-			<td><input name="TrainEquitWorth"/></td>
-			<td><input name="YearTeacEquitWorth"/></td>
-			<td><input name="YearTrainEquitWorth"/></td>
-			<td><input name="StuTracEquitWorth"/></td>
-			<td><input name="StuTrainEquitWorth"/></td>
-			<td><input name="TraPracWorkPe"/></td>
-			<td><input name="InTrainBase"/></td>
-			<td><input name="OutTrainBase"/></td>
-			<td><input name="LibBooks"/></td>
-			<td><input name="LibBooksElec"/></td>
-			<td><input name="YearBooks"/></td>
-			<td><input name="ReadSeats"/></td>
-			<td><input name="StuBook"/></td>
-			<td><input name="SubScribs"/></td>
-			<td><input name="ElecBooks"/></td>
-			<td><input name="ElecSeats"/></td>
-			<td><input type="submit" value="确定"/></td>
+		
+		<tr class="hidden">
+			<form action="./update" method="POST">
+				<input name="id" type="hidden" value='${li.ID}'/>
+				<td><input name="Admcode" value='${li.AdmCode}'/></td>
+				<td><input name="Year" value='${li.Year}'/></td>
+				
+				<td><input name="TotalAssertWorth"/></td>
+				<td><input name="TeacEquitWorth"/></td>
+				<td><input name="TrainEquitWorth"/></td>
+				<td><input name="YearTeacEquitWorth"/></td>
+				<td><input name="YearTrainEquitWorth"/></td>
+				<td><input name="StuTracEquitWorth"/></td>
+				<td><input name="StuTrainEquitWorth"/></td>
+				<td><input name="TraPracWorkPe"/></td>
+				<td><input name="InTrainBase"/></td>
+				<td><input name="OutTrainBase"/></td>
+				<td><input name="LibBooks"/></td>
+				<td><input name="LibBooksElec"/></td>
+				<td><input name="YearBooks"/></td>
+				<td><input name="ReadSeats"/></td>
+				<td><input name="StuBook"/></td>
+				<td><input name="SubScribs"/></td>
+				<td><input name="ElecBooks"/></td>
+				<td><input name="ElecSeats"/></td>
+				<td><input type="submit" value="确定"/></td>
+			</form>
 		</tr>
+	</c:forEach>
+	
 	</table>
-</form>
-</body>
-</html>
-
-<!-- 
-@RequestParam String AdmCode,
-@RequestParam String Year,
-@RequestParam String TotalAssertWorth,
-@RequestParam String TeacEquitWorth,
-@RequestParam String TrainEquitWorth,
-@RequestParam String YearTeacEquitWorth,
-@RequestParam String YearTrainEquitWorth,
-@RequestParam String StuTracEquitWorth,
-@RequestParam String StuTrainEquitWorth,
-@RequestParam String TraPracWorkPe,
-@RequestParam String InTrainBase,
-@RequestParam String OutTrainBase,
-@RequestParam String LibBooks,
-@RequestParam String LibBooksElec,
-@RequestParam String YearBooks,
-@RequestParam String ReadSeats,
-@RequestParam String StuBook,
-@RequestParam String SubScribs,
-@RequestParam String ElecBooks,
-@RequestParam String ElecSeats,
-
-
-
- -->
- 
+<%@include file="../footer.jspf"%>
