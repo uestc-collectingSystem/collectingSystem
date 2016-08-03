@@ -45,7 +45,7 @@ var $rootPath;
 $rootPath=this.location.host;
 $rootPath="http://"+$rootPath+"/collectingSystem/";
 $(document).ready(function(){
-	  htmlobj=$.ajax({url:$rootPath+"auth/current",async:false});
+	  htmlobj=$.ajax({url:$rootPath+"current",async:false});
 	  $("#currentUser").html(htmlobj.responseText.replace("\"","").replace("\"",""));
 	});
 </script>

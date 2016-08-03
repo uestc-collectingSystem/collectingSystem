@@ -4,14 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>数据采集系统</title>
-<link href="../../../static/css/sjcj.css" rel="stylesheet" type="text/css">
-</head>
-<body>
-<div id="id_25">
-	<div class="id_26">
-	<form id = "test" action="../test" method="POST">
-		<table class="id_27">
+<%@include file="./common.jspf"%>
 		   <tbody>
 				<tr><th scope="row">学校代码</th>
 				<td><input class="id_28" name="Admcode"/></td>
@@ -76,17 +69,4 @@
 				<tr><th scope="row">专业数</th>
 				<td><input class="id_28" name = "Majors"/></td>
 				</tr>
-		   </tbody>
-		</table>
-	    <div class="id_29"><input class="id_30" type="button" value="取消">
-	    <input class="id_31" type="submit" value="提交"></div>
-	    </form>
-	</div>
-</div>
-<!-- <script>
-total = document.documentElement.clientHeight;
-colHeight = total-document.getElementById("id_25").offsetTop;
-document.getElementById("id_25").style.height=colHeight+"px";
-</script> -->
-</body>
-</html>
+		   <%@include file="./tail.jspf"%>

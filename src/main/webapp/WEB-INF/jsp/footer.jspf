@@ -13,7 +13,7 @@ document.getElementById("id_content").style.height=colHeight+"px";
 var $rootPath;
 $rootPath=this.location.host;
 $rootPath="http://"+$rootPath+"/collectingSystem/";
-var $routeLogOut=$rootPath+"auth/loggout/";
+var $routeLogOut=$rootPath+"loggout/";
 
 var $routeSize=$rootPath+"basic/size/";
 var $routeFunds=$rootPath+"basic/funds/";
@@ -42,10 +42,7 @@ var $routeFile = $rootPath+"file/";
 
 $("#logout").attr("href",$routeLogOut);
 $("#size").attr("href",$routeSize);
-$("#funds").attr("href",$routeFunds);
-$("#equip").attr("href",$routeInfo);
-$("#info").attr("href",$routeTeac);
-$("#teachers").attr("href",$routeEquip);
+$("#info").attr("href",$routeInfo);
 /* attr("href",$routeGroup);
 attr("href",$routeInternship);
 attr("href",$routeSchoolEnter);

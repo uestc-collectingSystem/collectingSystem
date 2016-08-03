@@ -1,0 +1,12 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<title>数据采集系统</title>
+<link href="../../../static/css/sjcj.css" rel="stylesheet" type="text/css">
+<script type="text/javascript">
+</script>
+</head>
+<body>
+<div id="id_25">
+	<div class="id_26">
+	<form id = "createTable" action="../create" method="POST">
+		<table class="id_27">

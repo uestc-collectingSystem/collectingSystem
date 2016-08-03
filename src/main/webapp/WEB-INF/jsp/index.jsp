@@ -107,7 +107,7 @@ $(document).ready(function(){
 	
 	<!--添加删除修改-->
 	<div class="id_12">
-		<div class="id_13"><span>基本情况</span><i></i><a href="#">规模</a></div>
+		<div class="id_13"><span>主页</span><i></i><a href="#">规模</a></div>
 		<div class="id_14">
 		<a href="#" class="id_15"></a><!-- 删除 -->
 		<a href="#" class="id_16"></a><!-- 新增 -->

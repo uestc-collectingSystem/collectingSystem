@@ -1,0 +1,12 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+</tbody>
+		</table>
+	    <div class="id_29"><input class="id_30" type="button" value="取消">
+	    </form>
+	    <input class="id_31" type="submit" value="提交"></div>
+	</div>
+</div>
+
+</body>
+</html>

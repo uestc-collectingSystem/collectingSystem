@@ -50,7 +50,8 @@
 	<mvc:interceptors>    
 	    <mvc:interceptor>    
 	        <!-- 匹配的是url路径， 如果不配置或/**,将拦截所有的Controller -->  
-	        <mvc:mapping path="/auth/collectorAuth" /><!-- 这一部分可以重复写多次，代表这一个拦截器的拦截范围 -->
+	        <mvc:mapping path="/collectorAuth" /><!-- 这一部分可以重复写多次，代表这一个拦截器的拦截范围 -->
+	        <mvc:mapping path="/basic/size/*"/>
 	        <bean class="edu.uestc.lib.MSStudio.collecting.interceptor.CollectorAuth"></bean>
 	    </mvc:interceptor>
 	    

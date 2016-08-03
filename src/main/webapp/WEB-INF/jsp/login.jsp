@@ -14,7 +14,7 @@
 </head>
 
 <body class="lg_bg">
-    <form name="form1" method="post" action="http://localhost:8080/collectingSystem/auth/login" id="form1">
+    <form name="form1" method="post" action="./login" id="form1">
 <div>
 <input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwUKLTI4NzY1OTExN2QYAQUeX19Db250cm9sc1JlcXVpcmVQb3N0QmFja0tleV9fFgEFDmlzc2F2ZUFjY291bnQxsjlQjq8j2PR6goZRVU/znYgJmSU=" />
 </div>

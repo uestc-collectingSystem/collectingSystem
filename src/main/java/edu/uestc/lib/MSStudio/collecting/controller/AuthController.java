@@ -21,7 +21,7 @@ import edu.uestc.lib.MSStudio.collecting.model.User;
 import edu.uestc.lib.MSStudio.collecting.service.UserService;
 
 @Controller
-@RequestMapping("/auth")
+@RequestMapping("/")
 public class AuthController {
 	
 	public final static String attriKey = "UserID";

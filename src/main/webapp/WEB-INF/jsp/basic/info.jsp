@@ -4,15 +4,8 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
-<title>数据录入部分</title>
-</head>
-<body>
-<h1>基础情况：信息化建设</h1>
-	<h2>错误信息：${ErrorMsg}</h2>
-	<form action="./create" method="POST">
-	<table border="1">
+<%@include file="../header.jspf"%>
+	<table border="1" class = "id_22">
 		<tr>
 		<td>学校代码</td>
 		<td>录入年份</td>
@@ -65,42 +58,30 @@
 				<c:if test="${li.Audit==1}">信息已通过审批</c:if>
 			</td>
 		</tr>
-	</c:forEach>
+		
+		<tr class="hidden">
+			<form action="./update" method="POST">
+				<input name="id" type="hidden" value='${li.ID}'/>
+				<td><input name="Admcode" value="${li.Admcode}"/></td>
+				<td><input name="Year" value="${li.Year}"/></td>
 	
-		<tr>
-			<td><input name="Admcode"/></td>
-			<td><input name="Year"/></td>
-
-			<td><input name="EducateInfo"/></td>
-			<td><input name="Server"/></td>
-			<td><input name="NetworkNum"/></td>
-			<td><input name="NetworkMain"/></td>
-			<td><input name="VideoStu"/></td>
-			<td><input name="ElecBookStu"/></td>
-			<td><input name="TeacComputer"/></td>
-			<td><input name="TeacCompStu"/></td>
-			<td><input name="NetMediaRoom"/></td>
-			<td><input name="NetClassCount"/></td>
-			
-			<td><input type="submit" value="确定"/></td>
+				<td><input name="educateinfo"/></td>
+				<td><input name="server"/></td>
+				<td><input name="networknum"/></td>
+				<td><input name="networkmain"/></td>
+				<td><input name="videostu"/></td>
+				<td><input name="elecbookstu"/></td>
+				<td><input name="teaccomputer"/></td>
+				<td><input name="teaccompstu"/></td>
+				<td><input name="netmediaroom"/></td>
+				<td><input name="netclasscount"/></td>
+				
+				<td>
+					<c:if test="${li.Audit==0}"><input type="submit"/></c:if>
+					<c:if test="${li.Audit==1}">信息已通过审批</c:if>
+				</td>
+			</form>
 		</tr>
+	</c:forEach>
 	</table>
-</form>
-</body>
-</html>
-
-
-<!-- 
-
-@RequestParam String EducateInfo,
-@RequestParam String Server,
-@RequestParam String NetworkNum,
-@RequestParam String NetworkMain,
-@RequestParam String VideoStu,
-@RequestParam String ElecBookStu,
-@RequestParam String TeacComputer,
-@RequestParam String TeacCompStu,
-@RequestParam String NetMediaRoom,
-@RequestParam String NetClassCount,
-
- -->
+<%@include file="../footer.jspf"%>

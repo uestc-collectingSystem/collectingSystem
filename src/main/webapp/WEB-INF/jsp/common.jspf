@@ -1,6 +1,6 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<link href="../static/css/sjcj.css" rel="stylesheet" />
-    <script src="../static/js/jquery-1.7.2.min.js"></script>
-    <script src="../static/js/jquery.placeholder.min.js"></script>
+<link href="./static/css/sjcj.css" rel="stylesheet" />
+    <script src="./static/js/jquery-1.7.2.min.js"></script>
+    <script src="./static/js/jquery.placeholder.min.js"></script>

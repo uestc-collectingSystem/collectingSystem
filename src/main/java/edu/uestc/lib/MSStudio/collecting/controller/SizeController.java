@@ -131,10 +131,10 @@ public class SizeController implements OriginController {
 				StuArea, OfficeArea, TeaAuxArea, TrainArea, PsyArea, DormArea, 
 				DormPerArea, TotalStudent, AnnualGraduate, 
 				ConsolidationRate, Enrollment, Majors);
-		if (sizeService.save(temp)) {
-			model.addAttribute("list", sizeService.listAllSchoolSize(pageNum, pageSize));
-			return PageRoutes.sizePage;
-		}else{
+		try{
+			sizeService.save(temp);
+			return indexWithPage("1", request, model);
+		}catch(Exception e){
 			model.addAttribute(PageRoutes.errorSourceParam, "SizePage");
 			model.addAttribute(PageRoutes.errorMsgParam, "参数有错，请检查");
 			return PageRoutes.errorPage;
@@ -163,7 +163,6 @@ public class SizeController implements OriginController {
 	}
 	
 	@RequestMapping("update")
-	@Valid
 	public void testFormBean(@ModelAttribute("update") SchoolSize test,HttpServletResponse response) throws IOException{
 //		return JSON.toJSON(sizeService.update(test));
 		System.out.println(JSON.toJSON(test));
