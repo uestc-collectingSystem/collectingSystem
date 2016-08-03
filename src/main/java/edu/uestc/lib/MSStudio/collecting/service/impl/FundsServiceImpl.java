@@ -52,4 +52,11 @@ public class FundsServiceImpl implements FundsService{
 		return dao.getAllObject((pageNum-1)*pageSize,pageSize);
 	}
 
+	@Override
+	public boolean update(Funds record) {
+		// TODO Auto-generated method stub
+		if (dao.updateByPrimaryKeySelective(record)!=0) return true;
+		return false;
+	}
+
 }

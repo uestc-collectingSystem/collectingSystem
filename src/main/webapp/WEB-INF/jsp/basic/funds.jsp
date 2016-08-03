@@ -4,14 +4,12 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
-<title>数据录入部分</title>
+<%@include file="../header.jspf"%>
 </head>
 <body>
 <h1>基础情况：经济信息</h1>
 	<h2>错误信息：${ErrorMsg}</h2>
-	<form action="./create" method="POST">
+	
 	<table border="1">
 		<tr>
 		<td>学校代码</td>
@@ -60,41 +58,26 @@
 				<c:if test="${li.Audit==1}">信息已通过审批</c:if>
 			</td>
 		</tr>
-	</c:forEach>
+		
+		<tr class="hidden">
+			<form action="./update" method="POST">
+				<input name="id" type="hidden" value='${li.ID}'/>
+				<td><input name="admcode" value ="${li.Admcode}"/></td>
+				<td><input name="year" value ="${li.Year}"/></td>
 	
-		<tr>
-			<td><input name="Admcode"/></td>
-			<td><input name="Year"/></td>
-
-			<td><input name="CenterFund"/></td>
-			<td><input name="LocalFund"/></td>
-			<td><input name="Debt"/></td>
-			<td><input name="Loan"/></td>
-			<td><input name="Appropriation"/></td>
-			<td><input name="TeacInputRadio"/></td>
-			<td><input name="TeacherTrain"/></td>
-			<td><input name="TeachChange"/></td>
-			<td><input name="FundBudget"/></td>
-			
-			<td><input type="submit" value="确定"/></td>
+				<td><input name="centerfund"/></td>
+				<td><input name="localfund"/></td>
+				<td><input name="debt"/></td>
+				<td><input name="loan"/></td>
+				<td><input name="appropriation"/></td>
+				<td><input name="teacinputradio"/></td>
+				<td><input name="teachertrain"/></td>
+				<td><input name="teachchange"/></td>
+				<td><input name="fundbudget"/></td>
+				
+				<td><input type="submit" value="确定"/></td>
+			</form>
 		</tr>
+	</c:forEach>	
 	</table>
-</form>
-</body>
-</html>
-
-<!-- 
-<td><input name="Admcode"/></td>
-<td><input name="Year"/></td>
-
-<td><input name="CenterFund"/></td>
-<td><input name="LocalFund"/></td>
-<td><input name="Debt"/></td>
-<td><input name="Loan"/></td>
-<td><input name="Appropriation"/></td>
-<td><input name="TeacInputRadio"/></td>
-<td><input name="TeacherTrain"/></td>
-<td><input name="TeachChange"/></td>
-<td><input name="FundBudget"/></td>
-
- -->
+<%@include file="../footer.jspf"%>

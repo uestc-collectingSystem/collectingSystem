@@ -10,4 +10,6 @@ public interface FundsService extends OriginService{
 	public boolean save(Funds record);
 
 	List<Funds> listAllFunds(String num, String size);
+
+	public boolean update(Funds record);
 }

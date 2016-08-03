@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -122,4 +123,12 @@ public class FundsController implements OriginController{
 			}
 	}
 
+	@RequestMapping("update")
+	public void testFormBean(@ModelAttribute("update") Funds test,HttpServletResponse response) throws IOException{
+//		return JSON.toJSON(sizeService.update(test));
+		if(!fundsService.update(test)) System.out.println("wrong");;
+		response.sendRedirect("./");
+		return ;
+	} 
+	
 }

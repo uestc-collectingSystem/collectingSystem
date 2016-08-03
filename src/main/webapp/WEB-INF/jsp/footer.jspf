@@ -43,6 +43,8 @@ var $routeFile = $rootPath+"file/";
 $("#logout").attr("href",$routeLogOut);
 $("#size").attr("href",$routeSize);
 $("#info").attr("href",$routeInfo);
+$("#funds").attr("href",$routeFunds);
+$("#")
 /* attr("href",$routeGroup);
 attr("href",$routeInternship);
 attr("href",$routeSchoolEnter);
