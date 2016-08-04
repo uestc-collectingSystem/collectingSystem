@@ -31,7 +31,6 @@ var $routeStu = $rootPath+"dev/stu/";
 var $routeAssure = $rootPath+"qua/assure/";
 var $routeEducation = $rootPath+"qua/edu/";
 var $routeMajNum = $rootPath+"qua/majnum/";
-var $routeProject = $rootPath+"qua/project/";
 
 var $routeParty = $rootPath+"social/party/";
 var $routeService = $rootPath+"social/service/";
@@ -50,21 +49,12 @@ $("#equip").attr("href",$routeEquip);
 //学生发展
 $("#stu").attr("href",$routeStu);
 $("#emp").attr("href",$routeEmp);
+//质量保证
 
-
-/* attr("href",$routeGroup);
-attr("href",$routeInternship);
-attr("href",$routeSchoolEnter);
-attr("href",$routeEmp);
-attr("href",$routeStu);
-attr("href",$routeAssure);
-attr("href",$routeEducation);
-attr("href",$routeMajNum);
-attr("href",$routeProject);
-attr("href",$routeParty);
-attr("href",$routeService);
-attr("href",$routeSkill);
-attr("href",$routeSupport); */
+// TODO 专业开设
+$("#majnum").attr("href",$routeMajNum);
+$("#assure").attr("href",$routeAssure);
+$("#edu").attr("href",$routeEducation);
 
 
 var $routeFile = $rootPath+"file/";

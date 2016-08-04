@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -30,6 +31,8 @@ public class MajorNumController implements OriginController{
 			@PathVariable String pageNum,
 			@PathVariable String pageSize,
 			HttpServletRequest request,Model model){
+		model.addAttribute("firstMenu", "质量保障措施");
+		model.addAttribute("subMenu", "课程开设");
 		model.addAttribute("list", majorNumService.listAllMajorNum(pageNum, pageSize));
 		return PageRoutes.quaMajNumPage;
 	}
@@ -147,4 +150,13 @@ public class MajorNumController implements OriginController{
 				return PageRoutes.errorPage;
 		}
 	}
+	
+	@RequestMapping("update")
+	public void testFormBean(@ModelAttribute("update") MajorNum record,HttpServletResponse response) throws IOException{
+//		return JSON.toJSON(sizeService.update(test));
+		//System.out.println(JSON.toJSON(record));
+		if(!majorNumService.update(record)) System.out.println("wrong");;
+		response.sendRedirect("./");
+		return ;
+	} 
 }

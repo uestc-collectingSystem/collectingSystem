@@ -4,16 +4,9 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
-<title>数据录入部分</title>
-</head>
-<body>
-<h1>质量审核：课程开设</h1>
-	<h2>错误信息：${ErrorMsg}</h2>
-	
-	<form action="./create" method="POST">
-	<table border="1">
+<%@include file="../header.jspf"%>
+	<table border="1" class = "id_22">
+	<thread>
 		<tr>
 		<td>学校代码</td>
 		<td>录入年份</td>
@@ -83,58 +76,38 @@
 				<c:if test="${li.Audit==1}">信息已通过审批</c:if>
 			</td>
 		</tr>
-	</c:forEach>
-		<tr>
-			<td><input name="Admcode"/></td>
-			<td><input name="Year"/></td>
+		<tr class="hidden">
+		<form action="./update" method="POST" onsubmit="return check(this)">
+			<input name="id" type="hidden" value='${li.ID}'/>
+			<td><input name="admcode"/></td>
+			<td><input name="year"/></td>
 
-			<td><input name="ClassCriter"/></td>
-			<td><input name="LeadNatShareMajor"/></td>
-			<td><input name="SchoolEnterMajor"/></td>
-			<td><input name="TextTeacEditMajor"/></td>
-			<td><input name="StatePlanText"/></td>
-			<td><input name="SchMajorMater"/></td>
-			<td><input name="ClassHour"/></td>
-			<td><input name="MajorHour"/></td>
-			<td><input name="MajorBHour"/></td>
-			<td><input name="MajorCHour"/></td>
-			<td><input name="DispClass"/></td>
-			<td><input name="BCClassHour"/></td>
-			<td><input name="Chinese"/></td>
-			<td><input name="Moral"/></td>
-			<td><input name="Math"/></td>
-			<td><input name="English"/></td>
-			<td><input name="Sports"/></td>
-			<td><input name="Art"/></td>
-			<td><input name="Computer"/></td>
-			<td><input name="History"/></td>
+			<td><input name="classcriter"/></td>
+			<td><input name="leadnatsharemajor"/></td>
+			<td><input name="schoolentermajor"/></td>
+			<td><input name="textteaceditmajor"/></td>
+			<td><input name="stateplantext"/></td>
+			<td><input name="schmajormater"/></td>
+			<td><input name="classhour"/></td>
+			<td><input name="majorhour"/></td>
+			<td><input name="majorbhour"/></td>
+			<td><input name="majorchour"/></td>
+			<td><input name="dispclass"/></td>
+			<td><input name="bcclasshour"/></td>
+			<td><input name="chinese"/></td>
+			<td><input name="moral"/></td>
+			<td><input name="math"/></td>
+			<td><input name="english"/></td>
+			<td><input name="sports"/></td>
+			<td><input name="art"/></td>
+			<td><input name="computer"/></td>
+			<td><input name="history"/></td>
 			 
 			<td><input type="submit" value="确定"/></td>
+			</form>
 		</tr>
+	</c:forEach>
+		
 	</table>
-</form>
-</body>
-</html>
-
-<!--
-@RequestParam String ClassCriter,
-@RequestParam String LeadNatShareMajor,
-@RequestParam String SchoolEnterMajor,
-@RequestParam String TextTeacEditMajor,
-@RequestParam String StatePlanText,
-@RequestParam String SchMajorMater,
-@RequestParam String ClassHour,
-@RequestParam String MajorHour,
-@RequestParam String MajorBHour,
-@RequestParam String MajorCHour,
-@RequestParam String DispClass,
-@RequestParam String BCClassHour,
-@RequestParam String Chinese,
-@RequestParam String Moral,
-@RequestParam String Math,
-@RequestParam String English,
-@RequestParam String Sports,
-@RequestParam String Art,
-@RequestParam String Computer,
-@RequestParam String History,
--->
+<%@include file="../footer.jspf"%>
+	

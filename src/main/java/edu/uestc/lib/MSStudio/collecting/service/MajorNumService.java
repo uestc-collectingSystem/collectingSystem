@@ -12,4 +12,6 @@ public interface MajorNumService extends OriginService {
 
 	List<MajorNum> listAllMajorNum(String num, String size);
 
+	public boolean update(MajorNum record);
+
 }
