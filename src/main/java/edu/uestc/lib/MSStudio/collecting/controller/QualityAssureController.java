@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -32,6 +33,8 @@ public class QualityAssureController implements OriginController{
 			@PathVariable String pageNum,
 			@PathVariable String pageSize,
 			HttpServletRequest request,Model model){
+		model.addAttribute("firstMenu", "质量保障措施");
+		model.addAttribute("subMenu", " 质量保证");
 		model.addAttribute("list", qualityAssureService.listAllQualityAssure(pageNum, pageSize));
 		return PageRoutes.quaAssurePage;
 	}
@@ -162,4 +165,16 @@ public class QualityAssureController implements OriginController{
 				return PageRoutes.errorPage;
 		}
 	}
+	
+
+	@RequestMapping("update")
+		public void testFormBean(@ModelAttribute("update") QualityAssure record,HttpServletResponse response) throws IOException{
+	//		return JSON.toJSON(sizeService.update(test));
+			//System.out.println(JSON.toJSON(record));
+			if(!qualityAssureService.update(record)) System.out.println("wrong");;
+			response.sendRedirect("./");
+			return ;
+		} 
+
+	
 }

@@ -10,4 +10,6 @@ public interface QualityAssureService extends OriginService {
 	public boolean save(QualityAssure record);
 
 	List<QualityAssure> listAllQualityAssure(String num, String size);
+
+	public boolean update(QualityAssure record);
 }
