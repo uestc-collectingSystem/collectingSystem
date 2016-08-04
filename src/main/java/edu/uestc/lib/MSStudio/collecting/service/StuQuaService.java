@@ -10,4 +10,6 @@ public interface StuQuaService extends OriginService{
 	public boolean save(StudentQuality record);
 
 	List<StudentQuality> listAllStudentQuality(String num, String size);
+
+	public boolean update(StudentQuality record);
 }

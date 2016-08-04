@@ -4,15 +4,9 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
-<title>数据录入部分</title>
-</head>
-<body>
-<h1>基础情况：信息化建设</h1>
-	<h2>错误信息：${ErrorMsg}</h2>
-	<form action="./create" method="POST">
-	<table border="1">
+<%@include file="../header.jspf"%>
+	<table border="1" class = "id_22">
+	<thread>
 		<tr>
 		<td>学校代码</td>
 		<td>录入年份</td>
@@ -154,72 +148,74 @@
 				<c:if test="${li.Audit==1}">信息已通过审批</c:if>
 			</td>
 		</tr>
+		<tr class="hidden">
+			<form action="./update" method="POST" onsubmit="return check(this)">
+				<input name="id" type="hidden" value='${li.ID}'/>
+				<td><input name="Admcode" value='${li.Admcode}'/></td>
+				<td><input name="Year" value='${li.Year}'/></td>
+	
+				<td><input name="workfundpercent"/></td>
+				<td><input name="moralequit"/></td>
+				<td><input name="phycenter"/></td>
+				<td><input name="advanced"/></td>
+				<td><input name="moralbase" /></td>
+				<td><input name="schoolspirit" /></td>
+				<td><input name="managespirit" /></td>
+				<td><input name="volunteer"/></td>
+				<td><input name="redflag"/></td>
+				<td><input name="otherhonor"/></td>
+				<td><input name="goodclass"/></td>
+				<td><input name="fulltimemoral"/></td>
+				<td><input name="moraltask"/></td>
+				<td><input name="moralnum"/></td>
+				<td><input name="moralpart"/></td>
+				<td><input name="moralhour"/></td>
+				<td><input name="moraltext"/></td>
+				<td><input name="assessoptimal"/></td>
+				<td><input name="assessgood"/></td>
+				<td><input name="assessmiddle"/></td>
+				<td><input name="assesspoor"/></td>
+				<td><input name="pyhconselper"/></td>
+				<td><input name="provgoodgrade"/></td>
+				<td><input name="provgoodcadre"/></td>
+				<td><input name="provgoodstud"/></td>
+				<td><input name="provother"/></td>
+				<td><input name="campusviolence"/></td>
+				<td><input name="crimerate"/></td>
+				<td><input name="examdiscip"/></td>
+				<td><input name="joinorgan"/></td>
+				<td><input name="joinpraty"/></td>
+				<td><input name="socailvolun"/></td>
+				<td><input name="socailprac"/></td>
+				<td><input name="studentorgan"/></td>
+				<td><input name="organstu"/></td>
+				<td><input name="statecivil"/></td>
+				<td><input name="provincivil"/></td>
+				<td><input name="citycivil"/></td>
+				<td><input name="statefirstaward"/></td>
+				<td><input name="statesecondaward"/></td>
+				<td><input name="statethirdaward"/></td>
+				<td><input name="provinfirstaward"/></td>
+				<td><input name="provinsecondaward"/></td>
+				<td><input name="provinthirdaward"/></td>
+				<td><input name="cityfirstaward"/></td>
+				<td><input name="citysecondaward"/></td>
+				<td><input name="citythirdaward"/></td>
+				<td><input name="oneconsol"/></td>
+				<td><input name="twoconsol"/></td>
+				<td><input name="threeconsol"/></td>
+				<td><input name="cultdivipassrate"/></td>
+				<td><input name="phyassesspassrate"/></td>
+				<td><input name="profskillpassrate"/></td>
+				<td><input name="careercert"/></td>
+				<td><input name="doubcert"/></td>
+				<td><input name="gradrate"/></td>
+				 
+				<td><input type="submit" value="确定"/></td>
+			</form>
+		</tr>
 	</c:forEach>
 	
-		<tr>
-			<td><input name="Admcode"/></td>
-			<td><input name="Year"/></td>
-
-			<td><input name="WorkFundPercent"/></td>
-			<td><input name="MoralEquit"/></td>
-			<td><input name="PhyCenter"/></td>
-			<td><input name="Advanced"/></td>
-			<td><input name="MoralBase"/></td>
-			<td><input name="SchoolSpirit"/></td>
-			<td><input name="ManageSpirit"/></td>
-			<td><input name="Volunteer"/></td>
-			<td><input name="RedFlag"/></td>
-			<td><input name="OtherHonor"/></td>
-			<td><input name="GoodClass"/></td>
-			<td><input name="FulltimeMoral"/></td>
-			<td><input name="MoralTask"/></td>
-			<td><input name="MoralNum"/></td>
-			<td><input name="MoralPart"/></td>
-			<td><input name="MoralHour"/></td>
-			<td><input name="MoralText"/></td>
-			<td><input name="AssessOptimal"/></td>
-			<td><input name="AssessGood"/></td>
-			<td><input name="AssessMiddle"/></td>
-			<td><input name="AssessPoor"/></td>
-			<td><input name="PyhConselPer"/></td>
-			<td><input name="ProvGoodGrade"/></td>
-			<td><input name="ProvGoodCadre"/></td>
-			<td><input name="ProvGoodStud"/></td>
-			<td><input name="ProvOther"/></td>
-			<td><input name="CampusViolence"/></td>
-			<td><input name="CrimeRate"/></td>
-			<td><input name="ExamDiscip"/></td>
-			<td><input name="JoinOrgan"/></td>
-			<td><input name="JoinPraty"/></td>
-			<td><input name="SocailVolun"/></td>
-			<td><input name="SocailPrac"/></td>
-			<td><input name="StudentOrgan"/></td>
-			<td><input name="OrganStu"/></td>
-			<td><input name="StateCivil"/></td>
-			<td><input name="ProvinCivil"/></td>
-			<td><input name="CityCivil"/></td>
-			<td><input name="StateFirstAward"/></td>
-			<td><input name="StateSecondAward"/></td>
-			<td><input name="StateThirdAward"/></td>
-			<td><input name="ProvinFirstAward"/></td>
-			<td><input name="ProvinSecondAward"/></td>
-			<td><input name="ProvinThirdAward"/></td>
-			<td><input name="CityFirstAward"/></td>
-			<td><input name="CitySecondAward"/></td>
-			<td><input name="CityThirdAward"/></td>
-			<td><input name="OneConsol"/></td>
-			<td><input name="TwoConsol"/></td>
-			<td><input name="ThreeConsol"/></td>
-			<td><input name="CultDiviPassRate"/></td>
-			<td><input name="PhyAssessPassRate"/></td>
-			<td><input name="ProfSkillPassRate"/></td>
-			<td><input name="CareerCert"/></td>
-			<td><input name="DoubCert"/></td>
-			<td><input name="GradRate"/></td>
-			 
-			<td><input type="submit" value="确定"/></td>
-		</tr>
+		
 	</table>
-</form>
-</body>
-</html>
+<%@include file="../footer.jspf"%>

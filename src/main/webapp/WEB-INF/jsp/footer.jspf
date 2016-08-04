@@ -41,12 +41,16 @@ var $routeSupport = $rootPath+"social/support";
 var $routeFile = $rootPath+"file/";
 
 $("#logout").attr("href",$routeLogOut);
-
+//基础信息
 $("#size").attr("href",$routeSize);
 $("#info").attr("href",$routeInfo);
 $("#funds").attr("href",$routeFunds);
 $("#teachers").attr("href",$routeTeac);
 $("#equip").attr("href",$routeEquip);
+//学生发展
+$("#stu").attr("href",$routeStu);
+$("#emp").attr("href",$routeEmp);
+
 
 /* attr("href",$routeGroup);
 attr("href",$routeInternship);
