@@ -9,10 +9,13 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import com.alibaba.fastjson.JSON;
 
 import edu.uestc.lib.MSStudio.collecting.excel.ReaderUtils;
 import edu.uestc.lib.MSStudio.collecting.model.EmployQuality;
@@ -31,6 +34,8 @@ public class EmpQuaController implements OriginController{
 			@PathVariable String pageNum,
 			@PathVariable String pageSize,
 			HttpServletRequest request,Model model){
+		model.addAttribute("firstMenu", "学生发展");
+		model.addAttribute("subMenu", " 就业质量");
 		model.addAttribute("list", empQuaService.listAllEmployQuality(pageNum, pageSize));
 		return PageRoutes.empQuaPage;
 	}
@@ -143,7 +148,14 @@ public class EmpQuaController implements OriginController{
 		}
 	}
 	
-	
+	@RequestMapping("update")
+	public void testFormBean(@ModelAttribute("update") EmployQuality record,HttpServletResponse response) throws IOException{
+//		return JSON.toJSON(sizeService.update(test));
+		System.out.println(JSON.toJSON(record));
+		if(!empQuaService.update(record)) System.out.println("wrong");;
+		response.sendRedirect("./");
+		return ;
+	} 
 	
 	
 }

@@ -51,6 +51,12 @@ public class EmpQuaServiceImpl implements EmpQuaServicee {
 		//System.out.println((pageNum-1)*pageSize+" "+pageNum*pageSize);
 		return dao.getAllObject((pageNum-1)*pageSize,pageSize);
 	}
+
+	@Override
+	public boolean update(EmployQuality record) {
+		if (dao.updateByPrimaryKeySelective(record)!=0) return true;
+		return false;
+	}
 	
 	
 }

@@ -10,4 +10,6 @@ public interface EmpQuaServicee extends OriginService {
 	public boolean save(EmployQuality record);
 
 	List<EmployQuality> listAllEmployQuality(String num, String size);
+
+	public boolean update(EmployQuality record);
 }

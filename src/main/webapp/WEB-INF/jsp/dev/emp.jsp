@@ -4,16 +4,9 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
-<title>数据录入部分</title>
-</head>
-<body>
-<h1>基础情况：信息化建设</h1>
-	<h2>错误信息：${ErrorMsg}</h2>
-	
-	<form action="./create" method="POST">
-	<table border="1">
+<%@include file="../header.jspf"%>
+	<table border="1" class = "id_22">
+	<thread>
 		<tr>
 		<td>学校代码</td>
 		<td>录入年份</td>
@@ -75,51 +68,34 @@
 				<c:if test="${li.Audit==1}">信息已通过审批</c:if>
 			</td>
 		</tr>
-	</c:forEach>
-		<tr>
-			<td><input name="Admcode"/></td>
-			<td><input name="Year"/></td>
+		
+		<tr class="hidden">
+		<form action="./update" method="POST" onsubmit="return check(this)">
+			<input name="id" type="hidden" value='${li.ID}'/>
+			<td><input name="admcode"/></td>
+			<td><input name="year"/></td>
 
-			<td><input name = "EmployRateFirst"/></td>
-			<td><input name = "CouPartEmployRate"/></td>
-			<td><input name = "SixMonthSteadRate"/></td>
-			<td><input name = "FirstEmployMonIncome"/></td>
-			<td><input name = "VentureRate"/></td>
-			<td><input name = "StateOwn"/></td>
-			<td><input name = "PrivateOwn"/></td>
-			<td><input name = "ForeignOwn"/></td>
-			<td><input name = "One"/></td>
-			<td><input name = "Two"/></td>
-			<td><input name = "Three"/></td>
-			<td><input name = "Soldier"/></td>
-			<td><input name = "CollegeEntance"/></td>
-			<td><input name = "CouterPart"/></td>
-			<td><input name = "OneYearInner"/></td>
-			<td><input name = "OneYearOuter"/></td>
+			<td><input name = "employratefirst"/></td> 
+			<td><input name = "coupartemployrate"/></td>
+			<td><input name = "sixmonthsteadrate"/></td>
+			<td><input name = "firstemploymonincome"/></td>
+			<td><input name = "venturerate"/></td>
+			<td><input name = "stateown"/></td>
+			<td><input name = "privateown"/></td>
+			<td><input name = "foreignown"/></td>
+			<td><input name = "one"/></td>
+			<td><input name = "two"/></td>
+			<td><input name = "three"/></td>
+			<td><input name = "soldier"/></td>
+			<td><input name = "collegeentance"/></td>
+			<td><input name = "couterpart"/></td>
+			<td><input name = "oneyearinner"/></td>
+			<td><input name = "oneyearouter"/></td>
 			 
 			<td><input type="submit" value="确定"/></td>
+		</form>
 		</tr>
+	</c:forEach>
+		
 	</table>
-</form>
-</body>
-</html>
-<!-- 
-
-@RequestParam String EmployRateFirst,
-@RequestParam String CouPartEmployRate,
-@RequestParam String SixMonthSteadRate,
-@RequestParam String FirstEmployMonIncome,
-@RequestParam String VentureRate,
-@RequestParam String StateOwn,
-@RequestParam String PrivateOwn,
-@RequestParam String ForeignOwn,
-@RequestParam String One,
-@RequestParam String Two,
-@RequestParam String Three,
-@RequestParam String Soldier,
-@RequestParam String CollegeEntance,
-@RequestParam String CouterPart,
-@RequestParam String OneYearInner,
-@RequestParam String OneYearOuter,
-
- -->
+<%@include file="../footer.jspf"%>
