@@ -49,4 +49,10 @@ public class EducationTrainServiceImpl implements EducationTrainService {
 
 	}
 
+	@Override
+	public boolean update(EducationTrain record) {
+		if (dao.updateByPrimaryKeySelective(record)!=0) return true;
+		return false;
+	}
+
 }

@@ -12,4 +12,8 @@ public interface EducationTrainService extends OriginService{
 
 	List<EducationTrain> listAllEducationTrain(String num, String size);
 
+	boolean update(EducationTrain record);
+	
+	
+
 }
