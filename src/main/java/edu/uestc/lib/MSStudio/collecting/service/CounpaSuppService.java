@@ -10,4 +10,6 @@ public interface CounpaSuppService extends OriginService{
 	public boolean save(CounpaSupply record);
 
 	List<CounpaSupply> listAllCounpaSupply(String num, String size);
+
+	public boolean update(CounpaSupply record);
 }

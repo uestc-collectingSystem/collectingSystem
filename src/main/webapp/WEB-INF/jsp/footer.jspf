@@ -62,6 +62,12 @@ $("#schoolEnter").attr("href",$routeSchoolEnter);
 $("#internship").attr("href",$routeInternship);
 $("#group").attr("href",$routeGroup);
 
+//社会相关
+$("#party").attr("href",$routeParty);
+$("#skilltrain").attr("href",$routeSkill);
+$("#support").attr("href",$routeSupport);
+$("#service").attr("href",$routeService);
+
 var $routeFile = $rootPath+"file/";
 //$("#targetTable").attr("src",$rootPath+"basic/info");
 //翻页

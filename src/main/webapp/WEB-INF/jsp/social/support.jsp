@@ -4,15 +4,9 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
-</head>
-<body>
-<h1>校企：合作情况</h1>
-	<h2>错误信息：${ErrorMsg}</h2>
-	
-	<form action="./create" method="POST">
-	<table border="1">
+<%@include file="../header.jspf"%>
+	<table border="1" class = "id_22">
+	<thread>
 		<tr>
 		<td>学校代码</td>
 		<td>录入年份</td>
@@ -55,21 +49,25 @@
 				<c:if test="${li.Audit==1}">信息已通过审批</c:if>
 			</td>
 		</tr>
-	</c:forEach>
-		<tr>
-			<td><input name ="Admcode"/></td>
-			<td><input name ="Year"/></td>
+		
+		<tr class="hidden">
+		<form action="./update" method="POST" onsubmit="return check(this)">
+			<input name="id" type="hidden" value='${li.ID}'/>
 
-			<td><input name = "HelpObject"/></td>
-			<td><input name = "PoverReducTarget"/></td>
-			<td><input name = "Fund"/></td>
-			<td><input name = "ServiceNum"/></td>
-			<td><input name = "Skill"/></td>
-			<td><input name = "Project"/></td>
+			<td><input name ="admcode"/></td>
+			<td><input name ="year"/></td>
+
+			<td><input name = "helpobject"/></td>
+			<td><input name = "poverreductarget"/></td>
+			<td><input name = "fund"/></td>
+			<td><input name = "servicenum"/></td>
+			<td><input name = "skill"/></td>
+			<td><input name = "project"/></td>
 			 
 			<td><input type="submit" value="确定"/></td>
 		</tr>
+		</form>
+	</c:forEach>
+		
 	</table>
-</form>
-</body>
-</html>
+<%@include file="../footer.jspf"%>
