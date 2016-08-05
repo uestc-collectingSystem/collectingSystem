@@ -49,4 +49,10 @@ public class GroupSchoolServiceImpl implements GroupSchoolService{
 		return dao.getAllObject((pageNum-1)*pageSize,pageSize);
 	}
 
+	@Override
+	public boolean update(GroupSchool record) {
+		if (dao.updateByPrimaryKeySelective(record)!=0) return true;
+		return false;
+	}
+
 }

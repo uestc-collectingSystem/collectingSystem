@@ -10,4 +10,6 @@ public interface GroupSchoolService extends OriginService {
 	public boolean save(GroupSchool record);
 
 	List<GroupSchool> listAllGroupSchool(String num, String size);
+
+	public boolean update(GroupSchool record);
 }

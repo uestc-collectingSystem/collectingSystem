@@ -160,7 +160,7 @@ $(document).ready(function(){
 		<div class="id_14">
 		<a href="#" class="id_16" onclick="openwindow('input/','test',720,450)"></a><!-- 新增 -->
 		<a href="#" class="id_17" onclick="hideRows()"></a><!-- 修改 -->
-		<div class="id_18"><input type="text" class="id_19" placeholder="请输入年份查询"><input type="submit" value="" class="id_20"></div>
+		<!-- <div class="id_18"><input type="text" class="id_19" placeholder="请输入年份查询"><input type="submit" value="" class="id_20"></div> -->
 		</div>
 	</div>
 	<div class = "id_13">
