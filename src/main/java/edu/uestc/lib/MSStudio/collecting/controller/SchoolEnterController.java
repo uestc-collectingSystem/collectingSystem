@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -31,6 +32,8 @@ public class SchoolEnterController implements OriginController{
 			@PathVariable String pageNum,
 			@PathVariable String pageSize,
 			HttpServletRequest request,Model model){
+		model.addAttribute("firstMenu", "校企合作");
+		model.addAttribute("subMenu", "合作情况");
 		model.addAttribute("list", schoolEnterService.listAllSchoolEnterprise(pageNum, pageSize));
 		return PageRoutes.coorSchoolenterPage;
 	}
@@ -167,5 +170,13 @@ public class SchoolEnterController implements OriginController{
 				return PageRoutes.errorPage;
 		}
 	}
-	
+	@RequestMapping("update")
+	public void testFormBean(@ModelAttribute("update") SchoolEnterprise record,HttpServletResponse response) throws IOException{
+//		return JSON.toJSON(sizeService.update(test));
+		//System.out.println(JSON.toJSON(record));
+		if(!schoolEnterService.update(record)) System.out.println("wrong");;
+		response.sendRedirect("./");
+		return ;
+	} 
+
 }

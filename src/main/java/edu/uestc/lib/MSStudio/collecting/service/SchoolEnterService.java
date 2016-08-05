@@ -10,4 +10,6 @@ public interface SchoolEnterService extends OriginService{
 	public boolean save(SchoolEnterprise record);
 
 	List<SchoolEnterprise> listAllSchoolEnterprise(String num, String size);
+
+	public boolean update(SchoolEnterprise record);
 }

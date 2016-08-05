@@ -4,16 +4,9 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
-<title>数据录入部分</title>
-</head>
-<body>
-<h1>校企：合作情况</h1>
-	<h2>错误信息：${ErrorMsg}</h2>
-	
-	<form action="./create" method="POST">
-	<table border="1">
+<%@include file="../header.jspf"%>
+	<table border="1" class = "id_22">
+	<thread>
 		<tr>
 		<td>学校代码</td>
 		<td>录入年份</td>
@@ -36,6 +29,8 @@
 		<td>专任教师企业实习实践人次</td>
 		<td>专任教师人均企业实习实践时间（天）</td>
 		<td>企业兼职教师专业课课时占比</td>
+		
+		<td>校企合作开发资料</td>
 		<td>接收顶岗实习学生比例 </td>
 		<td>录取应届毕业生比例  </td>
 		<td>校企合作研发成果产值</td>
@@ -43,6 +38,8 @@
 		<td>企业捐赠总值（万元）</td>
 		<td>校外实践教学基地数量</td>
 		
+
+
 		
 		<td>审核状态</td>
 		<td>删除记录</td>
@@ -70,6 +67,7 @@
 			<td>${li.FullEnterPrac}</td>
 			<td>${li.FullEnterTime}</td>
 			<td>${li.PartTimeClassRadio}</td>
+			
 			<td>${li.BookPublishCount}</td>
 			<td>${li.FullTimeStu}</td>
 			<td>${li.GraduEnterRate}</td>
@@ -92,40 +90,44 @@
 				<c:if test="${li.Audit==1}">信息已通过审批</c:if>
 			</td>
 		</tr>
-	</c:forEach>
-		<tr>
-			<td><input name="Admcode"/></td>
-			<td><input name="Year"/></td>
+		
+	<tr class="hidden">
+		<form action="./update" method="POST" onsubmit="return check(this)">
+			<input name="id" type="hidden" value='${li.ID}'/>
+			<td><input name="admcode"/></td>
+			<td><input name="year"/></td>
 
-			<td><input name ="MajorNum"/></td>
-			<td><input name ="CoopAgreeEnterp"/></td>
-			<td><input name ="CoopAgreeMajor"/></td>
-			<td><input name ="CoopEnterpJoinTeachMajor"/></td>
-			<td><input name ="CoopEnterpJoinTeachTeacher"/></td>
-			<td><input name ="CoopEnterpJoinTeachClass"/></td>
-			<td><input name ="CoopEnterpFund"/></td>
-			<td><input name ="CoopEnterpArrivalFund"/></td>
-			<td><input name ="CoopEnterpEquitWorth"/></td>
-			<td><input name ="EnterpBuildReseaDevelop"/></td>
-			<td><input name ="OffSchoTeacherTrainBase"/></td>
-			<td><input name ="ProdTrainBaseVal"/></td>
-			<td><input name ="SchoEnterpCoopOrderClassNum"/></td>
-			<td><input name ="SchoEnterpDevelopCourse"/></td>
-			<td><input name ="FullEnterPrac"/></td>
-			<td><input name ="FullEnterTime"/></td>
-			<td><input name ="PartTimeClassRadio"/></td>
-			<td><input name ="BookPublishCount"/></td>
-			<td><input name ="FullTimeStu"/></td>
-			<td><input name ="GraduEnterRate"/></td>
-			<td><input name ="DevelopeIncomeCount"/></td>
-			<td><input name ="TeacOutcomeCount"/></td>
-			<td><input name ="CoopDonateCount"/></td>
-			<td><input name ="ExperBaseCount"/></td>
+			<td><input name ="majornum"/></td>
+			<td><input name ="coopagreeenterp"/></td>
+			<td><input name ="coopagreemajor"/></td>
+			<td><input name ="coopenterpjointeachmajor"/></td>
+			<td><input name ="coopenterpjointeachteacher"/></td>
+			<td><input name ="coopenterpjointeachclass"/></td>
+			<td><input name ="coopenterpfund"/></td>
+			<td><input name ="coopenterparrivalfund"/></td>
+			<td><input name ="coopenterpequitworth"/></td>
+			<td><input name ="enterpbuildreseadevelop"/></td>
+			<td><input name ="offschoteachertrainbase"/></td>
+			<td><input name ="prodtrainbaseval"/></td>
+			<td><input name ="schoenterpcooporderclassnum"/></td>
+			<td><input name ="schoenterpdevelopcourse"/></td>
+			<td><input name ="fullenterprac"/></td>
+			<td><input name ="fullentertime"/></td>
+			<td><input name ="parttimeclassradio"/></td>
+			<td><input name ="bookpublishcount"/></td>
+			<td><input name ="fulltimestu"/></td>
+			<td><input name ="graduenterrate"/></td>
+			<td><input name ="developeincomecount"/></td>
+			<td><input name ="teacoutcomecount"/></td>
+			<td><input name ="coopdonatecount"/></td>
+			<td><input name ="experbasecount"/></td>
 
 			 
 			<td><input type="submit" value="确定"/></td>
+			</form>
 		</tr>
+	</c:forEach>
+		
 	</table>
-</form>
-</body>
-</html>
+
+<%@include file="../footer.jspf"%>
