@@ -10,4 +10,6 @@ public interface InternshipService extends OriginService{
 	public boolean save(Internship record);
 
 	List<Internship> listAllInternship(String num, String size);
+
+	public boolean update(Internship record);
 }

@@ -8,5 +8,5 @@
 <body>
 <div id="id_25">
 	<div class="id_26">
-	<form id = "createTable" action="../create" method="POST" target="_parent">
+	<form id = "createTable" action="../create" method="POST">
 		<table class="id_27">

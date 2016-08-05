@@ -4,17 +4,8 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
-<title>数据录入部分</title>
-</head>
-<body>
-
-<h1>校企：合作情况</h1>
-	<h2>错误信息：${ErrorMsg}</h2>
-	
-	<form action="./create" method="POST">
-	<table border="1">
+<%@include file="../header.jspf"%>
+	<table border="1" class = "id_22">
 		<tr>
 		<td>学校代码</td>
 		<td>录入年份</td>
@@ -51,8 +42,6 @@
 			<td>${li.EnterpAssessDisInter}</td>
 			<td>${li.EnterpAssessDisBad}</td>
 			<td>${li.CoopEnterpEmployStud}</td>
-			
-			
 			<td> 
 				<c:if test="${li.Audit==1}">通过</c:if>
 				<c:if test="${li.Audit==0}">未通过</c:if>
@@ -67,27 +56,26 @@
 				<c:if test="${li.Audit==1}">信息已通过审批</c:if>
 			</td>
 		</tr>
-	</c:forEach>
-		<tr>
-			<td><input name ="Admcode"/></td>
-			<td><input name ="Year"/></td>
+		<tr class="hidden">
+		<form action="./update" method="POST" onsubmit="return check(this)">
+			<input name="id" type="hidden" value='${li.ID}'/>
+			<td><input name ="admcode"/></td>
+			<td><input name ="year"/></td>
 
-			<td><input name ="OffCamptTrainBase"/></td>
-			<td><input name ="KownDuration"/></td>
-			<td><input name ="PostDuration"/></td>
-			<td><input name ="DisplaceDuration"/></td>
-			<td><input name ="StuPostPartRadio"/></td>
-			<td><input name ="StuDisPartRadio"/></td>
-			<td><input name ="EnterpAssessDisOpt"/></td>
-			<td><input name ="EnterpAssessDisGood"/></td>
-			<td><input name ="EnterpAssessDisInter"/></td>
-			<td><input name ="EnterpAssessDisBad"/></td>
-			<td><input name ="CoopEnterpEmployStud"/></td>
-			 
+			<td><input name ="offcampttrainbase"/></td>
+			<td><input name ="kownduration"/></td>
+			<td><input name ="postduration"/></td>
+			<td><input name ="displaceduration"/></td>
+			<td><input name ="stupostpartradio"/></td>
+			<td><input name ="studispartradio"/></td>
+			<td><input name ="enterpassessdisopt"/></td>
+			<td><input name ="enterpassessdisgood"/></td>
+			<td><input name ="enterpassessdisinter"/></td>
+			<td><input name ="enterpassessdisbad"/></td>
+			<td><input name ="coopenterpemploystud"/></td>
 			<td><input type="submit" value="确定"/></td>
 		</tr>
+		</form>
+	</c:forEach>
 	</table>
-</form>
-
-</body>
-</html>
+<%@include file="../footer.jspf"%>

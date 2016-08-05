@@ -21,16 +21,16 @@ var $routeInfo = $rootPath+"basic/info/";
 var $routeTeac = $rootPath+"basic/teacher/";
 var $routeEquip = $rootPath+"basic/equip/";
 
-var $routeGroup = $rootPath+"coor/group/";
-var $routeInternship = $rootPath+"coor/internship/";
-var $routeSchoolEnter = $rootPath+"coor/enterprise/";
-
 var $routeEmp = $rootPath+"dev/emp/";
 var $routeStu = $rootPath+"dev/stu/";
 
 var $routeAssure = $rootPath+"qua/assure/";
 var $routeEducation = $rootPath+"qua/edu/";
 var $routeMajNum = $rootPath+"qua/majnum/";
+
+var $routeGroup = $rootPath+"coor/group/";
+var $routeInternship = $rootPath+"coor/internship/";
+var $routeSchoolEnter = $rootPath+"coor/enterprise/";
 
 var $routeParty = $rootPath+"social/party/";
 var $routeService = $rootPath+"social/service/";
@@ -56,6 +56,11 @@ $("#majnum").attr("href",$routeMajNum);
 $("#assure").attr("href",$routeAssure);
 $("#edu").attr("href",$routeEducation);
 
+
+//校企合作
+$("#schoolEnter").attr("href",$routeSchoolEnter);
+$("#internship").attr("href",$routeInternship);
+$("#group").attr("href",$routeGroup);
 
 var $routeFile = $rootPath+"file/";
 //$("#targetTable").attr("src",$rootPath+"basic/info");
