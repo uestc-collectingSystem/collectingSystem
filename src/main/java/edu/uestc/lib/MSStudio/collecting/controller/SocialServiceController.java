@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -31,6 +32,8 @@ public class SocialServiceController implements OriginController{
 			@PathVariable String pageNum,
 			@PathVariable String pageSize,
 			HttpServletRequest request,Model model){
+		model.addAttribute("firstMenu", "社会贡献");
+		model.addAttribute("subMenu", " 社会服务");
 		model.addAttribute("list", socialServService.listAllSocialService(pageNum, pageSize));
 		return PageRoutes.socialServicePage;
 	}
@@ -110,4 +113,12 @@ public class SocialServiceController implements OriginController{
 				return PageRoutes.errorPage;
 		}
 	}
+	@RequestMapping("update")
+	public void testFormBean(@ModelAttribute("update") SocialService record,HttpServletResponse response) throws IOException{
+//		return JSON.toJSON(sizeService.update(test));
+		//System.out.println(JSON.toJSON(record));
+		if(!socialServService.update(record)) System.out.println("wrong");;
+		response.sendRedirect("./");
+		return ;
+	} 
 }

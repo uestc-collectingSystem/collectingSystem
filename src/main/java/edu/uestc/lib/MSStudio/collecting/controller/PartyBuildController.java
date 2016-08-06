@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -30,6 +31,8 @@ public class PartyBuildController implements OriginController{
 			@PathVariable String pageNum,
 			@PathVariable String pageSize,
 			HttpServletRequest request,Model model){
+		model.addAttribute("firstMenu", "党建工作");
+		model.addAttribute("subMenu", " 学校党建工作");
 		model.addAttribute("list", partyBuildService.listAllPartyBuild(pageNum, pageSize));
 		return PageRoutes.partyBuildPage;
 	}
@@ -136,5 +139,12 @@ public class PartyBuildController implements OriginController{
 				return PageRoutes.errorPage;
 		}
 	}
-	
+	@RequestMapping("update")
+	public void testFormBean(@ModelAttribute("update") PartyBuild record,HttpServletResponse response) throws IOException{
+//		return JSON.toJSON(sizeService.update(test));
+		//System.out.println(JSON.toJSON(record));
+		if(!partyBuildService.update(record)) System.out.println("wrong");;
+		response.sendRedirect("./");
+		return ;
+	}
 }

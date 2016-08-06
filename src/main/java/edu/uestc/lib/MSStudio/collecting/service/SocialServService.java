@@ -11,4 +11,6 @@ public interface SocialServService extends OriginService{
 
 	List<SocialService> listAllSocialService(String num, String size);
 
+	public boolean update(SocialService record);
+
 }

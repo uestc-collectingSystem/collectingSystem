@@ -4,16 +4,9 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
-<title>数据录入部分</title>
-</head>
-<body>
-<h1>党建工作</h1>
-	<h2>错误信息：${ErrorMsg}</h2>
-	
-	<form action="./create" method="POST">
-	<table border="1">
+<%@include file="../header.jspf"%>
+	<table border="1" class = "id_22">
+	<thread>
 		<tr>
 		<td>学校代码</td>
 		<td>录入年份</td>
@@ -76,31 +69,33 @@
 				<c:if test="${li.Audit==1}">信息已通过审批</c:if>
 			</td>
 		</tr>
-	</c:forEach>
-		<tr>
-			<td><input name ="Admcode"/></td>
-			<td><input name ="Year"/></td>
+		
+		<tr class="hidden">
+		<form action="./update" method="POST" onsubmit="return check(this)">
+			<input name="id" type="hidden" value='${li.ID}'/>
+			<td><input name ="admcode"/></td>
+			<td><input name ="year"/></td>
 
-			<td><input name = "PartyMember"/></td>
-			<td><input name = "BranchNum"/></td>
-			<td><input name = "StuPartyNum"/></td>
-			<td><input name = "PartyWorkTrain"/></td>
-			<td><input name = "PartyTain"/></td>
-			<td><input name = "PartyActivistTrainNum"/></td>
-			<td><input name = "PartyActivistTrainTime"/></td>
-			<td><input name = "DevelopPartyNum"/></td>
-			<td><input name = "SubscribNum"/></td>
-			<td><input name = "Punish"/></td>
-			<td><input name = "StatePer"/></td>
-			<td><input name = "ProvinPer"/></td>
-			<td><input name = "CityPer"/></td>
-			<td><input name = "StateOrgan"/></td>
-			<td><input name = "ProvinOrgan"/></td>
-			<td><input name = "CityOrgan"/></td>
+			<td><input name = "partymember"/></td>
+			<td><input name = "branchnum"/></td>
+			<td><input name = "stupartynum"/></td>
+			<td><input name = "partyworktrain"/></td>
+			<td><input name = "partytain"/></td>
+			<td><input name = "partyactivisttrainnum"/></td>
+			<td><input name = "partyactivisttraintime"/></td>
+			<td><input name = "developpartynum"/></td>
+			<td><input name = "subscribnum"/></td>
+			<td><input name = "punish"/></td>
+			<td><input name = "stateper"/></td>
+			<td><input name = "provinper"/></td>
+			<td><input name = "cityper"/></td>
+			<td><input name = "stateorgan"/></td>
+			<td><input name = "provinorgan"/></td>
+			<td><input name = "cityorgan"/></td>
 			 
 			<td><input type="submit" value="确定"/></td>
+			</form>
 		</tr>
+	</c:forEach>		
 	</table>
-</form>
-</body>
-</html>
+<%@include file="../footer.jspf"%>

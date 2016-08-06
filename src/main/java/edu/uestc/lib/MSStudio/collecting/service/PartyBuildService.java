@@ -10,4 +10,6 @@ public interface PartyBuildService extends OriginService{
 	public boolean save(PartyBuild record);
 
 	List<PartyBuild> listAllPartyBuild(String num, String size);
+
+	public boolean update(PartyBuild record);
 }

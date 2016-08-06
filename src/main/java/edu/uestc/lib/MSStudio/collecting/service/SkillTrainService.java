@@ -11,4 +11,6 @@ public interface SkillTrainService extends OriginService{
 
 	List<SkillTrain> listAllSkillTrain(String num, String size);
 
+	public boolean update(SkillTrain record);
+
 }
