@@ -77,24 +77,24 @@
 				<td><input name="Admcode" value='${li.AdmCode}'/></td>
 				<td><input name="Year" value='${li.Year}'/></td>
 				
-				<td><input name="TotalAssertWorth"/></td>
-				<td><input name="TeacEquitWorth"/></td>
-				<td><input name="TrainEquitWorth"/></td>
-				<td><input name="YearTeacEquitWorth"/></td>
-				<td><input name="YearTrainEquitWorth"/></td>
-				<td><input name="StuTracEquitWorth"/></td>
-				<td><input name="StuTrainEquitWorth"/></td>
-				<td><input name="TraPracWorkPe"/></td>
-				<td><input name="InTrainBase"/></td>
-				<td><input name="OutTrainBase"/></td>
-				<td><input name="LibBooks"/></td>
-				<td><input name="LibBooksElec"/></td>
-				<td><input name="YearBooks"/></td>
-				<td><input name="ReadSeats"/></td>
-				<td><input name="StuBook"/></td>
-				<td><input name="SubScribs"/></td>
-				<td><input name="ElecBooks"/></td>
-				<td><input name="ElecSeats"/></td>
+				<td><input name="totalassertworth"/></td>
+				<td><input name="teacequitworth"/></td>
+				<td><input name="trainequitworth"/></td>
+				<td><input name="yearteacequitworth"/></td>
+				<td><input name="yeartrainequitworth"/></td>
+				<td><input name="stutracequitworth"/></td>
+				<td><input name="stutrainequitworth"/></td>
+				<td><input name="trapracworkpe"/></td>
+				<td><input name="intrainbase"/></td>
+				<td><input name="outtrainbase"/></td>
+				<td><input name="libbooks"/></td>
+				<td><input name="libbookselec"/></td>
+				<td><input name="yearbooks"/></td>
+				<td><input name="readseats"/></td>
+				<td><input name="stubook"/></td>
+				<td><input name="subscribs"/></td>
+				<td><input name="elecbooks"/></td>
+				<td><input name="elecseats"/></td>
 				<td><input type="submit" value="确定"/></td>
 			</form>
 		</tr>

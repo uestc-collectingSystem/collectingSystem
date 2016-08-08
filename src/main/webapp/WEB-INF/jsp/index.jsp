@@ -52,39 +52,39 @@ $(document).ready(function(){
         <div class="icon_02"></div>
         <span>学生发展</span></a>
     <div class="id_10">
-        <a href="/StudentsDevelopment/Quality.aspx">学生素质</a>
-        <a href="/StudentsDevelopment/Employment.aspx">就业质量</a>
+        <a id = "stu" href="">学生素质</a>
+        <a id = "emp" href="">就业质量</a>
     </div>
     <a href="#" class="id_08">
         <div class="icon_03"></div>
         <span>质量保障措施</span></a>
     <div class="id_10">
-        <a href="/QualityAssuranceMeasures/MajorLayout.aspx">专业布局</a>
-        <a href="/QualityAssuranceMeasures/MajorCourse.aspx">课程开设</a>
-        <a href="/QualityAssuranceMeasures/QualityAssurance.aspx">质量保证</a>
-        <a href="/QualityAssuranceMeasures/EducationTrain.aspx">教师培养培训</a>
+        <a id = "" href="">专业布局</a>
+        <a id = "majnum" href="">课程开设</a>
+        <a id = "assure" href="">质量保证</a>
+        <a id = "edu" href="">教师培养培训</a>
     </div>
     <a href="#" class="id_08">
         <div class="icon_04"></div>
         <span>校企合作</span></a>
     <div class="id_10">
-        <a href="/SchoolEnterprise/Situation.aspx">合作情况</a>
-        <a href="/SchoolEnterprise/StudentInternship.aspx">学生实习情况</a>
-        <a href="/SchoolEnterprise/GroupRunning.aspx">集团化办学情况</a>
+        <a id="schoolEnter" href="">合作情况</a>
+        <a id="internship" href="">学生实习情况</a>
+        <a id="group" href="">集团化办学情况</a>
     </div>
     <a href="#" class="id_08">
         <div class="icon_05"></div>
         <span>社会贡献</span></a>
     <div class="id_10">
-        <a href="/SocialContribution/TechnicalSkills.aspx">技术技能人才培养</a>
-        <a href="/SocialContribution/SocialCultivation.aspx">社会服务</a>
-        <a href="/SocialContribution/CounterpartSupport.aspx">对口支援</a>
+        <a id="skilltrain" href="">技术技能人才培养</a>
+        <a id="service" href="">社会服务</a>
+        <a id="support" href="">对口支援</a>
     </div>
     <a href="#" class="id_08">
         <div class="icon_06"></div>
         <span>党建工作</span></a>
     <div class="id_10">
-        <a href="/PartyBuild/PartyBuild.aspx">学校党建工作</a>
+        <a id = "party" href="">学校党建工作</a>
     </div>
     <a href="#" class="id_08">
         <div class="icon_07"></div>
@@ -104,23 +104,16 @@ $(document).ready(function(){
 </div>
 <!--右边内容区-->
 	<div id="id_11">
-	
-	<!--添加删除修改-->
-	<div class="id_12">
-		<div class="id_13"><span>主页</span><i></i><a href="#">规模</a></div>
-		<div class="id_14">
-		<a href="#" class="id_15"></a><!-- 删除 -->
-		<a href="#" class="id_16"></a><!-- 新增 -->
-		<a href="#" class="id_17"></a><!-- 修改 -->
-		<div class="id_18"><input type="text" class="id_19" placeholder="请输入年份查询"><input type="submit" value="" class="id_20"></div>
+		<!--添加删除修改-->
+		<div class="id_12">
+			<div class="id_13"><span>主页</span><i></i><a href="#">规模</a></div>
+			<div class="id_14">
+			<a href="#" class="id_15"></a><!-- 删除 -->
+			<a href="#" class="id_16"></a><!-- 新增 -->
+			<a href="#" class="id_17"></a><!-- 修改 -->
+			<div class="id_18"><input type="text" class="id_19" placeholder="请输入年份查询"><input type="submit" value="" class="id_20"></div>
+			</div>
 		</div>
-	</div>
-	
-		<!-- 
-		<div id = "id_22" class="id_21">
-		  <iframe name = "frame1" id = "targetTable" src="http://localhost:8080/collectingSystem/basic/size" width="100%" height="680px" frameborder="0" target="_top">
-		  </iframe>
-		</div> -->
 	</div>
 </div>
 <script>
@@ -133,7 +126,7 @@ document.getElementById("id_content").style.height=colHeight+"px";
 var $rootPath;
 $rootPath=this.location.host;
 $rootPath="http://"+$rootPath+"/collectingSystem/";
-var $routeLogOut=$rootPath+"auth/loggout/";
+var $routeLogOut=$rootPath+"loggout/";
 
 var $routeSize=$rootPath+"basic/size/";
 var $routeFunds=$rootPath+"basic/funds/";
@@ -141,17 +134,16 @@ var $routeInfo = $rootPath+"basic/info/";
 var $routeTeac = $rootPath+"basic/teacher/";
 var $routeEquip = $rootPath+"basic/equip/";
 
-var $routeGroup = $rootPath+"coor/group/";
-var $routeInternship = $rootPath+"coor/internship/";
-var $routeSchoolEnter = $rootPath+"coor/enterprise/";
-
 var $routeEmp = $rootPath+"dev/emp/";
 var $routeStu = $rootPath+"dev/stu/";
 
 var $routeAssure = $rootPath+"qua/assure/";
 var $routeEducation = $rootPath+"qua/edu/";
 var $routeMajNum = $rootPath+"qua/majnum/";
-var $routeProject = $rootPath+"qua/project/";
+
+var $routeGroup = $rootPath+"coor/group/";
+var $routeInternship = $rootPath+"coor/internship/";
+var $routeSchoolEnter = $rootPath+"coor/enterprise/";
 
 var $routeParty = $rootPath+"social/party/";
 var $routeService = $rootPath+"social/service/";
@@ -161,25 +153,33 @@ var $routeSupport = $rootPath+"social/support";
 var $routeFile = $rootPath+"file/";
 
 $("#logout").attr("href",$routeLogOut);
+//基础信息
 $("#size").attr("href",$routeSize);
+$("#info").attr("href",$routeInfo);
 $("#funds").attr("href",$routeFunds);
-$("#equip").attr("href",$routeInfo);
-$("#info").attr("href",$routeTeac);
-$("#teachers").attr("href",$routeEquip);
-/* attr("href",$routeGroup);
-attr("href",$routeInternship);
-attr("href",$routeSchoolEnter);
-attr("href",$routeEmp);
-attr("href",$routeStu);
-attr("href",$routeAssure);
-attr("href",$routeEducation);
-attr("href",$routeMajNum);
-attr("href",$routeProject);
-attr("href",$routeParty);
-attr("href",$routeService);
-attr("href",$routeSkill);
-attr("href",$routeSupport); */
+$("#teachers").attr("href",$routeTeac);
+$("#equip").attr("href",$routeEquip);
+//学生发展
+$("#stu").attr("href",$routeStu);
+$("#emp").attr("href",$routeEmp);
+//质量保证
 
+// TODO 专业开设
+$("#majnum").attr("href",$routeMajNum);
+$("#assure").attr("href",$routeAssure);
+$("#edu").attr("href",$routeEducation);
+
+
+//校企合作
+$("#schoolEnter").attr("href",$routeSchoolEnter);
+$("#internship").attr("href",$routeInternship);
+$("#group").attr("href",$routeGroup);
+
+//社会相关
+$("#party").attr("href",$routeParty);
+$("#skilltrain").attr("href",$routeSkill);
+$("#support").attr("href",$routeSupport);
+$("#service").attr("href",$routeService);
 
 var $routeFile = $rootPath+"file/";
 //$("#targetTable").attr("src",$rootPath+"basic/info");
