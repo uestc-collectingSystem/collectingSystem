@@ -12,7 +12,7 @@ document.getElementById("id_content").style.height=colHeight+"px";
 //绑定路由串
 var $rootPath;
 $rootPath=this.location.host;
-$rootPath="http://"+$rootPath+"/collectingSystem/";
+$rootPath="http://"+$rootPath+"/";
 var $routeLogOut=$rootPath+"loggout/";
 
 var $routeSize=$rootPath+"basic/size/";

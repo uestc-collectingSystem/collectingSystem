@@ -1,6 +1,7 @@
 package edu.uestc.lib.MSStudio.collecting.controller;
 
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 
 import javax.annotation.Resource;
 import javax.servlet.http.Cookie;
@@ -115,15 +116,15 @@ public class AuthController {
 		return result;
 	}
 	
-	@RequestMapping("/adminAuth")
+	@RequestMapping(value="/adminAuth")
 	public @ResponseBody String adminAuth(HttpServletRequest request,Model model){
 		request.setAttribute("userID", "h1?");
 		String result = JSON.toJSON(userService.UserInfoCheck("20161", "111111")).toString();
 		return result;
 	}
 	
-	@RequestMapping("/current")
-	public @ResponseBody String currentUser(HttpServletRequest request,Model model){
+	@RequestMapping(value="/current")
+	public @ResponseBody Object currentUser(HttpServletRequest request,Model model,HttpServletResponse response) throws UnsupportedEncodingException{
 		HttpSession session = request.getSession(false);
 		if (session == null || session.getAttribute(AuthController.attriKey) == null){
 			Cookie[] cookieList = request.getCookies();
@@ -150,7 +151,9 @@ public class AuthController {
 					case User.CHECHKER : UserLevel = "检查员";break;
 					case User.COLLECTOR : UserLevel = "录入员";break;
 				}
+				
 				return UserLevel+" 学校名:"+curr.getSchoolname() +" 学校编号:"+curr.getUsercode();
+				
 			}catch(Exception e){
 				return "You Need To Login";
 			}

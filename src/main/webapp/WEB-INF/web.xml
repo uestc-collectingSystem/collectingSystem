@@ -81,22 +81,22 @@
      <!-- 配置错误页面 -->
 	 <error-page>
 	     <error-code>404</error-code>
-	     <location>/error/404.jpg</location>
+	     <location>/error/404.html</location>
 	 </error-page>
 	 
 	 <error-page>
 	     <error-code>500</error-code>
-	     <location>/error/500.jpg</location>
+	     <location>/error/500.html</location>
 	 </error-page>
 	 
 	 <error-page>
 	     <error-code>403</error-code>
-	     <location>/error/403.jpg</location>
+	     <location>/error/403.html</location>
 	 </error-page>
 	 
 	 <error-page>
 	     <error-code>401</error-code>
-	     <location>/error/401.jpg</location>
+	     <location>/error/401.html</location>
 	 </error-page>
 	 
 	 <servlet-mapping>
