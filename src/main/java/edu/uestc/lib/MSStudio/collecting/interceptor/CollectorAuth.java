@@ -7,6 +7,8 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.alibaba.fastjson.JSON;
+
 import edu.uestc.lib.MSStudio.collecting.controller.AuthController;
 
 public class CollectorAuth implements HandlerInterceptor{
@@ -21,6 +23,7 @@ public class CollectorAuth implements HandlerInterceptor{
 			for(Cookie temp : cookieList){
 				if (temp.getName().equals(AuthController.attriKey)){
 					String userID = temp.getValue();
+					temp.setPath("/");
 					response.addCookie(temp);
 					request.removeAttribute(AuthController.attriKey);
 					request.setAttribute(AuthController.attriKey, userID);

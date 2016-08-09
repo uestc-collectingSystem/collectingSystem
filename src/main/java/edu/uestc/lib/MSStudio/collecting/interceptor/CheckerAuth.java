@@ -26,6 +26,7 @@ public class CheckerAuth implements HandlerInterceptor {
 			for(Cookie temp : cookieList){
 				if (temp.getName().equals(AuthController.attriKey)){
 					String userID = temp.getValue();
+					temp.setPath("/");
 					response.addCookie(temp);
 					request.removeAttribute(AuthController.attriKey);
 					request.setAttribute(AuthController.attriKey, userID);

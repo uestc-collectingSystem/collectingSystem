@@ -50,7 +50,6 @@ public class AdminAuth implements HandlerInterceptor {
 	public void postHandle(HttpServletRequest request, HttpServletResponse response, Object arg2, ModelAndView arg3)
 			throws Exception {
 		// TODO Auto-generated method stub
-
 	}
 
 }

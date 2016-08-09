@@ -37,12 +37,14 @@ public class AuthController {
 		HttpSession session = request.getSession(false);
 		if (session == null || session.getAttribute(AuthController.attriKey) == null){
 			Cookie[] cookieList = request.getCookies();
-			for(Cookie temp : cookieList){
-				if (temp.getName().equals(AuthController.attriKey)) {
-					User curr = userService.findUser(temp.getValue());
-					return "index";
-				}
-			}//遍历无果
+			if (cookieList!=null)
+				for(Cookie temp : cookieList){
+					if (temp.getName().equals(AuthController.attriKey)) {
+						User curr = userService.findUser(temp.getValue());
+						return "index";
+					}
+				}//遍历无果
+			else
 			model.addAttribute("welcomeMsg","您好，请输入指定工号和密码");
 			return "login";
 		}
@@ -65,14 +67,13 @@ public class AuthController {
 		}//处理 Session
 	}
 	
-	@RequestMapping("/loggout")
+	@RequestMapping("loggout")
 	public void loggout(HttpServletRequest request,Model model,HttpServletResponse response) throws IOException{
 		Cookie[] currentCookies = request.getCookies();
 		HttpSession currentSession = request.getSession();
 		currentSession.removeAttribute(attriKey);
 		for(Cookie temp : currentCookies){
 			if (temp.getName().equals(AuthController.attriKey)){
-				
 				temp.setMaxAge(0);
 				response.addCookie(temp);
 			}
@@ -126,11 +127,11 @@ public class AuthController {
 	@RequestMapping("/collectorAuth")
 	public @ResponseBody String collectorAuth(HttpServletRequest request,Model model){
 		request.setAttribute("userID", "h1?");
-		String result = JSON.toJSON(userService.UserInfoCheck("20161", "111111")).toString();
+		String result = "1";
 		return result;
 	}
 	
-	@RequestMapping("/checkerAuth")
+	@RequestMapping("checkerAuth")
 	public @ResponseBody String checkerAuth(HttpServletRequest request,Model model){
 		request.setAttribute("userID", "h1?");
 		String result = JSON.toJSON(userService.UserInfoCheck("20161", "111111")).toString();
