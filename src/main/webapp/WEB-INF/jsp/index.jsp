@@ -27,7 +27,7 @@ $(document).ready(function(){
 <body>
 <div class="id_01">
 <div class="id_02"></div>
-<div class="id_03"><span id=currentUser></span><a href="#" id = click class="id_04">个人信息</a><a href="#" class="id_04">修改密码</a><a id="logout" href="" class="id_04">退出系统</a></div>
+<div class="id_03"><span id=currentUser></span><a href="#" id = click class="id_04">个人信息</a><a href="#" class="id_04">修改密码</a><a href="/loggout" class="id_04">退出系统</a></div>
 </div>
 
 <div id="id_content">

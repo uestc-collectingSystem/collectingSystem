@@ -34,24 +34,45 @@ public class AuthController {
 	
 	@RequestMapping(method={RequestMethod.GET,RequestMethod.POST})
 	public String index(HttpServletRequest request,Model model,HttpServletResponse response){
-		if (request.getRequestURL().reverse().charAt(0)!='/'){
-			try {
-				response.sendRedirect(request.getRequestURL().append('/').toString());
-				return null;
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+		HttpSession session = request.getSession(false);
+		if (session == null || session.getAttribute(AuthController.attriKey) == null){
+			Cookie[] cookieList = request.getCookies();
+			for(Cookie temp : cookieList){
+				if (temp.getName().equals(AuthController.attriKey)) {
+					User curr = userService.findUser(temp.getValue());
+					return "index";
+				}
+			}//遍历无果
+			model.addAttribute("welcomeMsg","您好，请输入指定工号和密码");
+			return "login";
 		}
-		model.addAttribute("welcomeMsg","您好，请输入指定工号和密码");
-		return "login";
+		else {
+			try {
+				User curr = userService.findUser(session.getAttribute(AuthController.attriKey).toString());
+				String UserLevel=null;
+				switch (curr.getLevel()) {
+					case User.ADMINISTER : UserLevel = "管理员";break;
+					case User.CHECHKER : UserLevel = "检查员";break;
+					case User.COLLECTOR : UserLevel = "录入员";break;
+				}
+				
+				return "index";
+				
+			}catch(Exception e){
+				model.addAttribute("welcomeMsg","您好，请输入指定工号和密码");
+				return "login";
+			}
+		}//处理 Session
 	}
 	
 	@RequestMapping("/loggout")
 	public void loggout(HttpServletRequest request,Model model,HttpServletResponse response) throws IOException{
 		Cookie[] currentCookies = request.getCookies();
+		HttpSession currentSession = request.getSession();
+		currentSession.removeAttribute(attriKey);
 		for(Cookie temp : currentCookies){
 			if (temp.getName().equals(AuthController.attriKey)){
+				
 				temp.setMaxAge(0);
 				response.addCookie(temp);
 			}
