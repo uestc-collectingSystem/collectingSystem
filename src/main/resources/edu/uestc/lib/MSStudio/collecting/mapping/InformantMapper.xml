@@ -114,4 +114,10 @@
       Mailbox = #{mailbox,jdbcType=VARCHAR}
     where ID = #{id,jdbcType=INTEGER}
   </update>
+  
+  <select id="getAllObject" resultType="java.util.HashMap" parameterType="java.lang.Integer">
+    select 
+    <include refid="Base_Column_List" />
+    from informant order by ID  DESC limit #{0},#{1}
+  </select>
 </mapper>

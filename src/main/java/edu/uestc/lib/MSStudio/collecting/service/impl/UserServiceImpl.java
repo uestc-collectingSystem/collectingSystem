@@ -63,7 +63,7 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public boolean updateUser(User record) {
 		// 根据当前内容更新用户
-		if (dao.updateByPrimaryKey(record)==0) return false;
+		if (dao.updateByPrimaryKeySelective(record)==0) return false;
 		else return true;
 	}
 	

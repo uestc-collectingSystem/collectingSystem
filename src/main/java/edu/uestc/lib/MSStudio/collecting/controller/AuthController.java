@@ -11,6 +11,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -28,6 +29,8 @@ public class AuthController {
 	public final static String attriKey = "UserID";
 
 	public final static String typeKey = "UserType";
+	
+	private final static String myAccoutPage = "auth/acc";
 	
 	@Resource
 	private UserService userService;
@@ -124,26 +127,26 @@ public class AuthController {
 		return "login";
 	}
 	
-	@RequestMapping("/collectorAuth")
-	public @ResponseBody String collectorAuth(HttpServletRequest request,Model model){
-		request.setAttribute("userID", "h1?");
-		String result = "1";
-		return result;
-	}
-	
-	@RequestMapping("checkerAuth")
-	public @ResponseBody String checkerAuth(HttpServletRequest request,Model model){
-		request.setAttribute("userID", "h1?");
-		String result = JSON.toJSON(userService.UserInfoCheck("20161", "111111")).toString();
-		return result;
-	}
-	
-	@RequestMapping(value="/adminAuth")
-	public @ResponseBody String adminAuth(HttpServletRequest request,Model model){
-		request.setAttribute("userID", "h1?");
-		String result = JSON.toJSON(userService.UserInfoCheck("20161", "111111")).toString();
-		return result;
-	}
+//	@RequestMapping("/collectorAuth")
+//	public @ResponseBody String collectorAuth(HttpServletRequest request,Model model){
+//		request.setAttribute("userID", "h1?");
+//		String result = "1";
+//		return result;
+//	}
+//	
+//	@RequestMapping("checkerAuth")
+//	public @ResponseBody String checkerAuth(HttpServletRequest request,Model model){
+//		request.setAttribute("userID", "h1?");
+//		String result = JSON.toJSON(userService.UserInfoCheck("20161", "111111")).toString();
+//		return result;
+//	}
+//	
+//	@RequestMapping(value="/adminAuth")
+//	public @ResponseBody String adminAuth(HttpServletRequest request,Model model){
+//		request.setAttribute("userID", "h1?");
+//		String result = JSON.toJSON(userService.UserInfoCheck("20161", "111111")).toString();
+//		return result;
+//	}
 	
 	@RequestMapping(value="/current")
 	public @ResponseBody Object currentUser(HttpServletRequest request,Model model,HttpServletResponse response) throws UnsupportedEncodingException{
@@ -181,4 +184,55 @@ public class AuthController {
 			}
 		}//处理 Session
 	}
+	
+	@RequestMapping("me")
+	public String accoutInfo(HttpServletRequest request,Model model){
+		
+		HttpSession session = request.getSession(false);
+		if (session == null || session.getAttribute(AuthController.attriKey) == null){
+			Cookie[] cookieList = request.getCookies();
+			if (cookieList!=null)
+				for(Cookie temp : cookieList){
+					if (temp.getName().equals(AuthController.attriKey)) {
+						User curr = userService.findUser(temp.getValue());
+						model.addAttribute("firstMenu", "个人信息");
+						model.addAttribute("subMenu", "帐号管理");
+						model.addAttribute("me",curr);
+						return myAccoutPage;
+					}
+				}//遍历无果
+			else
+			model.addAttribute("welcomeMsg","您好，请输入指定工号和密码");
+			return "login";
+		}
+		else {
+			try {
+				User curr = userService.findUser(session.getAttribute(AuthController.attriKey).toString());
+				String UserLevel=null;
+				switch (curr.getLevel()) {
+					case User.ADMINISTER : UserLevel = "管理员";break;
+					case User.CHECHKER : UserLevel = "检查员";break;
+					case User.COLLECTOR : UserLevel = "录入员";break;
+				}
+				model.addAttribute("firstMenu", "个人信息");
+				model.addAttribute("subMenu", "帐号管理");
+				model.addAttribute("me",curr);
+				return myAccoutPage;
+				
+			}catch(Exception e){
+				model.addAttribute("welcomeMsg","您好，请输入指定工号和密码");
+				return "login";
+			}
+		}//处理 Session
+
+	}
+	
+	@RequestMapping("update")
+	public void testFormBean(@ModelAttribute("update") User record,HttpServletResponse response) throws IOException{
+//		return JSON.toJSON(sizeService.update(test));
+		//System.out.println(JSON.toJSON(record));
+		if(!userService.updateUser(record)) System.out.println("wrong");;
+		response.sendRedirect("./");
+		return ;
+	} 
 }

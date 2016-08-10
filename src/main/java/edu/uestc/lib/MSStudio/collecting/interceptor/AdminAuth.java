@@ -28,7 +28,6 @@ public class AdminAuth implements HandlerInterceptor {
 		}
 		String userId = temp.getAttribute(AuthController.attriKey).toString();
 		if (userService.getUserLevel(Integer.valueOf(userId)).equals(User.ADMINISTER)) {
-			System.out.println(userService.getUserLevel(Integer.valueOf(userId)));
 			request.getSession().invalidate();
 			request.getSession().setAttribute(AuthController.attriKey, userId);
 			request.removeAttribute(AuthController.attriKey);
