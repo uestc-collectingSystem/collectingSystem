@@ -132,6 +132,7 @@ $(document).ready(function(){
         <div class="icon_07"></div>
         <span>资料上传</span></a>
     <div class="id_11">
+        <a href="/file">文件列表</a>
         <a href="/file/upload/moralwork">德育工作经验措施</a>
         <a href="/file/upload/studentpolitical">学生思想政治状况</a>
         <a href="/file/upload/outstandinggraduate">优秀毕业生典型案例</a>

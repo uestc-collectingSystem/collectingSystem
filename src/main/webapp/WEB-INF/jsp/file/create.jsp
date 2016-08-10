@@ -13,10 +13,9 @@
     <li>模块名：<input type="hidden" class="file" name="source" value="${path}"/></li>
     
     <div id="upload">
-        <input type="file" name="file">
+        <input type="file" name="file"/>
     </div><!-- 想加 js 自己加,用 jQuery 增加行数可以做到多文件上传 -->
         	
-        <input type="submit" value="上传" >
+        <input type="submit" value="上传"/>
 </form>
-   
 <%@include file="../footer.jspf"%>

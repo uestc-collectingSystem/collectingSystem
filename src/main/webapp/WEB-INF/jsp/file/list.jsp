@@ -4,15 +4,9 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
-<title>信息采集系统：文件</title>
-</head>
-<body>
-	<h1>基础情况：规模</h1>
-	<h2>错误信息：${ErrorMsg}</h2>
-	<table border="1">
-		<tr>
+<%@include file="../header.jspf"%>
+	<table border="1" class = "id_22">
+	<tr>
 		<td>文件名</td>
 		<td>上传时间</td>
 		<td>上传人员帐号</td>
@@ -46,5 +40,4 @@
 		</tr>
 	</c:forEach>
 	</table>
-</body>
-</html>
+<%@include file="../footer.jspf"%>
