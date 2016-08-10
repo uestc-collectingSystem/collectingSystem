@@ -21,6 +21,12 @@ input {
 	border:0px;
 }
 
+.file{
+	float:none;
+	width:20%;
+	border:2px;
+}
+
 ul,li,p {
 	margin: 0px;
 	padding: 0px;

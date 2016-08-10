@@ -46,16 +46,5 @@
 		</tr>
 	</c:forEach>
 	</table>
-	
-	<form action="./create" enctype="multipart/form-data" method="post">  
-        <div id="upload">
-            文件上传：<input type="file" name="file">
-        </div><!-- 想加 js 自己加,用 jQuery 增加行数可以做到多文件上传 -->
-        	文件名：<input type="text" name="name"/>
-        	上传人：<input type="text" name="writer"/>
-        	模块名：<input type="text" name="source"/>
-        	上传时间（年）：<input type="text" name="writeTime"/>
-        <input type="submit" value="上传" >
-    </form>
 </body>
 </html>

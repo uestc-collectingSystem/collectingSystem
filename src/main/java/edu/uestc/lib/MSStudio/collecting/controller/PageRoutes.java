@@ -7,7 +7,9 @@ public class PageRoutes {
 	
 	public static final String errorMsgParam="ErrorMsg";
 
-	public static final String filePage="file";
+	public static final String filePage="file/list";
+	
+	public static final String fileCreatePage="file/create";
 	
 	public static final String sizePage = "basic/size";
 	

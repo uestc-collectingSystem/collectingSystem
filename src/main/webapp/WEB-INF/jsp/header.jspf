@@ -132,16 +132,16 @@ $(document).ready(function(){
         <div class="icon_07"></div>
         <span>资料上传</span></a>
     <div class="id_11">
-        <a href="/File/MoralWork.aspx">德育工作经验措施</a>
-        <a href="/File/StudentPolitical.aspx">学生思想政治状况</a>
-        <a href="/File/OutstandingGraduate.aspx">优秀毕业生典型案例</a>
-        <a href="/File/QualifyControl.aspx">质量监控体系建设</a>
-        <a href="/File/GroupRun.aspx">学校集团化办学</a>
-        <a href="/File/Culture.aspx">传统文化（地方特色）教育活动开展情况</a>
-        <a href="/File/HelpPoverty.aspx">对口帮扶（扶贫）情况</a>
-        <a href="/File/Innovation.aspx">特色创新</a>
-        <a href="/File/PartyBuild.aspx">党建工作</a>
-        <a href="File/ProblemMeasure.aspx">主要问题和改进措施</a>
+        <a href="/file/upload/moralwork">德育工作经验措施</a>
+        <a href="/file/upload/studentpolitical">学生思想政治状况</a>
+        <a href="/file/upload/outstandinggraduate">优秀毕业生典型案例</a>
+        <a href="/file/upload/qualifycontrol">质量监控体系建设</a>
+        <a href="/file/upload/grouprun">学校集团化办学</a>
+        <a href="/file/upload/culture">传统文化（地方特色）教育活动开展情况</a>
+        <a href="/file/upload/helppoverty">对口帮扶（扶贫）情况</a>
+        <a href="/file/upload/innovation">特色创新</a>
+        <a href="/file/upload/partybuild">党建工作</a>
+        <a href="/file/upload/problemmeasure">主要问题和改进措施</a>
     </div>
 </div>
 <!--右边内容区-->

@@ -30,13 +30,83 @@ public class FileController {
 	@Resource
 	private FileService fileService;
 	
+	
+	
 	@RequestMapping(value="",method=RequestMethod.GET)
-	public String listFiles(
-			@RequestParam(value="pageNum",defaultValue="1") String pageNum,
-			@RequestParam(value="pageSize",defaultValue="20")String pageSize,
+	public String indexWithPage(
+			HttpServletRequest request,Model model,HttpServletResponse response){
+		if (request.getRequestURL().reverse().charAt(0)!='/'){
+			try {
+				response.sendRedirect(request.getRequestURL().append('/').toString());
+				return null;
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		
+		return indexWithPage(1, 10, request, model);
+	}
+	
+	@RequestMapping(value="{pageNum}*",method=RequestMethod.GET)
+	public String indexWithPage(
+			@PathVariable int pageNum,
 			HttpServletRequest request,Model model){
-		model.addAttribute("list", fileService.listFilePage(pageNum,pageSize));
+		return indexWithPage(pageNum, 10, request, model);
+	}
+	
+	@RequestMapping(value="{pageNum}&{pageSize}",method=RequestMethod.GET)
+	public String indexWithPage(
+			@PathVariable int pageNum,
+			@PathVariable int pageSize,
+			HttpServletRequest request,Model model){
+		model.addAttribute("firstMenu", "基本情况");
+		model.addAttribute("subMenu", "信息化建设");
+		model.addAttribute("list", fileService.listFilePage(String.valueOf(pageNum),String.valueOf(pageSize)));
 		return PageRoutes.filePage;
+	}
+	
+	@RequestMapping(value="upload/{path}")
+	public String indexWithPage(
+			@PathVariable String path,
+			HttpServletRequest request,Model model){
+		model.addAttribute("firstMenu", "文件上传");
+		String name = null;
+		switch (path) {
+		case "moralwork":
+			name = "德育工作经验措施";
+			break;
+		case "studentpolitical":
+			name = "学生思想政治状况";
+			break;
+		case "outstandinggraduate":
+			name = "优秀毕业生典型案例";
+			break;
+		case "qualifycontrol":
+			name = "质量监控体系建设";
+			break;
+		case "grouprun":
+			name = "学校集团化办学";
+			break;
+		case "culture":
+			name = "传统文化（地方特色）教育活动开展情况";
+			break;
+		case "helppoverty":
+			name = "对口帮扶（扶贫）情况";
+			break;
+		case "innovation":
+			name = "特色创新";
+			break;
+		case "partybuild":
+			name = "党建工作";
+			break;
+		case "problemmeasure":
+			name = "主要问题和改进措施";
+			break;
+		}
+		model.addAttribute("subMenu", name);
+		model.addAttribute("path", path);
+		return PageRoutes.fileCreatePage;
 	}
 	
 	public static FileInfo preSaveFileInfo(
